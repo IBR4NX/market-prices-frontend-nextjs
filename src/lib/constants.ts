@@ -1,8 +1,8 @@
 export const SITE_NAME = "Markets Yemen";
 
 export const DEFAULT_SITE_URL = "https://markets-ye.vercel.app";
-export const MAIN_URL =process.env.NEXT_PUBLIC_MAIN_URL || "https://ibovs.vercel.app";
-export const ABOUT_URL =process.env.NEXT_PUBLIC_ABOUT_URL || "https://ibout.ibovs.vercel.app";
+export const MAIN_URL =`https://${process.env.NEXT_PUBLIC_MAIN_URL || "ibovs.vercel.app"}`;
+export const ABOUT_URL =`https://${process.env.NEXT_PUBLIC_ABOUT_URL || "about.ibovs.vercel.app"}`;
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL
 ).replace(/\/+$/, "");

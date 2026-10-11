@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const MAIN_DOMAIN = "ibovs.vercel.app";
-const ABOUT_DOMAIN = "about.ibovs.vercel.app";
+const MAIN_DOMAIN = process.env.NEXT_PUBLIC_MAIN_URL;
+const ABOUT_DOMAIN = process.env.NEXT_PUBLIC_ABOUT_URL;
 
 export function proxy(request: NextRequest) {
   const hostname = request.headers.get("host")?.split(":")[0].toLowerCase();
