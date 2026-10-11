@@ -17,7 +17,8 @@ export function proxy(request: NextRequest) {
     if (
       pathname.startsWith("/_next") ||
       pathname === "/favicon.ico" ||
-      pathname.startsWith("/api")
+      pathname.startsWith("/api")||
+      pathname.startsWith("/google")
     ) {
       return NextResponse.next();
     }
