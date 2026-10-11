@@ -118,15 +118,16 @@
 }
 .theme-red {
   --primary: #ef4444;
-  --secondary: #fca5a5;
 }
 .theme-yellow {
   --primary: #facc15;
-  --secondary: #fde68a;
 }
 .theme-blue {
   --primary: oklch(0.52 0.105 223.128);
-  --secondary: oklch(0.274 0.006 286.033);
+    && .dark {
+        --secondary: oklch(0.274 0.006 286.033);
+    }
+
 }
 @layer base {
   * {

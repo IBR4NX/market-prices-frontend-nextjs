@@ -5,14 +5,14 @@ import {
   FaWhatsapp,
   FaXTwitter,
 } from "react-icons/fa6";
-import  Link  from "next/link";
+import Link from "next/link";
 
 import LinkFooter from "@/components/layout/LinkFooter";
 import MainLink from "@/components/shared/mainLink";
-import { ABOUT_URL } from "@/lib/constants";
+import { ABOUT_URL, BLOG_URL, PRICES_URL } from "@/lib/constants";
 export default function Footer() {
   return (
-    <footer  className="border-t bg-muted/30">
+    <footer className="border-t bg-muted/30">
       <div className="mx-aut  ma-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
         <div className="grid gap-8 grid-cols-1  lg:gap-12">
           <div dir="rtl">
@@ -29,13 +29,13 @@ export default function Footer() {
           <div className="relative  grid grid-cols-1 gap-4 sm:grid-cols-2 ">
             <div className="  w-full">
               <h2 className="text-2xl font-semibold">روابط سريعة</h2>
-            <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-muted-foreground">
-                <MainLink
-                  href="/prices"
+              <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-muted-foreground">
+                <Link
+                  href={PRICES_URL}
                   className="w-fit hover:text-foreground hover:underline"
                 >
                   ألاسعار
-                </MainLink>
+                </Link>
                 <MainLink
                   href="/add"
                   className="w-fit hover:text-foreground hover:underline"
@@ -54,12 +54,12 @@ export default function Footer() {
                 >
                   اتصل بنا
                 </MainLink>
-                <MainLink
-                  href="/blog"
+                <Link
+                  href={BLOG_URL}
                   className="w-fit hover:text-foreground hover:underline"
                 >
                   مدونة
-                </MainLink>
+                </Link>
                 <Link
                   href={ABOUT_URL}
                   className="w-fit hover:text-foreground hover:underline"
@@ -116,7 +116,6 @@ export default function Footer() {
 
         <div className=" relative -bottom-4 flex flex-col gap-3 border- -5 text-center text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:text-start">
           <p>{`© ${new Date().getFullYear()} السوق اليمني. جميع الحقوق محفوظة.`}</p>
-          
         </div>
       </div>
     </footer>

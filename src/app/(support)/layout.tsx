@@ -28,7 +28,7 @@ export default function Layout({
 }>) {
   return (
     <>
-      <SidebarProvider className="h-screen w-screen   mt-13 overflow-hidden ">
+      <SidebarProvider className="h-scree   mt-13 overflow-hidden ">
        <div className="fixed top-0 backdrop-blur-[6px] flex justify-between items-center px-2  left-0 right-0 z-50">
           <Button
             onClick={() => window.history.back()}
