@@ -1,6 +1,6 @@
-'use client';
-import { useState, useEffect, ReactNode } from 'react';
-import { Header } from '@/components/layout/Header';
+"use client";
+import { useState, useEffect, ReactNode } from "react";
+import { Header } from "@/components/layout/Header";
 import {
   Sidebar,
   SidebarContent,
@@ -9,60 +9,47 @@ import {
   SidebarRail,
   SidebarProvider,
   SidebarMenu,
-    SidebarMenuButton,
+  SidebarMenuButton,
   SidebarMenuItem,
-  SidebarGroupLabel
-} from "@/components/ui/sidebar"
-import  Link  from 'next/link';
-import Footer from '@/components/layout/Footer';
-import SideTrigger from '@/components/layout/toggles/side-trigger';
+  SidebarGroupLabel,
+} from "@/components/ui/sidebar";
+import Link from "next/link";
+import Footer from "@/components/layout/Footer";
+import SideTrigger from "@/components/layout/toggles/side-trigger";
+import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import MainLink from "@/components/shared/mainLink";
+import { SITE_NAME } from "@/lib/constants";
 export default function Layout({
-	children
+  children,
 }: Readonly<{
-	children: ReactNode;
+  children: ReactNode;
 }>) {
-	
-	return (
-		<>
-		<SidebarProvider className="h-screen w-screen   mt-13 overflow-hidden ">
-			
-			<Header>
-
-			</Header>
-				<Sidebar dir="rtl" side="right" className=' z-20 '  collapsible="offcanvas" >
-				  <SidebarHeader>
-					<SideTrigger />
-					<span className="text-lg font-semibold tracking-tight">IBOVS</span>
-					{/* <NavUser user={store} /> */}
-				  </SidebarHeader>
-					{/* <Separator orientation="horizontal" /> */}
-				  <SidebarContent>
-					<SidebarMenu>
-					{navigation.map((item) => (
-						 <SidebarMenuItem key={item.name}>
-								<Link href={item.href}>
-							<SidebarMenuButton >
-									{item.name}
-							</SidebarMenuButton>
-								</Link>
-						</SidebarMenuItem>
-					))
-					}
-					</SidebarMenu>
-				  </SidebarContent>
-				  <SidebarFooter>
-					{/* <SidebarOptInForm/> */}
-				  </SidebarFooter>
-				  <SidebarRail />
-				</Sidebar>
-			<div
-			className="  bg-muted/50 items-center justify-center none   w-full h-full overflow-hidden scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-400/20 scrollbar-track-gray-400/10">
-			{children}
-			</div>
-		</SidebarProvider>
-		<Footer />
-		</>
-	);
+  return (
+    <>
+      <SidebarProvider className="h-screen w-screen   mt-13 overflow-hidden ">
+       <div className="fixed top-0 backdrop-blur-[6px] flex justify-between items-center px-2  left-0 right-0 z-50">
+          <Button
+            onClick={() => window.history.back()}
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="   text-muted-foreground hover:bg-transparent"
+          >
+            <ArrowRight className=" size-6" /> 
+          </Button>
+                  <MainLink href="/" className="text-lg font-semibold tracking-tight">
+                    {SITE_NAME}
+                  </MainLink>
+          </div>
+        <div className="  bg-muted/50 items-center justify-center none   w-full h-full overflow-hidden scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-400/20 scrollbar-track-gray-400/10">
+          {children}
+        </div>
+      </SidebarProvider>
+      <Footer />
+    </>
+  );
 }
 
 const navigation = [

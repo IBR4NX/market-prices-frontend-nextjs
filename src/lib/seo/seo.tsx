@@ -3,7 +3,7 @@ import {
   SITE_NAME,
   absoluteUrl,
   DEFAULT_IMAGE,
-} from "@/lib/site";
+} from "@/lib/constants";
 export {absoluteUrl};
 interface SeoProps {
   canonicalPath?: string;

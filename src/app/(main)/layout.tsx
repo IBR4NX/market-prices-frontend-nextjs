@@ -21,6 +21,7 @@ import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import SideTrigger from "@/components/layout/toggles/side-trigger";
 import { Dot } from "lucide-react";
+import MainLink from "@/components/shared/mainLink";
 export default function Layout({
   children,
 }: Readonly<{
@@ -61,15 +62,15 @@ export default function Layout({
             <SidebarMenu>
               {navigation.map((item) => (
                 <SidebarMenuItem key={item.name}>
-                  <Link href={item.href}>
+                  <MainLink href={item.href}>
                     <SidebarMenuButton>{item.name}</SidebarMenuButton>
-                  </Link>
-				  <SidebarMenuAction  className="mr-2">
-					<Dot /> <span className="sr-only">ت</span>
-				  </SidebarMenuAction>
-				</SidebarMenuItem>
-			  ))}
-			</SidebarMenu>
+                  </MainLink>
+                  <SidebarMenuAction className="mr-2">
+                    <Dot /> <span className="sr-only">ت</span>
+                  </SidebarMenuAction>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
 
           </SidebarContent>
           <SidebarFooter>{/* <SidebarOptInForm/> */}</SidebarFooter>
@@ -84,7 +85,7 @@ export default function Layout({
   );
 }
 
-const navigation = [
+const navigation: { name: string; href: `/${string}` }[] = [
   { name: "الرئيسية", href: "/" },
   { name: "الأسعار", href: "/prices" },
   { name: "اتصل بنا", href: "/contact" },

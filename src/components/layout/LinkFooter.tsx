@@ -1,5 +1,5 @@
 import  Link  from "next/link";
-
+import MainLink from "@/components/shared/mainLink";
 // const cities = [
 //   { name: "صنعاء", slug: "sanaa" },
 //   { name: "عدن", slug: "aden" },
@@ -43,22 +43,22 @@ export default function LinkFooter() {
 
             <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-muted-foreground">
               {cities.map((city) => (
-                <Link
+                <MainLink
                   key={city.slug}
                   href={`/city/${city.slug}`}
                   className="w-1/4 underline min-w-fit underline-offset-2  hover:text-blue-700"
                 >
                   أسعار {city.name}
-                </Link>
+                </MainLink>
               ))}
             </div>
 
-            <Link
+            <MainLink
               href ="/cities"
               className="mt-4 text-xl inline-block font-medium underline underline-offset-2   hover:text-blue-700"
             >
               جميع المحافظات
-            </Link>
+            </MainLink>
           </div>
 
           {/* Categories */}
@@ -69,22 +69,22 @@ export default function LinkFooter() {
 
             <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-muted-foreground">
               {categories.map((category) => (
-                <Link
+                <MainLink
                   key={category.slug}
                   href={`/product/${category.slug}`}
                   className="w-fit underline-offset-2 underline  hover:text-blue-700"
                 >
                   أسعار {category.name}
-                </Link>
+                </MainLink>
               ))}
             </div>
 
-            <Link
+            <MainLink
               href="/categories"
               className="mt-4 text-xl inline-block font-medium  underline-offset-2  underline hover:text-blue-700"
             >
               جميع الفئات
-            </Link>
+            </MainLink>
           </div>
 
         </div>

@@ -8,7 +8,8 @@ import {
 import  Link  from "next/link";
 
 import LinkFooter from "@/components/layout/LinkFooter";
-
+import MainLink from "@/components/shared/mainLink";
+import { ABOUT_URL } from "@/lib/constants";
 export default function Footer() {
   return (
     <footer  className="border-t bg-muted/30">
@@ -17,9 +18,9 @@ export default function Footer() {
           <div dir="rtl">
             <LinkFooter />
             <div className="mt-8 flex justify-between   gap-2">
-              <Link href="/prices" className="text-3xl font-bold">
+              <MainLink href="/prices" className="text-3xl font-bold">
                 السوق اليمني
-              </Link>
+              </MainLink>
             </div>
             <p className="mt-3 max-w-sm text-sm leading-7 text-muted-foreground">
               منصة مبسطة لمتابعة أسعار المنتجات والبحث عنها حسب المدينة والفئة.
@@ -29,38 +30,38 @@ export default function Footer() {
             <div className="  w-full">
               <h2 className="text-2xl font-semibold">روابط سريعة</h2>
             <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-muted-foreground">
-                <Link
+                <MainLink
                   href="/prices"
                   className="w-fit hover:text-foreground hover:underline"
                 >
                   ألاسعار
-                </Link>
-                <Link
+                </MainLink>
+                <MainLink
                   href="/add"
                   className="w-fit hover:text-foreground hover:underline"
                 >
                   تعديل سعر
-                </Link>
-                <Link
+                </MainLink>
+                <MainLink
                   href="/privacy-policy"
                   className="w-fit hover:text-foreground hover:underline"
                 >
                   سياسة الخصوصية
-                </Link>
-                <Link
+                </MainLink>
+                <MainLink
                   href="/contact"
                   className="w-fit hover:text-foreground hover:underline"
                 >
                   اتصل بنا
-                </Link>
-                <Link
+                </MainLink>
+                <MainLink
                   href="/blog"
                   className="w-fit hover:text-foreground hover:underline"
                 >
                   مدونة
-                </Link>
+                </MainLink>
                 <Link
-                  href="/about"
+                  href={ABOUT_URL}
                   className="w-fit hover:text-foreground hover:underline"
                 >
                   من نحن
