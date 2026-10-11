@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { absoluteUrl } from "@/lib/seo";
 import Link from "next/link";
+import Footer from "@/components/layout/Footer";
 
 const highlights = [
   {
@@ -45,7 +46,7 @@ export default function HomePage() {
   return (
     <>
 
-      <main dir="rtl" className="overflow-x-clip bg-background text-foreground">
+      <main dir="rtl" className="overflow-x-clip mt-20 bg-background text-foreground">
         <section className="relative isolate overflow-hidden">
           <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-80 bg-linear-to-b from-primary/10 via-primary/5 to-transparent sm:h-96" />
 
@@ -166,6 +167,7 @@ export default function HomePage() {
           </Card>
         </section>
       </main>
+      <Footer />
     </>
   );
 }
