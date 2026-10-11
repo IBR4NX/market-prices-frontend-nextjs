@@ -48,7 +48,7 @@ export const ModeToggle = () => {
   const handleToggle = () => {
     const currentTheme = themes.indexOf(theme || "light");
     const nextTheme = (currentTheme + 1) % themes.length;
-    console.log(nextTheme);
+    console.log(themes[nextTheme]);
     setTheme(themes[nextTheme]);
   };
   React.useEffect(() => {
