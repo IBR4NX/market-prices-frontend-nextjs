@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "https://server-market-yemen.vercel.app/api/sitemap/sitemap.xml"
+    },
+    {
+      "source": "/sitemap2.xml",
+      "destination": "https://server-market-yemen.vercel.app/api/sitemap/sitemap2.xml"
+    },
+    {
+      "source": "/rss",
+      "destination": "https://server-market-yemen.vercel.app/api/sitemap/rss.xml"
+    },
+    {
+      "source": "/sitemap/:path*",
+      "destination": "https://server-market-yemen.vercel.app/api/sitemap/:path*"
+    }
+  ]
+}
