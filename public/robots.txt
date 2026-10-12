@@ -13,8 +13,5 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://markets-ye.vercel.app/sitemap.xml
-Sitemap: https://markets-ye.vercel.app/sitemap2.xml
-Sitemap: https://markets-ye.vercel.app/marketsmap.xml
-Sitemap: https://markets-ye.vercel.app/sitemap/rss.xml
-
+Sitemap: https://ibovs.vercel.app/ibovsmap.xml
+Sitemap: https://ibovs.vercel.app/sitemap/custom/products.xml?sender=ibovs.vercel.app
