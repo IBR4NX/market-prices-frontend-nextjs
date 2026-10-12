@@ -33,24 +33,22 @@ export function FilterSelect({
       <label htmlFor={id} className="mb-1.5 block text-sm font-medium">
         {label}
       </label>
-      <Select
-        value={value || allLabel}
+      <Select items={options.map((option)=>({label:option.name,value:getOptionValue(option)}))}
         onValueChange={(nextValue) =>
           onChange(nextValue === ALL_VALUE ? "" : (nextValue ?? ""))
         }
-        defaultValue={allLabel}
+        defaultValue={value || ALL_VALUE}
       >
         <SelectTrigger id={id} className="h-10 w-full">
-          <SelectValue />
+          <SelectValue placeholder={allLabel} />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value={ALL_VALUE}>{allLabel}</SelectItem>
           {options.map((option) => {
             const optionValue = getOptionValue(option);
 
             return (
             <SelectItem key={option.id} value={optionValue}>
-              {option.name}
+              {option.name} {}
             </SelectItem>
             );
           })}
@@ -59,3 +57,4 @@ export function FilterSelect({
     </div>
   );
 }
+

@@ -8,6 +8,7 @@ import axios from "axios";
 //<##☆##> api <##☆##> 
 const API_URL = process.env.VITE_API_URL ?? "https://server-market-yemen.vercel.app/api";
 console.log("API_URL:", API_URL);
+
 const api = axios.create({
   baseURL:API_URL ,
   //  withCredentials: true,
@@ -16,41 +17,44 @@ const api = axios.create({
   },
 });
 api.interceptors.request.use((config) => {
+  if(typeof window !== "undefined"){
   const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `${token}`;
   }
+}
   return config;
 });
 
 api.interceptors.response.use(
   (res) => res,
   async (error) => {
-    const originalRequest = error.config;
-    console.log(error.response?.status,originalRequest._retry);
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-      try {
-        const refreshToken = localStorage.getItem("refreshToken");
-        const response = await axios.post(`${API_URL}/login/refresh-token`, {
-          refreshToken: refreshToken,
-        });
-        console.log(response);
-        const newToken = response.data.token;
-        const newRefreshToken = response.data.refreshToken;
-        localStorage.setItem("token", newToken);
-        localStorage.setItem("refreshtoken", newRefreshToken);
-        originalRequest.headers.Authorization = `${newToken}`;
-        return api(originalRequest);
-      } catch (err) {
-        // localStorage.removeItem("token");
-        // localStorage.removeItem("refreshtoken");
-        // window.location.href = "/login";
-        console.log(err);
-      }
+  const originalRequest = error.config;
+
+  console.log("API Request Error:", {
+    message: error.message,
+    status: error.response?.status,
+    url: originalRequest?.url,
+  });
+
+  if (
+    error.response?.status === 401 &&
+    originalRequest &&
+    !originalRequest._retry
+  ) {
+    originalRequest._retry = true;
+
+    try {
+      // اترك منطق تجديد التوكن الموجود لديك كما هو.
+    } catch (refreshError) {
+      return Promise.reject(refreshError);
     }
-    return Promise.reject(error);
   }
+
+  return Promise.reject(error);
+}
+
+
 );
 // Error Handler
 api.interceptors.response.use(

@@ -26,7 +26,7 @@ export function SearchFilter({ value,placeholder, onChange, className  }: Search
       {/* <label htmlFor="product-search" className="mb-1.5 block text-sm font-medium">
         البحث
       </label> */}
-      <InputGroup className="h-10">
+      <InputGroup className="h-10 px-2">
         <InputGroupAddon align="inline-start">
           <Search />
         </InputGroupAddon>

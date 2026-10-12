@@ -6,10 +6,11 @@ import type { FilterOption, PriceFiltersValue } from "@/components/catalog/types
 
 import { FilterSelect } from "@/components/prices/FilterSelect";
 import { SearchFilter } from "./ProductSearch";
+import { AppSelect } from "./select";
 
 interface PriceFiltersProps {
   filters: PriceFiltersValue;
-  cities: FilterOption[]|null;
+  cities: FilterOption[];
   categories: FilterOption[];
   onChange: (changes: Partial<PriceFiltersValue>) => void;
   onClear: () => void;
@@ -23,9 +24,9 @@ export function PriceFilters({
   onClear,
 }: PriceFiltersProps) {
   const hasActiveFilters = Boolean(
-    filters.search || filters.cityName || filters.categoryName,
+    filters.search || filters.city || filters.category,
   );
-
+  console.log("filters", filters);
   return (
     <Card className="mb-6 py-4 shadow-sm">
       <CardContent className=" grid grid-cols-4 gap-2 md:grid-cols-4 relative">
@@ -38,31 +39,31 @@ export function PriceFilters({
           label="المدينة"
           allLabel="كل المدن"
           options={cities ?? []}
-          value={filters.cityName}
-          onChange={(cityName) => onChange({ cityName })}
-          getOptionValue={(city) => city.name}
-        />
+          value={"تعز"}
+          onChange={(cityName) => onChange({ city: cityName })}
+          getOptionValue={(city) => city.slug}
+          />
         <FilterSelect
           id="category-filter"
           label="الفئة"
           allLabel="كل الفئات"
           options={categories}
-          value={filters.categoryName}
-          onChange={(categoryName) => onChange({ categoryName })}
+          value={filters.category}
+          onChange={(categoryName) => onChange({ category: categoryName })}
           getOptionValue={(category) => category.name}
-        />
-        {hasActiveFilters && (
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={onClear}
-            className=" absolute -top-2 left-2 self-top "
-          >
-            <RotateCcw />
-            إعادة تعيين
-          </Button>
-        )}
+          />
+          {hasActiveFilters && (
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={onClear}
+              className="  self-top "
+            >
+              <RotateCcw />
+              إعادة تعيين
+            </Button>
+          )}
       </CardContent>
     </Card>
   );

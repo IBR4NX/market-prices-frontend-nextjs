@@ -47,8 +47,8 @@ function fixedOption(value: string): FilterOption[] {
 }
 function fixedFilters(key: FixedFilterKey, value: string): PriceFiltersValue {
   return {
-    cityName: key === "cityName" ? value : "",
-    categoryName: key === "categoryName" ? value : "",
+    city: key === "cityName" ? value : "",
+    category: key === "categoryName" ? value : "",
     search: key === "search" ? value : "",
   };
 }
@@ -78,8 +78,8 @@ function enforceFixedFilter(
 }
 function toRequestParams(filters: PriceFiltersValue) {
   return {
-    cityName: filters.cityName || undefined,
-    categoryName: filters.categoryName || undefined,
+    cityName: filters.city || undefined,
+    categoryName: filters.category || undefined,
     search: filters.search.trim() || undefined,
   };
 }

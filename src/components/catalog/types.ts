@@ -14,11 +14,12 @@ export interface PriceRecord {
 export interface FilterOption {
   id: string;
   name: string;
+  slug: string;
 }
 
 export interface PriceFiltersValue {
-  cityName: string;
-  categoryName: string;
+  city: string;
+  category: string;
   search: string;
 }
 

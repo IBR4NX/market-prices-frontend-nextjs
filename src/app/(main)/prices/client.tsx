@@ -14,14 +14,14 @@ import type {
   PricesResponse,
 } from "@/components/catalog/types";
 import { absoluteUrl } from "@/lib/seo";
-
+import { useSearchParams } from "next/navigation";
 interface OptionsResponse {
   data: FilterOption[];
 }
 
 const initialFilters: PriceFiltersValue = {
-  cityName: "",
-  categoryName: "",
+  city: "",
+  category: "",
   search: "",
 };
 
@@ -33,6 +33,8 @@ export default function Prices() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [reloadKey, setReloadKey] = useState(0);
+  const searchParams = useSearchParams();
+
   // function to fetch cities and categories for the filters
   useEffect(() => {
     let cancelled = false;
@@ -54,6 +56,12 @@ export default function Prices() {
     }
 
     loadFilterOptions();
+    setFilters((currentFilters) => ({
+      ...currentFilters,
+      search: searchParams.get("search") ?? "",
+      city: searchParams.get("city") ?? "",
+      category: searchParams.get("category") ?? "",
+    }));
     return () => {
       cancelled = true;
     };
@@ -69,8 +77,8 @@ export default function Prices() {
         try {
           const response = await api.get<PricesResponse>("/prices", {
             params: {
-              cityName: filters.cityName || undefined,
-              categoryName: filters.categoryName || undefined,
+              cityName: filters.city || undefined,
+              categoryName: filters.category || undefined,
               search: filters.search.trim() || undefined,
             },
             signal: controller.signal,
@@ -102,6 +110,7 @@ export default function Prices() {
     };
   }, [filters, reloadKey]);
   //#endregion
+  
   return (
     <>
       
@@ -186,7 +195,7 @@ export default function Prices() {
           {!loading && !error && prices.length === 0 && (
             <div className="rounded-2xl border border-border bg-card p-6 text-center">
               <p className="text-base font-medium text-muted-foreground">
-                {filters.search || filters.cityName || filters.categoryName
+                {filters.search || filters.city || filters.category
                   ? "لا توجد أسعار تطابق الفلاتر المحددة."
                   : "لا توجد بيانات أسعار حاليًا."}
               </p>
