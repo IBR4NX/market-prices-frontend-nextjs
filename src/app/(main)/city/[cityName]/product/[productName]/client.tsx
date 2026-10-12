@@ -6,7 +6,7 @@ import { getQueryString } from "@/lib/query";
 export default function CityProductPrice() {
   return (
     <PricesScopePage
-      canonicalPath="/city"
+      canonicalPath={``}
       description={(cityName, productName) =>
         `تابع أحدث أسعار ${getQueryString(productName)} في ${getQueryString(cityName)}، مع نتائج مخصصة للمدينة والمنتج فقط.`
       }

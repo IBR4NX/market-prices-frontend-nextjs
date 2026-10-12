@@ -14,7 +14,7 @@
     },
     {
       "source": "/sitemap/:path*",
-      "destination": "https://server-market-yemen.vercel.app/api/sitemap/:path*"
+      "destination": "https://server-market-yemen.vercel.app/api/sitemap/:path"
     }
   ]
 }

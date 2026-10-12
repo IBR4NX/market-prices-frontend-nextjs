@@ -3,9 +3,10 @@
 import PricesScopePage from "../../../_shared/PricesScopePage";
 
 export default function CityPricesPage() {
+
   return (
     <PricesScopePage
-      canonicalPath="/city"
+      canonicalPath={'/city'}
       description={(cityName) =>
         `تابع أحدث أسعار المنتجات في ${cityName} حسب المنتج والفئة، مع نتائج مخصصة لهذه المدينة فقط.`
       }

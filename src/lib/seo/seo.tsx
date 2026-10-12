@@ -5,7 +5,7 @@ import {
   DEFAULT_IMAGE,
 } from "@/lib/constants";
 export {absoluteUrl};
-interface SeoProps {
+export interface SeoProps {
   canonicalPath?: string;
   description: string;
   image?: string;
@@ -24,7 +24,7 @@ export function createSeo({
 }: SeoProps): Metadata {
   const fullTitle = title.includes(SITE_NAME)
     ? title
-    : `${title} | ${SITE_NAME}`;
+    : `${title} - ${SITE_NAME}`;
 
   const canonical = absoluteUrl(canonicalPath);
   const imageUrl = absoluteUrl(image);

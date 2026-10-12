@@ -1,4 +1,4 @@
-export const SITE_NAME = "Markets Yemen";
+export const SITE_NAME = "أسعار اليمن";
 
 export const DEFAULT_SITE_URL = "https://markets-ye.vercel.app";
 export const MAIN_URL = `http://${process.env.NEXT_PUBLIC_MAIN_URL || "localhost:3000"}`;

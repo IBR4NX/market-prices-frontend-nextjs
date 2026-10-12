@@ -3,7 +3,7 @@ import { cache } from "react";
 import { notFound } from "next/navigation";
 import { api } from "@/lib/api";
 import { createSeo } from "@/lib/seo";
-import ProductDetails from "./clint";
+import ProductDetails from "./client";
 export const instant = false;
 export interface Product {
   id: string;
@@ -81,35 +81,7 @@ const getProduct = cache(async (slug: string): Promise<Product | null> => {
     return null;
   }
 });
-const geProduct = cache(async (slug: string): Promise<Product | null> => {
-  try {
-    console.log("Requested product slug:", slug);
 
-    const response = await api.get("/products-search", {
-      params: { slug },
-    });
-
-    console.log("API response:", response.data);
-
-    const data = response.data;
-    const result = data?.product ?? data?.data ?? data;
-
-    const product = Array.isArray(result)
-      ? result[0]
-      : Array.isArray(result?.rows)
-        ? result.rows[0]
-        : result;
-
-    console.log("Extracted product:", product);
-
-    if (!product?.id) return null;
-
-    return product as Product;
-  } catch (error) {
-    console.error("Failed to fetch product:", error);
-    return null;
-  }
-});
 
 
 type Props = {
@@ -146,7 +118,7 @@ export async function generateMetadata({
 
   return createSeo({
     canonicalPath: `/${product.slug}`,
-    title: `سعر ${product.name} في اليمن اليوم | أسعار اليمن`,
+    title: `سعر ${product.name} في اليمن اليوم | `,
     description: description.slice(0, 300),
     type: "website",
   });
