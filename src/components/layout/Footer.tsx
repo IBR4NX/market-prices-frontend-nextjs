@@ -63,7 +63,7 @@ export default function Footer() {
                   من نحن
                 </Link>
                 <MainLink
-                  href="/add"
+                  href="/help"
                   className="w-fit hover:text-foreground hover:underline"
                 >
                   مركز المساعدة

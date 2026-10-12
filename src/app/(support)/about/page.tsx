@@ -21,6 +21,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
+import { createSeo } from "@/lib/seo";
+export const metadata = createSeo({
+  canonicalPath: "/about",
+  title: "من نحن",
+  description:
+    "تعرّف على منصة أسعار اليمن، وجهودنا في تسهيل الوصول إلى أسعار المنتجات والسلع حسب المدينة والتصنيف، ومساعدة المستخدمين على متابعة الأسعار ومقارنتها في الأسواق اليمنية.",
+});
+
 const features = [
   {
     icon: MapPin,
@@ -69,9 +77,9 @@ export default function About() {
         </h1>
 
         <p className="mx-auto max-w-3xl text-base leading-8 text-muted-foreground sm:text-lg">
-          منصة تهدف إلى تسهيل الوصول إلى أسعار المنتجات والسلع في اليمن،
-          وتنظيم المعلومات حسب المدن والتصنيفات لمساعدة المستخدمين على
-          متابعة الأسعار ومقارنتها بسهولة.
+          منصة تهدف إلى تسهيل الوصول إلى أسعار المنتجات والسلع في اليمن، وتنظيم
+          المعلومات حسب المدن والتصنيفات لمساعدة المستخدمين على متابعة الأسعار
+          ومقارنتها بسهولة.
         </p>
       </section>
 
@@ -86,11 +94,10 @@ export default function About() {
 
           <CardContent>
             <p className="text-base leading-8 text-muted-foreground">
-              أسعار اليمن منصة إلكترونية تهتم بجمع وعرض معلومات أسعار
-              المنتجات والسلع في الأسواق اليمنية ضمن واجهة منظمة وسهلة
-              الاستخدام. تتيح المنصة استكشاف المنتجات حسب المدينة والتصنيف،
-              والاطلاع على الأسعار المسجلة ومقارنتها عندما تتوفر البيانات
-              اللازمة لذلك.
+              أسعار اليمن منصة إلكترونية تهتم بجمع وعرض معلومات أسعار المنتجات
+              والسلع في الأسواق اليمنية ضمن واجهة منظمة وسهلة الاستخدام. تتيح
+              المنصة استكشاف المنتجات حسب المدينة والتصنيف، والاطلاع على الأسعار
+              المسجلة ومقارنتها عندما تتوفر البيانات اللازمة لذلك.
             </p>
           </CardContent>
         </Card>
@@ -118,9 +125,7 @@ export default function About() {
                     <Icon className="size-5" />
                   </div>
 
-                  <CardTitle className="text-lg">
-                    {feature.title}
-                  </CardTitle>
+                  <CardTitle className="text-lg">{feature.title}</CardTitle>
 
                   <CardDescription className="text-sm leading-7">
                     {feature.description}
@@ -147,8 +152,8 @@ export default function About() {
           <CardContent>
             <p className="leading-8 text-muted-foreground">
               نسعى إلى جعل معلومات الأسعار أكثر سهولة في الوصول والمقارنة،
-              وتقديم تجربة تساعد المستخدمين على فهم الفروق السعرية بين
-              المدن ومتابعة المعلومات المتاحة عن المنتجات والسلع في اليمن.
+              وتقديم تجربة تساعد المستخدمين على فهم الفروق السعرية بين المدن
+              ومتابعة المعلومات المتاحة عن المنتجات والسلع في اليمن.
             </p>
           </CardContent>
         </Card>
@@ -164,18 +169,16 @@ export default function About() {
 
           <CardContent>
             <p className="leading-8 text-muted-foreground">
-              نخدم الأفراد والمهتمين بمتابعة أسعار السلع ومقارنتها بين
-              المدن اليمنية، وكل من يبحث عن طريقة منظمة للوصول إلى
-              المعلومات المتاحة حول المنتجات وتكاليفها.
+              نخدم الأفراد والمهتمين بمتابعة أسعار السلع ومقارنتها بين المدن
+              اليمنية، وكل من يبحث عن طريقة منظمة للوصول إلى المعلومات المتاحة
+              حول المنتجات وتكاليفها.
             </p>
           </CardContent>
         </Card>
       </section>
 
       <section className="mb-16">
-        <h2 className="mb-6 text-2xl font-bold sm:text-3xl">
-          أهدافنا
-        </h2>
+        <h2 className="mb-6 text-2xl font-bold sm:text-3xl">أهدافنا</h2>
 
         <Card>
           <CardContent className="pt-6">
@@ -203,11 +206,11 @@ export default function About() {
 
           <CardContent>
             <p className="leading-8 text-muted-foreground">
-              قد تختلف الأسعار حسب المدينة والمورد والكمية ووقت الشراء.
-              لذلك ننصح بمراجعة تاريخ تحديث السعر والتحقق من السعر الفعلي
-              لدى البائع قبل اتخاذ قرار الشراء. الأسعار المنشورة تعكس
-              البيانات المتاحة على المنصة، ولا تضمن بالضرورة توافر المنتج
-              أو ثبات سعره لدى جميع المتاجر.
+              قد تختلف الأسعار حسب المدينة والمورد والكمية ووقت الشراء. لذلك
+              ننصح بمراجعة تاريخ تحديث السعر والتحقق من السعر الفعلي لدى البائع
+              قبل اتخاذ قرار الشراء. الأسعار المنشورة تعكس البيانات المتاحة على
+              المنصة، ولا تضمن بالضرورة توافر المنتج أو ثبات سعره لدى جميع
+              المتاجر.
             </p>
           </CardContent>
         </Card>
@@ -222,21 +225,20 @@ export default function About() {
               </h2>
 
               <p className="max-w-xl leading-7 text-muted-foreground">
-                نرحب بملاحظاتك واقتراحاتك التي تساعدنا على تحسين المنصة
-                وتطوير تجربة المستخدم.
+                نرحب بملاحظاتك واقتراحاتك التي تساعدنا على تحسين المنصة وتطوير
+                تجربة المستخدم.
               </p>
             </div>
 
-              <Link href="/contact">
-            <Button className="shrink-0">
+            <Link href="/contact">
+              <Button className="shrink-0">
                 تواصل معنا
                 <ArrowLeft className="mr-2 size-4" />
-            </Button>
-              </Link>
+              </Button>
+            </Link>
           </CardContent>
         </Card>
       </section>
     </main>
   );
 }
-
