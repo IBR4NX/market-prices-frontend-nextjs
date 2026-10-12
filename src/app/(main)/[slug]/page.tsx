@@ -81,16 +81,41 @@ const getProduct = cache(async (slug: string): Promise<Product | null> => {
     return null;
   }
 });
+const geProduct = cache(async (slug: string): Promise<Product | null> => {
+  try {
+    console.log("Requested product slug:", slug);
 
+    const response = await api.get("/products-search", {
+      params: { slug },
+    });
 
+    console.log("API response:", response.data);
+
+    const data = response.data;
+    const result = data?.product ?? data?.data ?? data;
+
+    const product = Array.isArray(result)
+      ? result[0]
+      : Array.isArray(result?.rows)
+        ? result.rows[0]
+        : result;
+
+    console.log("Extracted product:", product);
+
+    if (!product?.id) return null;
+
+    return product as Product;
+  } catch (error) {
+    console.error("Failed to fetch product:", error);
+    return null;
+  }
+});
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata({
-  params,
-}: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProduct(slug);
 
@@ -103,23 +128,42 @@ export async function generateMetadata({
       noindex: true,
     });
   }
+  const productName = product.name.trim();
+  const productSlug = product.slug;
+  const productQuantity =
+    product.quantity != null && product.unit
+      ? `${product.quantity} ${product.unit}`
+      : "";
 
-  const cities = [
-    ...new Set(
-      product.current_prices
-        ?.map((item) => item.city?.name)
-        .filter(Boolean) ?? [],
-    ),
-  ];
+  const prices = (product.current_prices ?? [])
+    .filter((item) => item.city?.name && item.price != null)
+    .sort((a, b) => a.city!.name.localeCompare(b.city!.name, "ar"));
 
-  const description =
-    product.description?.trim() ||
-    `تعرف على أسعار ${product.name} في اليمن حسب المدينة. تابع الأسعار الحالية وتغيراتها في ${cities.length ? cities.join("، ") : "المدن اليمنية"}، وقارن الأسعار لمعرفة أحدث المعلومات المتاحة.`;
+  const priceDetails = prices.map((item) => {
+    const cityName = item.city!.name;
+    const price = Number(item.price).toLocaleString("en-US");
+
+    return `${cityName}: ${price} ريال`;
+  });
+
+  const description = [
+    `كم سعر ${product.name} ${product.quantity ?? ""} ${product.unit ?? ""} في اليمن؟`,
+    priceDetails.length
+      ? `الأسعار حسب المدينة: ${priceDetails.join("، ")}.`
+      : "لا تتوفر حاليًا أسعار مسجلة لهذا المنتج.",
+    `تابع أسعار ${product.name} وقارن الأسعار بين المدن اليمنية عبر منصة أسعار اليمن.`,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const title = productQuantity
+    ? `سعر ${productName} ${productQuantity} اليوم في اليمن`
+    : `سعر ${productName} اليوم في اليمن حسب المدينة`;
 
   return createSeo({
     canonicalPath: `/${product.slug}`,
-    title: `سعر ${product.name} في اليمن اليوم | `,
-    description: description.slice(0, 300),
+    title,
+    description,
     type: "website",
   });
 }
