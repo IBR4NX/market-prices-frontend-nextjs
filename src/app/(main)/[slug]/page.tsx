@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { api } from "@/lib/api";
 import { createSeo } from "@/lib/seo";
 import ProductDetails from "./clint";
-
+export const instant = false;
 export interface Product {
   id: string;
   name: string;
@@ -59,7 +59,7 @@ export interface Product {
   }[];
 }
 
-const gtProduct = cache(async (slug: string): Promise<Product | null> => {
+const getProduct = cache(async (slug: string): Promise<Product | null> => {
   try {
     const response = await api.get("/products-search", {
       params: { slug },
@@ -81,7 +81,7 @@ const gtProduct = cache(async (slug: string): Promise<Product | null> => {
     return null;
   }
 });
-const getProduct = cache(async (slug: string): Promise<Product | null> => {
+const geProduct = cache(async (slug: string): Promise<Product | null> => {
   try {
     console.log("Requested product slug:", slug);
 

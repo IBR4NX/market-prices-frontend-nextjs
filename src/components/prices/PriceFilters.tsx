@@ -10,8 +10,8 @@ import { AppSelect } from "./select";
 
 interface PriceFiltersProps {
   filters: PriceFiltersValue;
-  cities: FilterOption[];
-  categories: FilterOption[];
+  cities?: FilterOption[];
+  categories?: FilterOption[];
   onChange: (changes: Partial<PriceFiltersValue>) => void;
   onClear: () => void;
 }
@@ -34,6 +34,8 @@ export function PriceFilters({
           value={filters.search}
           onChange={(search) => onChange({ search })}
         />
+             {cities && cities.length > 0 && (
+
         <FilterSelect
           id="city-filter"
           label="المدينة"
@@ -43,6 +45,8 @@ export function PriceFilters({
           onChange={(cityName) => onChange({ city: cityName })}
           getOptionValue={(city) => city.slug}
           />
+             )}
+          {categories && categories.length > 0 && (
         <FilterSelect
           id="category-filter"
           label="الفئة"
@@ -52,7 +56,8 @@ export function PriceFilters({
           onChange={(categoryName) => onChange({ category: categoryName })}
           getOptionValue={(category) => category.name}
           />
-          {hasActiveFilters && (
+          )}
+          {hasActiveFilters||false && (
             <Button
               type="button"
               variant="ghost"

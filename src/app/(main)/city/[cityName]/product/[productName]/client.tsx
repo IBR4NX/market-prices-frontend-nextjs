@@ -16,7 +16,7 @@ export default function CityProductPrice() {
         paramName: "productName",
         pathSegment: "product",
       }}
-      fixedFilterKey="cityName"
+      fixedFilterKey="city"
       invalidLabel="اسم المدينة أو المنتج غير صحيح."
       loadingLabel={(cityName, productName) =>
         `جارٍ تحميل أسعار ${getQueryString(productName)} في ${getQueryString(cityName)}...`

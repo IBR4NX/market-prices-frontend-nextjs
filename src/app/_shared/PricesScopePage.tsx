@@ -42,13 +42,13 @@ export function decodeRouteParam(param?: string | string[]) {
     return "";
   }
 }
-function fixedOption(value: string): FilterOption[] {
-  return value ? [{ id: value, name: value }] : [];
+export function fixedOption(value: string): FilterOption[] {
+  return value ? [{ id: value, name: value, slug: value }] : [];
 }
 function fixedFilters(key: FixedFilterKey, value: string): PriceFiltersValue {
   return {
-    city: key === "cityName" ? value : "",
-    category: key === "categoryName" ? value : "",
+    city: key === "city" ? value : "",
+    category: key === "category" ? value : "",
     search: key === "search" ? value : "",
   };
 }
@@ -133,9 +133,9 @@ export default function PricesScopePage({
   }, [canonicalPath, fixedValue, extraFixedFilter, extraFixedValue]);
   const pageTitle = title(fixedValue, extraFixedValue);
   const cityOptions =
-    fixedFilterKey === "cityName" ? fixedOption(fixedValue) : cities;
+    fixedFilterKey === "city" ? fixedOption(fixedValue) : cities;
   const categoryOptions =
-    fixedFilterKey === "categoryName" ? fixedOption(fixedValue) : categories;
+    fixedFilterKey === "category" ? fixedOption(fixedValue) : categories;
   useEffect(() => {
     setFilters(
       enforceFixedFilter(
@@ -157,15 +157,15 @@ export default function PricesScopePage({
         }>[] = [];
 
         if (
-          fixedFilterKey !== "cityName" &&
-          extraFixedFilter?.key !== "cityName"
+          fixedFilterKey !== "city" &&
+          extraFixedFilter?.key !== "city"
         ) {
           requests.push(api.get<OptionsResponse>("/cities"));
         }
 
         if (
-          fixedFilterKey !== "categoryName" &&
-          extraFixedFilter?.key !== "categoryName"
+          fixedFilterKey !== "category" &&
+          extraFixedFilter?.key !== "category"
         ) {
           requests.push(api.get<OptionsResponse>("/categories"));
         }
@@ -177,16 +177,16 @@ export default function PricesScopePage({
         let responseIndex = 0;
 
         if (
-          fixedFilterKey !== "cityName" &&
-          extraFixedFilter?.key !== "cityName"
+          fixedFilterKey !== "city" &&
+          extraFixedFilter?.key !== "city"
         ) {
           setCities(responses[responseIndex].data.data);
           responseIndex += 1;
         }
 
         if (
-          fixedFilterKey !== "categoryName" &&
-          extraFixedFilter?.key !== "categoryName"
+          fixedFilterKey !== "category" &&
+          extraFixedFilter?.key !== "category"
         ) {
           setCategories(responses[responseIndex].data.data);
         }
@@ -308,8 +308,6 @@ export default function PricesScopePage({
 
           <PriceFilters
             filters={filters}
-            cities={cityOptions}
-            categories={categoryOptions}
             onChange={(changes) =>
               setFilters((currentFilters) =>
                 enforceFixedFilter(

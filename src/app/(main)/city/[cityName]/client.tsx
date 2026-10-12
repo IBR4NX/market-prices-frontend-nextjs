@@ -10,7 +10,7 @@ export default function CityPricesPage() {
         `تابع أحدث أسعار المنتجات في ${cityName} حسب المنتج والفئة، مع نتائج مخصصة لهذه المدينة فقط.`
       }
       emptyLabel="لا توجد أسعار متاحة لهذه المدينة حالياً."
-      fixedFilterKey="cityName"
+      fixedFilterKey="city"
       invalidLabel="اسم المدينة غير صحيح."
       loadingLabel={(cityName) => `جارٍ تحميل أسعار ${cityName}...`}
       paramName="cityName"
