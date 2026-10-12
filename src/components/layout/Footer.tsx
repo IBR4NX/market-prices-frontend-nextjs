@@ -36,11 +36,29 @@ export default function Footer() {
                 >
                   ألاسعار
                 </Link>
+                <Link
+                  href={BLOG_URL}
+                  className="w-fit hover:text-foreground hover:underline"
+                >
+                  المدونة
+                </Link>
                 <MainLink
                   href="/add"
                   className="w-fit hover:text-foreground hover:underline"
                 >
                   تعديل سعر
+                </MainLink>
+                <Link
+                  href={ABOUT_URL}
+                  className="w-fit hover:text-foreground hover:underline"
+                >
+                  من نحن
+                </Link>
+                <MainLink
+                  href="/add"
+                  className="w-fit hover:text-foreground hover:underline"
+                >
+                  مركز المساعدة
                 </MainLink>
                 <MainLink
                   href="/privacy-policy"
@@ -54,18 +72,12 @@ export default function Footer() {
                 >
                   اتصل بنا
                 </MainLink>
-                <Link
-                  href={BLOG_URL}
+                <MainLink
+                  href="/faq"
                   className="w-fit hover:text-foreground hover:underline"
                 >
-                  مدونة
-                </Link>
-                <Link
-                  href={ABOUT_URL}
-                  className="w-fit hover:text-foreground hover:underline"
-                >
-                  من نحن
-                </Link>
+                  الأسئلة الشائعة
+                </MainLink>
               </div>
             </div>
 

@@ -29,20 +29,20 @@ export default function Layout({
   return (
     <>
       <SidebarProvider className="h-scree   mt-13 overflow-hidden ">
-       <div className="fixed top-0 backdrop-blur-[6px] flex justify-between items-center px-2  left-0 right-0 z-50">
+        <div className="fixed top-0 backdrop-blur-[6px] flex justify-between items-center p-2  left-0 right-0 z-50">
           <Button
             onClick={() => window.history.back()}
             type="button"
             variant="ghost"
             size="icon"
-            className="   text-muted-foreground hover:bg-transparent"
+            className="text-muted-foreground hover:bg-transparent"
           >
-            <ArrowRight className=" size-6" /> 
+            <ArrowRight className=" size-6" />
           </Button>
-                  <MainLink href="/" className="text-lg font-semibold tracking-tight">
-                    {SITE_NAME}
-                  </MainLink>
-          </div>
+          <MainLink href="/" className="text-lg font-semibold tracking-tight">
+            {SITE_NAME}
+          </MainLink>
+        </div>
         <div className="  bg-muted/50 items-center justify-center none   w-full h-full overflow-hidden scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-400/20 scrollbar-track-gray-400/10">
           {children}
         </div>
