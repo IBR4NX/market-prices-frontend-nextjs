@@ -23,7 +23,7 @@ export function createSeo({
   type = "website",
 }: SeoProps): Metadata {
   const fullTitle = title.includes(SITE_NAME)
-    ? title
+    ? title.replace('|','-')
     : `${title} - ${SITE_NAME}`;
 
   const canonical = absoluteUrl(canonicalPath);
