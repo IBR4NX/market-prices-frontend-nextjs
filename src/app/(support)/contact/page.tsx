@@ -2,9 +2,12 @@ import { createSeo } from "@/lib/seo";
 
 export const metadata = createSeo({
   canonicalPath: "/contact",
-  description: "تواصل مع فريق Markets Yemen.",
-  title: "تواصل معنا",
+title: "اتصل بنا",
+  description:
+    "تواصل معنا للاستفسارات والاقتراحات والإبلاغ عن الأخطاء أو الأسعار غير الدقيقة. نرحب بملاحظاتك للمساعدة في تحسين تجربة استخدام المنصة ودقة معلومات الأسعار.",
 });
+
+
 
 
 export default function Contact() {

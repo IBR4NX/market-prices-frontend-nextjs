@@ -2,8 +2,9 @@ import { createSeo } from "@/lib/seo";
 
 export const metadata = createSeo({
   canonicalPath: "/privacy-policy",
-  description: "سياسة الخصوصية في Markets Yemen.",
   title: "سياسة الخصوصية",
+  description:
+    "توضّح سياسة الخصوصية كيفية جمع المعلومات واستخدامها وحمايتها، وطرق التعامل مع بيانات المستخدمين وملفات تعريف الارتباط أثناء استخدام المنصة.",
 });
 
 const ParagraphList = ({ items }: { items: string[] }) => (

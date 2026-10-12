@@ -1,9 +1,12 @@
 import { createSeo } from "@/lib/seo";
 export const metadata = createSeo({
   canonicalPath: "/faq",
-  description: "إجابات عن الأسئلة الشائعة حول Markets Yemen.",
   title: "الأسئلة الشائعة",
+  description:
+    "إجابات عن الأسئلة الشائعة حول البحث عن أسعار المنتجات والسلع في اليمن، ومقارنة الأسعار حسب المدينة والتصنيف، ومعرفة آخر تحديثات الأسعار وكيفية المساهمة في تحسين دقة المعلومات.",
 });
+
+
 const contacts = [
   { type: "البريد الإلكتروني", value: "ibr4nx@gmail.com", note: "الرد خلال 48 ساعة عادةً." },
   { type: "الهاتف", value: "+967 738 386 364", note: "ساعات الدعم: الأحد–الخميس 9:00–17:00 بتوقيت GMT+3." },
