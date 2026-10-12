@@ -1,3 +1,4 @@
+"use client";
 import {
   FaFacebook,
   FaGithub,
@@ -6,29 +7,36 @@ import {
   FaXTwitter,
 } from "react-icons/fa6";
 import Link from "next/link";
+import { ColorToggle, ModeToggle } from "./toggles/themeToggle";
 
 import LinkFooter from "@/components/layout/LinkFooter";
 import MainLink from "@/components/shared/mainLink";
-import { ABOUT_URL, BLOG_URL, PRICES_URL } from "@/lib/constants";
+import { ABOUT_URL, BLOG_URL, PRICES_URL, SITE_NAME } from "@/lib/constants";
 export default function Footer() {
   return (
     <footer className="border-t bg-muted/30">
       <div className="mx-aut  ma-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
-        <div className="grid gap-8 grid-cols-1  lg:gap-12">
+        <div className="grid gap-6 grid-cols-1  lg:gap-12">
           <div dir="rtl">
             <LinkFooter />
             <div className="mt-8 flex justify-between   gap-2">
               <MainLink href="/prices" className="text-3xl font-bold">
-                السوق اليمني
+                {SITE_NAME}
               </MainLink>
+              <div className="mr-auto flex gap-2 items-center ">
+                <ColorToggle />
+                <ModeToggle />
+              </div>
             </div>
             <p className="mt-3 max-w-sm text-sm leading-7 text-muted-foreground">
-              منصة مبسطة لمتابعة أسعار المنتجات والبحث عنها حسب المدينة والفئة.
+              تابع أسعار المنتجات والسلع في اليمن حسب المدينة والتصنيف. استكشف
+              الأسعار المسجلة، وقارن الأسعار بين المدن اليمنية، وتعرّف على
+              تفاصيل المنتجات وتواريخ تحديث الأسعار
             </p>
           </div>
           <div className="relative  grid grid-cols-1 gap-4 sm:grid-cols-2 ">
             <div className="  w-full">
-              <h2 className="text-2xl font-semibold">روابط سريعة</h2>
+              <h2 className="text- font-semibold"> روابط</h2>
               <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-muted-foreground">
                 <Link
                   href={PRICES_URL}
@@ -81,7 +89,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div>
+            <div className="mt-6">
               <h2 className="text-lg text-muted-foreground  text-center  font-semibold">
                 تابعنا
               </h2>

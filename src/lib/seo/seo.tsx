@@ -98,6 +98,8 @@ export function createSeo({
       description,
       images: [imageUrl],
     },
+    applicationName: SITE_NAME,
+    
   };
 }
 

@@ -33,6 +33,7 @@ const contacts = [
   { type: "الهاتف", value: "+967 738 386 364", note: "ساعات الدعم: الأحد–الخميس 9:00–17:00 بتوقيت GMT+3." },
 ];
 export default function Contact() {
+  console.log(metadata)
   return (
     <main
       dir="rtl"

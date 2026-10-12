@@ -4,15 +4,14 @@ interface JsonLdProps {
 
 export function JsonLd({ data }: JsonLdProps) {
   const jsonLd = JSON.stringify(data).replace(/</g, "\\u003c");
-
-  return (
-    <script
+    return (
+      <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: jsonLd }}
     />
   );
 }
-export const jsonLdWebsite = {
+export const JsonLdWebsite = {
   "@context": "https://schema.org",
   "@graph": [
     {
