@@ -1,55 +1,125 @@
 {
-  "name": "Markets YE",
-  "description": "منصة يمنية لعرض ومتابعة أسعار المنتجات حسب المدينة والتصنيف.",
-  "url": "https://markets-ye.vercel.app",
+  "name": "Markets YEMEN",
+  "description": "منصة يمنية لمتابعة أسعار المنتجات والسلع الأساسية في اليمن، والبحث عنها حسب المدينة والتصنيف والمنتج.",
+  "url": "https://ibovs.vercel.app/",
   "language": "ar",
   "type": "price-information-platform",
   "country": "Yemen",
-
   "pages": [
     {
       "name": "الرئيسية",
-      "url": "/",
-      "description": "الصفحة الرئيسية لمنصة Markets YE."
+      "url": "https://ibovs.vercel.app/",
+      "description": "الصفحة الرئيسية لمنصة Markets YEMEN."
     },
     {
       "name": "الأسعار",
-      "url": "/prices",
-      "description": "عرض أسعار المنتجات الحالية حسب المنتج والمدينة والتصنيف."
+      "url": "https://prices.ibovs.vercel.app/",
+      "description": "استعراض أسعار المنتجات والسلع في اليمن."
     },
     {
       "name": "من نحن",
-      "url": "/about",
-      "description": "معلومات عن منصة Markets YE وهدفها."
+      "url": "https://about.ibovs.vercel.app/",
+      "description": "التعريف بمنصة Markets YEMEN وأهدافها."
     },
     {
       "name": "تواصل معنا",
-      "url": "/contact",
-      "description": "صفحة التواصل مع فريق المنصة."
+      "url": "https://ibovs.vercel.app/contact",
+      "description": "التواصل مع فريق المنصة."
     }
   ],
-
-  "features": [
-    "عرض أسعار المنتجات",
-    "البحث عن المنتجات",
-    "التصفية حسب المدينة",
-    "التصفية حسب التصنيف",
-    "إرسال أسعار جديدة",
-    "مراجعة الأسعار المرسلة",
-    "تاريخ تغير الأسعار"
+  "cities": [
+    {
+      "name": "صنعاء",
+      "name_en": "Sana'a",
+      "url": "https://prices.ibovs.vercel.app/city/صنعاء",
+      "description": "أسعار المنتجات والسلع في صنعاء."
+    },
+    {
+      "name": "تعز",
+      "name_en": "Taiz",
+      "url": "https://prices.ibovs.vercel.app/city/تعز",
+      "description": "أسعار المنتجات والسلع في تعز."
+    },
+    {
+      "name": "عدن",
+      "name_en": "Aden",
+      "url": "https://prices.ibovs.vercel.app/city/عدن",
+      "description": "أسعار المنتجات والسلع في عدن."
+    }
   ],
-
+  "product_categories": [
+    {
+      "name": "المواد الغذائية",
+      "url": "https://prices.ibovs.vercel.app/category/مواد%20غذائية",
+      "products": [
+        {
+          "name": "الأرز",
+          "name_en": "Rice",
+          "url": "https://prices.ibovs.vercel.app/product/الأرز"
+        },
+        {
+          "name": "الدقيق",
+          "name_en": "Flour",
+          "url": "https://prices.ibovs.vercel.app/product/الدقيق"
+        },
+        {
+          "name": "السكر",
+          "name_en": "Sugar",
+          "url": "https://prices.ibovs.vercel.app/product/السكر"
+        },
+        {
+          "name": "زيت الطهي",
+          "name_en": "Cooking Oil",
+          "url": "https://prices.ibovs.vercel.app/product/زيت%20الطهي"
+        },
+        {
+          "name": "القمح",
+          "name_en": "Wheat",
+          "url": "https://prices.ibovs.vercel.app/product/القمح"
+        },
+        {
+          "name": "البقوليات",
+          "name_en": "Legumes",
+          "url": "https://prices.ibovs.vercel.app/product/البقوليات"
+        },
+        {
+          "name": "الشاي",
+          "name_en": "Tea",
+          "url": "https://prices.ibovs.vercel.app/product/الشاي"
+        }
+      ]
+    }
+  ],
+  "features": [
+    "عرض أسعار المنتجات والسلع في اليمن",
+    "البحث عن المنتجات",
+    "تصفية الأسعار حسب المدينة",
+    "تصفية الأسعار حسب التصنيف",
+    "إرسال أسعار جديدة من المستخدمين",
+    "مراجعة الأسعار والتحقق منها",
+    "اعتماد الأسعار بعد المراجعة",
+    "الاحتفاظ بتاريخ تغير الأسعار",
+    "مقارنة الأسعار المتاحة بين المدن"
+  ],
   "data": {
-    "products": "المنتجات المتوفرة في الأسواق اليمنية",
-    "cities": "المدن اليمنية",
-    "categories": "تصنيفات المنتجات",
-    "current_prices": "الأسعار المعتمدة الحالية",
+    "products": "المنتجات المسجلة في المنصة",
+    "categories": "تصنيفات المنتجات والسلع",
+    "cities": "المدن التي تتوفر لها بيانات أسعار",
+    "current_prices": "الأسعار الحالية المعتمدة",
+    "price_submissions": "الأسعار المرسلة التي تنتظر المراجعة أو الاعتماد",
     "price_history": "السجل التاريخي لتغير الأسعار"
   },
-
   "price_verification": {
     "user_submissions": true,
     "employee_review": true,
-    "approval_required": true
-  }
+    "approval_required": true,
+    "unverified_submissions_are_approved_prices": false
+  },
+  "important_notes": [
+    "تعتمد الأسعار المعروضة على البيانات المتوفرة في المنصة.",
+    "قد تختلف الأسعار حسب المدينة والمنتج والكمية ووحدة القياس.",
+    "إدراج مدينة أو منتج هنا لا يعني توفر أسعار حالية له.",
+    "يجب أن تتطابق الروابط مع المسارات الفعلية في الموقع."
+  ]
 }
+

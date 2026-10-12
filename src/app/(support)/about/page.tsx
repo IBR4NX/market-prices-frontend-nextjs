@@ -12,7 +12,7 @@ import { createSeo } from "@/lib/seo";
 export const metadata = createSeo({
   canonicalPath: "/about",
   title: "من نحن - منصة متابعة أسعار المنتجات في اليمن",
-  description: "تعرف على Markets YE ودورها في تنظيم عرض أسعار المنتجات في اليمن حسب المدن والتصنيفات اعتماداً على البيانات المتاحة والمراجعة.",
+  description: "تعرف على Markets yemen ودورها في تنظيم عرض أسعار المنتجات في اليمن حسب المدن والتصنيفات اعتماداً على البيانات المتاحة والمراجعة.",
   type: "article",
 });
 

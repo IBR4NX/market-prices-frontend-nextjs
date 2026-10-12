@@ -1,54 +1,100 @@
-\# Markets YE
+Markets YEMEN
 
-> Markets YE هي منصة يمنية لعرض ومتابعة أسعار المنتجات حسب المدينة والتصنيف.
+Markets YEMEN is a Yemeni platform for discovering, searching, and tracking product prices across cities and markets in Yemen. The platform organizes price information by product, category, and city, helping users understand current prices and monitor price changes over time.
 
-## About
+Overview
+Markets YEMEN provides structured information about prices of products and essential commodities in Yemen. Users can explore current prices, search for specific products, filter results by city and category, submit new price information, and review historical price changes.
+The platform aims to make price information easier to find, compare, and understand across Yemeni markets.
+Main Services
 
-Markets YE تهدف إلى توفير معلومات منظمة عن أسعار المنتجات في الأسواق اليمنية، مع إمكانية البحث والتصفية حسب المنتج والمدينة والتصنيف.
+Browse current product prices in Yemen.
+Search for products and commodities.
+Filter prices by city and product category.
+Explore prices of essential goods and food products.
+Submit new price observations for review.
+Review submitted prices before approval.
+Track historical price changes.
+Compare available price information across cities.
 
-## Prices
+Prices
 
-- [أسعار المنتجات](https://markets-ye.vercel.app/prices): عرض الأسعار الحالية للمنتجات حسب المدن والتصنيفات.
-- [الرئيسية](https://markets-ye.vercel.app/): الصفحة الرئيسية للمنصة.
+Product Prices: Browse product prices by city and category.
+Main Website: Access the main Markets YEMEN website.
 
-## About Us
+Cities and Markets
+The platform organizes price information by city, allowing users to explore available prices in different parts of Yemen.
+Cities of interest include:
 
-- [من نحن](https://markets-ye.vercel.app/about): معلومات عن المنصة وأهدافها.
+Sana'a (صنعاء)
+Taiz (تعز)
+Aden (عدن)
 
-## Contact
+Additional cities may be included as price information becomes available.
+Products and Categories
+Markets YEMEN organizes products into categories to make searching and browsing easier.
+Examples of relevant products include:
 
-- [تواصل معنا](https://markets-ye.vercel.app/contact): طرق التواصل مع فريق المنصة.
+Rice (الأرز)
+Flour (الدقيق)
+Sugar (السكر)
+Cooking oil (زيت الطهي)
+Wheat (القمح)
+Beans and legumes (البقوليات)
+Tea (الشاي)
+Other essential food products and consumer goods
 
-## Features
+Product availability and displayed prices depend on the information recorded on the platform.
+Price Verification
+Prices submitted by users are not automatically treated as approved current prices.
+The verification workflow is:
 
-- عرض أسعار المنتجات الحالية.
-- البحث عن المنتجات.
-- تصفية الأسعار حسب المدينة.
-- تصفية الأسعار حسب التصنيف.
-- إرسال أسعار جديدة من المستخدمين.
-- مراجعة الأسعار المرسلة.
-- اعتماد الأسعار بعد التحقق منها.
-- الاحتفاظ بتاريخ تغير الأسعار.
+A user submits price information for a product.
+The submission is reviewed.
+The price may be approved after verification.
+An approved price can update the current price record.
+Price history can be retained to help track changes over time.
 
-## Price Verification
+Unverified submissions should not be interpreted as confirmed market prices.
+Data Structure
+The platform manages information related to:
 
-الأسعار التي يرسلها المستخدمون لا تصبح أسعارًا معتمدة مباشرة. يتم إرسالها للمراجعة، وبعد التحقق منها يمكن اعتمادها وتحديث السعر الحالي.
+Products
+Categories
+Cities
+Current Prices
+Price Submissions
+Price History
+Users
 
-## Data
+These data structures support product discovery, price review, and historical tracking.
+About Us
 
-المنصة تتعامل مع:
+About Markets YEMEN: Learn about the platform, its purpose, and its objectives.
 
-- Products
-- Categories
-- Cities
-- Current Prices
-- Price Submissions
-- Price History
+Contact
 
-## Language
+Contact Markets YEMEN: Find contact information and ways to reach the platform team.
 
-Arabic is the primary language of the website.
+Language
+Arabic is the primary language of the website. English terminology may also appear in technical documentation and structured data.
+Country and Coverage
 
-## Country
+Country: Yemen
+Primary market: Yemeni local markets
+Geographic organization: City-based price information
 
-Yemen
+Important Notes
+
+Displayed prices depend on the data available on the platform.
+Prices may vary by city, seller, product specification, quantity, and unit.
+Not every product or city necessarily has current price information.
+Submitted prices require review before they can be treated as approved records.
+Historical prices represent recorded observations and should not automatically be interpreted as current prices.
+
+Official URLs
+
+Main website: https://ibovs.vercel.app/
+Product prices: https://prices.ibovs.vercel.app/
+About: https://about.ibovs.vercel.app/
+Contact: https://ibovs.vercel.app/contact
+
