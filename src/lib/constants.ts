@@ -5,14 +5,9 @@ export const ABOUT_URL = `http://${process.env.NEXT_PUBLIC_ABOUT_URL || "about.l
 export const PRICES_URL = `http://${process.env.NEXT_PUBLIC_PRICES_URL || "prices.localhost:3000"}`;
 export const BLOG_URL = `http://${process.env.NEXT_PUBLIC_BLOG_URL || "blog.localhost:3000"}`;
 
-export const SITE_URL = (
-  MAIN_URL || DEFAULT_SITE_URL
-).replace(/\/+$/, "");
-
-export const DEFAULT_IMAGE = "/favicons/web-app-manifest-512x512.png";
+export const SITE_URL = (MAIN_URL || DEFAULT_SITE_URL).replace(/\/+$/, "");
 
 export function absoluteUrl(path = "/"): string {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-
   return `${SITE_URL}${normalizedPath}`;
 }

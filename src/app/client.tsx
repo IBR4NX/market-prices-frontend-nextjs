@@ -64,7 +64,7 @@ export default function HomePage() {
                 دليل أسعار اليمن
               </Badge>
               <h1 className="text-4xl font-black tracking-tight text-balance sm:text-5xl lg:text-6xl">
-                أسعار اليوم في اليمن للمنتجات والسلع
+                أسعار المنتجات في وتعز تعاني من ارتفاع حاد بسبب الحروب الحاصله
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-8 text-muted-foreground sm:mt-6 sm:text-lg sm:leading-9">
                 ابحث عن أسعار المنتجات في اليمن حسب المدينة والفئة، وقارن
@@ -148,8 +148,6 @@ export default function HomePage() {
           </div>
 
           <Button
-            nativeButton={false}
-            render={<Link href={`/city/${city.name}`} />}
             variant="outline"
             size="icon"
             aria-label={`أسعار المنتجات في ${city.name}`}

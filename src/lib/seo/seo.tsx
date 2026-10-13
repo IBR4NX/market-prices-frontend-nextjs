@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import {
-  SITE_NAME,
-  absoluteUrl,
-  DEFAULT_IMAGE,
-} from "@/lib/constants";
-export {absoluteUrl};
+import { MAIN_URL, SITE_NAME, absoluteUrl } from "@/lib/constants";
+export { absoluteUrl };
+
+const iconPath = "/favicons";
 export interface SeoProps {
   canonicalPath?: string;
   description: string;
@@ -17,20 +15,19 @@ export interface SeoProps {
 export function createSeo({
   canonicalPath = "/",
   description,
-  image = DEFAULT_IMAGE,
+  image = "/favicons/og-image.png",
   noindex = false,
   title,
   type = "website",
 }: SeoProps): Metadata {
-  const fullTitle = title.includes(SITE_NAME)
-    ? title.replace('|','-')
-    : `${title} - ${SITE_NAME}`;
-
+  const fullTitle = createTitle(title);
   const canonical = absoluteUrl(canonicalPath);
+
   const imageUrl = absoluteUrl(image);
 
   return {
     // SEO
+    metadataBase: new URL(MAIN_URL),
     title: fullTitle,
     description,
 
@@ -46,39 +43,49 @@ export function createSeo({
     // Icons
     icons: {
       icon: [
-        {
-          url: "/favicons/favicon-96x96.png",
-          sizes: "96x96",
-          type: "image/png",
+                {
+          url: `${iconPath}/favicon.svg`,
+          sizes: "any",
         },
         {
-          url: "/favicons/favicon.svg",
+          url: `${iconPath}/favicon.svg`,
           type: "image/svg+xml",
         },
         {
-          url: "/favicons/favicon.ico",
-          rel: "shortcut icon",
+          url: `${iconPath}/favicon-16x16.png`,
+          sizes: "16x16",
+          type: "image/png",
         },
+        {
+          url: `${iconPath}/favicon-32x32.png`,
+          sizes: "32x32",
+          type: "image/png",
+        },
+
       ],
       apple: [
         {
-          url: "/favicons/apple-touch-icon.png",
+          url: `${iconPath}/apple-touch-icon.png`,
           sizes: "180x180",
+          type: "image/png",
         },
       ],
     },
 
+    // Web App Manifest
+    manifest: `${iconPath}/manifest.webmanifest`,
+
     // Apple Web App
     appleWebApp: {
-      title: "Ibovs",
+      title: SITE_NAME,
+      capable: true,
+      statusBarStyle: "default",
     },
-
-    // Web App Manifest
-    manifest: "/favicons/site.webmanifest",
 
     // Open Graph
     openGraph: {
       type,
+      locale: "ar_YE",
       siteName: SITE_NAME,
       title: fullTitle,
       description,
@@ -86,6 +93,8 @@ export function createSeo({
       images: [
         {
           url: imageUrl,
+          width: 1200,
+          height: 630,
           alt: SITE_NAME,
         },
       ],
@@ -99,7 +108,30 @@ export function createSeo({
       images: [imageUrl],
     },
     applicationName: SITE_NAME,
-    
+    other: {
+      "theme-color": "#0F172A",
+    },
   };
 }
 
+function createTitle(title: string): string {
+  const cleanTitle = title.trim();
+
+  if (!cleanTitle) {
+    return SITE_NAME;
+  }
+
+  const escapedSiteName = SITE_NAME.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+  const normalizedTitle = cleanTitle.replace(/\s*[|–—-]\s*/g, " - ").trim();
+
+  const titleWithoutSiteName = normalizedTitle
+    .replace(new RegExp(`\\s*-\\s*${escapedSiteName}$`, "i"), "")
+    .trim();
+
+  if (!titleWithoutSiteName) {
+    return SITE_NAME;
+  }
+
+  return `${titleWithoutSiteName} - ${SITE_NAME}`;
+}

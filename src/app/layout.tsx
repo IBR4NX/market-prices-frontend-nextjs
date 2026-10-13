@@ -18,6 +18,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,37 +39,22 @@ export default function RootLayout({
       )}
     >
       <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="msvalidate.01" content="448736B4E174A7AD617638A63866F2BE" />
-    <meta
-      name="google-site-verification"
-      content="_54F1eq7-pB1O2ij3E7YReMtAiHyv-aO5wo0ZcCBCHc"
-    />
-    <meta
-      name="google-site-verification"
-      content="g2mr_fpoECA_KR21y4aZhdiSKGulMJrb44Ga5oQTw0M"
-    />
-<link rel="icon" href="/favicons/favicon.ico" sizes="any" />
-<link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml" />
-<link rel="icon" href="/favicons/favicon-32x32.png" type="image/png" sizes="32x32" />
-<link rel="icon" href="/favicons/favicon-16x16.png" type="image/png" sizes="16x16" />
-
-<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
-
-<link rel="manifest" href="/favicons/manifest.webmanifest" />
-<meta name="theme-color" content="#0F172A" />
-
-<meta property="og:image" content="https://markets-ye.vercel.app/favicons/og-image.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="msvalidate.01" content="448736B4E174A7AD617638A63866F2BE" />
+        <meta
+          name="google-site-verification"
+          content="_54F1eq7-pB1O2ij3E7YReMtAiHyv-aO5wo0ZcCBCHc"
+        />
+        <meta
+          name="google-site-verification"
+          content="g2mr_fpoECA_KR21y4aZhdiSKGulMJrb44Ga5oQTw0M"
+        />
       </head>
       <body className={cn("min-h-full flex flex-col   ")}>
         <div id="t" className="transition-all duration-500" />
         <ThemeProvider>
           <div className="bg-[linear-gradient(135deg,transparent_49%,var(--border)_5%,var(--border)_5%,transparent_51%)] bg-size-[10px_10px]">
-
-          <DirectionProvider direction={"rtl"}>{children}</DirectionProvider>
+            <DirectionProvider direction={"rtl"}>{children}</DirectionProvider>
           </div>
         </ThemeProvider>
         <div id="e" className="transition-all duration-500" />
