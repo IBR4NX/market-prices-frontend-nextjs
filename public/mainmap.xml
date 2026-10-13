@@ -3,27 +3,27 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <sitemap>
-    <loc>https://ibovs.vercel.app/sitemap/ibovsmap.xml</loc>
+    <loc>https://markets-ye.vercel.app/sitemap/markets-yemap.xml</loc>
   </sitemap>
 
   <sitemap>
-    <loc>https://ibovs.vercel.app/sitemap/sitemap-products.xml</loc>
+    <loc>https://markets-ye.vercel.app/sitemap/sitemap-products.xml</loc>
   </sitemap>
 
   <sitemap>
-    <loc>https://ibovs.vercel.app/sitemap/sitemap-cities.xml</loc>
+    <loc>https://markets-ye.vercel.app/sitemap/sitemap-cities.xml</loc>
   </sitemap>
 
   <sitemap>
-    <loc>https://ibovs.vercel.app/sitemap/sitemap-categories.xml</loc>
+    <loc>https://markets-ye.vercel.app/sitemap/sitemap-categories.xml</loc>
   </sitemap>
 
   <sitemap>
-    <loc>https://ibovs.vercel.app/sitemap-prices.xml</loc>
+    <loc>https://markets-ye.vercel.app/sitemap-prices.xml</loc>
   </sitemap>
 
   <sitemap>
-    <loc>https://ibovs.vercel.app/sitemap-blog.xml</loc>
+    <loc>https://markets-ye.vercel.app/sitemap-blog.xml</loc>
   </sitemap>
 
 </sitemapindex>

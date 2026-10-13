@@ -19,7 +19,7 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
       { userAgent: "*", allow: "/" },
     ],
     sitemap: [
-      `${baseUrl}/ibovsmap.xml`,
+      `${baseUrl}/sitemap.xml`,
       `${baseUrl}/sitemap/custom/products.xml?sender=${host ?? "markets-ye.vercel.app"}`,
     ],
   };
