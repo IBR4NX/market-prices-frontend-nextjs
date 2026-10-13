@@ -8,11 +8,17 @@ const SUPPORTED_DOMAINS = [ABOUT_DOMAIN, PRICES_DOMAIN, BLOG_DOMAIN];
 
 export function proxy(request: NextRequest) {
   const hostname = splitDomain(request.headers.get("host") as string);
-  if (!hostname) {
+  const pathname = request.nextUrl.pathname;
+  if (
+    !hostname ||
+    pathname.startsWith("/_next") ||
+    pathname === "/favicon.ico" ||
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/google")
+  ) {
     return NextResponse.next();
   }
   const isSUPPORTED = matchesRoute(hostname, SUPPORTED_DOMAINS as string[]);
-  const pathname = request.nextUrl.pathname;
   const userAgent = request.headers.get("user-agent") ?? "Unknown";
   const log = {
     time: new Date().toISOString(),
@@ -26,15 +32,6 @@ export function proxy(request: NextRequest) {
       "Unknown",
   };
   console.info("[VISIT]", JSON.stringify(log));
-
-  if (
-    pathname.startsWith("/_next") ||
-    pathname === "/favicon.ico" ||
-    pathname.startsWith("/api") ||
-    pathname.startsWith("/google")
-  ) {
-    return NextResponse.next();
-  }
 
   // console.log("proxy →", request.method, pathname, hostname, SUPPORTED_DOMAINS, isSUPPORTED);
   if (isSUPPORTED) {
