@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const headersList = await headers();
+  
   const host = headersList.get("host");
   const protocol = headersList.get("x-forwarded-proto") ?? "https";
 //   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://markets-ye.vercel.app";
