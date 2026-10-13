@@ -1,8 +1,7 @@
 import { MAIN_URL } from "@/lib/constants";
 import { NextRequest, NextResponse } from "next/server";
 
-const TOPIC_URL = MAIN_URL+"/sitemap/rss.xml";
-
+const TOPIC_URL = MAIN_URL+"/sitemap/rss.xml?sender=ibovs.vercel.app";
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
 
