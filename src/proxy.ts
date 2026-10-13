@@ -7,16 +7,25 @@ const BLOG_DOMAIN = splitDomain(process.env.NEXT_PUBLIC_BLOG_URL);
 const SUPPORTED_DOMAINS = [ABOUT_DOMAIN, PRICES_DOMAIN, BLOG_DOMAIN];
 
 export function proxy(request: NextRequest) {
-  const hostname = splitDomain(request.headers.get("host") as string );
+  const hostname = splitDomain(request.headers.get("host") as string);
   if (!hostname) {
     return NextResponse.next();
   }
+  const isSUPPORTED = matchesRoute(hostname, SUPPORTED_DOMAINS as string[]);
   const pathname = request.nextUrl.pathname;
-  const isSUPPORTED = matchesRoute(
-    hostname,
-    SUPPORTED_DOMAINS as string[],
-  );
-      console.log(pathname,hostname);
+  const userAgent = request.headers.get("user-agent") ?? "Unknown";
+  const log = {
+    time: new Date().toISOString(),
+    method: request.method,
+    path: pathname,
+    userAgent,
+    referer: request.headers.get("referer"),
+    ip:
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+      request.headers.get("x-real-ip") ??
+      "Unknown",
+  };
+  console.info("[VISIT]", JSON.stringify(log));
 
   if (
     pathname.startsWith("/_next") ||
@@ -34,11 +43,10 @@ export function proxy(request: NextRequest) {
       url.pathname = `/about${pathname === "/" ? "" : pathname}`;
     }
     if (hostname === PRICES_DOMAIN) {
-      if (pathname==="/") {
+      if (pathname === "/") {
         url.pathname = `/prices${pathname === "/" ? "" : pathname}`;
-      }
-      else{
-        url.pathname = `${pathname.startsWith("/") ? pathname : "/"+pathname}`;
+      } else {
+        url.pathname = `${pathname.startsWith("/") ? pathname : "/" + pathname}`;
       }
     }
     if (hostname === BLOG_DOMAIN) {
@@ -47,7 +55,6 @@ export function proxy(request: NextRequest) {
       //   "proxy rewrite →",
       //   url.pathname,
       //   request.method,
-      //   request.nextUrl.search,
       // );
     }
     return NextResponse.rewrite(url);
@@ -66,7 +73,6 @@ export const config = {
     "/((?!api|_next/static|_next/image|public|favicon|.*\\.(?:png|jpg|jpeg|svg|gif|webp|ico|json)$).*)",
   ],
 };
-
 
 function splitDomain(domain: string | undefined): string | undefined {
   if (!domain) return undefined;
