@@ -13,9 +13,9 @@ export async function GET(request: NextRequest) {
   const expectedToken = process.env.NEXT_PUBLIC_PUBSUBHUBBUB_VERIFY_TOKEN;
 
   // التحقق من موضوع الاشتراك
-  if (topic !== TOPIC_URL) {
-    return new NextResponse("Invalid topic", { status: 400 });
-  }
+  // if (topic !== TOPIC_URL) {
+  //   return new NextResponse("Invalid topic", { status: 400 });
+  // }
 
   // التحقق من رمز الأمان إذا تم إعداده
   if (expectedToken && token !== expectedToken) {
