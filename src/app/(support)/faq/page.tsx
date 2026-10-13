@@ -203,7 +203,7 @@ export default function Faq() {
 
       {/* Contact CTA */}
       <section className="mt-12">
-        <Card className="overflow-hidden border-primary/20 bg-primary/[0.03]">
+        <Card className="overflow-hidden border-primary/20 bg-primary/3">
           <CardContent className="flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <div className="flex items-start gap-4">
               <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">

@@ -215,7 +215,7 @@ export default function Help() {
 
       {/* Important notice */}
       <section className="mb-14">
-        <Card className="border-amber-500/20 bg-amber-500/[0.04]">
+        <Card className="border-amber-500/20 bg-amber-500/05">
           <CardContent className="flex items-start gap-4 p-5 sm:p-6">
             <div className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600">
               <ShieldCheck className="size-5" />
@@ -297,7 +297,7 @@ export default function Help() {
 
       {/* Contact CTA */}
       <section>
-        <Card className="overflow-hidden border-primary/20 bg-primary/[0.03]">
+        <Card className="overflow-hidden border-primary/20 bg-primary/3">
           <CardContent className="flex flex-col gap-5 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <div className="flex items-start gap-4">
               <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">

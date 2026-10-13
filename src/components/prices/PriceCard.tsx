@@ -41,7 +41,7 @@ export default function PriceCard({ item, labels }: PriceCardProps) {
         {/* Product + Price */}
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0 flex-1">
-            <h2 className="break-words text-2xl font-bold leading-7 text-foreground">
+            <h2 className="warp-break-words text-2xl font-bold leading-7 text-foreground">
               {item.product_name}
             </h2>
 

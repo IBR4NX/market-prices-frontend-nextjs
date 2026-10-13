@@ -5,6 +5,13 @@ import { api } from "@/lib/api";
 import { createSeo } from "@/lib/seo";
 import ProductDetails from "./client";
 export const instant = false;
+export function decodeSlug(value: string): string {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+}
 export interface Product {
   id: string;
   name: string;
@@ -59,57 +66,31 @@ export interface Product {
   }[];
 }
 
-const getProduct = cache(async (slug: string): Promise<Product | null> => {
-  try {
-    const response = await api.get("/products-search", {
-      params: { slug },
-    });
+const getProduct = cache(
+  async (slug: string): Promise<Product | null> => {
+    try {
+      const response = await api.get("/products-search", {
+        params: { slug },
+      });
 
-    const data = response.data;
-    const result = data?.product ?? data?.data ?? data;
+      const data = response.data;
+      const result = data?.product ?? data?.data ?? data;
 
-    const product = Array.isArray(result)
-      ? result[0]
-      : Array.isArray(result?.rows)
-        ? result.rows[0]
-        : result;
+      const product = Array.isArray(result)
+        ? result[0]
+        : Array.isArray(result?.rows)
+          ? result.rows[0]
+          : result;
 
-    if (!product?.id) return null;
+      if (!product?.id) return null;
 
-    return product as Product;
-  } catch {
-    return null;
-  }
-});
-const geProduct = cache(async (slug: string): Promise<Product | null> => {
-  try {
-    console.log("Requested product slug:", slug);
-
-    const response = await api.get("/products-search", {
-      params: { slug },
-    });
-
-    console.log("API response:", response.data);
-
-    const data = response.data;
-    const result = data?.product ?? data?.data ?? data;
-
-    const product = Array.isArray(result)
-      ? result[0]
-      : Array.isArray(result?.rows)
-        ? result.rows[0]
-        : result;
-
-    console.log("Extracted product:", product);
-
-    if (!product?.id) return null;
-
-    return product as Product;
-  } catch (error) {
-    console.error("Failed to fetch product:", error);
-    return null;
-  }
-});
+      return product as Product;
+    } catch (error) {
+      console.error("Failed to fetch product:", error);
+      return null;
+    }
+  },
+);
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -117,7 +98,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = await getProduct(slug);
+  const product = await getProduct(decodeSlug(slug));
 
   if (!product) {
     return createSeo({
@@ -129,7 +110,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
   }
   const productName = product.name.trim();
-  const productSlug = product.slug;
   const productQuantity =
     product.quantity != null && product.unit
       ? `${product.quantity} ${product.unit}`
@@ -170,8 +150,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const product = await getProduct(slug);
-
+  const product = await getProduct(decodeSlug(slug));
   if (!product) notFound();
 
   return <ProductDetails product={product} />;

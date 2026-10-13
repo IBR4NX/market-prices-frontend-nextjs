@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useState, useEffect, ReactNode } from "react";
 import { Header } from "@/components/layout/Header";
 import {
@@ -22,11 +22,16 @@ import Footer from "@/components/layout/Footer";
 import SideTrigger from "@/components/layout/toggles/side-trigger";
 import { Dot } from "lucide-react";
 import MainLink from "@/components/shared/mainLink";
+import { notFound } from "next/navigation";
 export default function Layout({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const [loading, setLoading] = useState(true);
+  useEffect(()=>{
+    setLoading(false);
+  },[])
   return (
     <>
       <SidebarProvider dir="rtl" className="h-screen    mt-13  ">

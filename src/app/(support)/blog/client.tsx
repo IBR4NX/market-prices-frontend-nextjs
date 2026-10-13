@@ -208,7 +208,7 @@ export default function Blog() {
 
       {/* Explore prices */}
       <section className="mt-14">
-        <Card className="overflow-hidden border-primary/20 bg-primary/[0.03]">
+        <Card className="overflow-hidden border-primary/20 ">
           <CardContent className="p-6 sm:p-8">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-start gap-4">
