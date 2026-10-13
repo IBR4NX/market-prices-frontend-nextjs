@@ -110,10 +110,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
   }
   const productName = product.name.trim();
-  const productQuantity =
-    product.quantity != null && product.unit
-      ? `${product.quantity} ${product.unit}`
-      : "";
+const productQuantity =
+  product.quantity != null && product.unit
+    ? `${Number(product.quantity)} ${product.unit === "كجم" ? "كيلو" : product.unit}`
+    : "";
+
+
 
   const prices = (product.current_prices ?? [])
     .filter((item) => item.city?.name && item.price != null)
@@ -127,17 +129,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 
   const description = [
-    `كم سعر ${product.name} ${product.quantity ?? ""} ${product.unit ?? ""} في اليمن؟`,
-    priceDetails.length
-      ? `الأسعار حسب المدينة: ${priceDetails.join("، ")}.`
+productQuantity,    priceDetails.length
+      ? `الأسعار : ${priceDetails.join("، ")}.`
       : "لا تتوفر حاليًا أسعار مسجلة لهذا المنتج.",
-    `تابع أسعار ${product.name} وقارن الأسعار بين المدن اليمنية عبر منصة أسعار اليمن.`,
+      product.description
   ]
     .filter(Boolean)
     .join(" ");
 
   const title = productQuantity
-    ? `سعر ${productName} ${productQuantity} اليوم في اليمن`
+    ? `سعر ${productName} ${productQuantity} اليوم `
     : `سعر ${productName} اليوم في اليمن حسب المدينة`;
 
   return createSeo({

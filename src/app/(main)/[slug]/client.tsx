@@ -143,20 +143,13 @@ export default function ProductDetails({
       </section>
 
       {/* بيانات إضافية */}
-      <Card>
+      <Card >
         <CardHeader>
           <CardTitle className="text-lg">معلومات إضافية</CardTitle>
         </CardHeader>
 
         <CardContent className="space-y-3 text-sm">
-          <div className="flex flex-wrap justify-between gap-2">
-            <span className="text-muted-foreground">معرّف المنتج</span>
-            <code dir="ltr" className="break-all text-xs">
-              {product.id}
-            </code>
-          </div>
 
-          <Separator />
 
           <div className="flex flex-wrap justify-between gap-2">
             <span className="text-muted-foreground">Slug</span>
@@ -185,7 +178,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 import {
   
   CalendarDays,
-  Clock,
   MapPin,
   Package,
   Tag,
