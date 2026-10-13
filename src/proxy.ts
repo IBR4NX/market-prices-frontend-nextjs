@@ -16,6 +16,8 @@ export function proxy(request: NextRequest) {
     hostname,
     SUPPORTED_DOMAINS as string[],
   );
+      console.log(pathname,hostname);
+
   if (
     pathname.startsWith("/_next") ||
     pathname === "/favicon.ico" ||
@@ -32,16 +34,21 @@ export function proxy(request: NextRequest) {
       url.pathname = `/about${pathname === "/" ? "" : pathname}`;
     }
     if (hostname === PRICES_DOMAIN) {
-      url.pathname = `/prices${pathname === "/" ? "" : pathname}`;
+      if (pathname==="/") {
+        url.pathname = `/prices${pathname === "/" ? "" : pathname}`;
+      }
+      else{
+        url.pathname = `${pathname.startsWith("/") ? pathname : "/"+pathname}`;
+      }
     }
     if (hostname === BLOG_DOMAIN) {
       url.pathname = `/blog${pathname === "/" ? "" : pathname}`;
-      console.log(
-        "proxy rewrite →",
-        url.pathname,
-        request.method,
-        request.nextUrl.search,
-      );
+      // console.log(
+      //   "proxy rewrite →",
+      //   url.pathname,
+      //   request.method,
+      //   request.nextUrl.search,
+      // );
     }
     return NextResponse.rewrite(url);
   }
