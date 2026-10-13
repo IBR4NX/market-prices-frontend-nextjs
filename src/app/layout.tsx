@@ -50,10 +50,13 @@ export default function RootLayout({
     />
     
       </head>
-      <body className={cn("min-h-full flex flex-col  ")}>
+      <body className={cn("min-h-full flex flex-col   ")}>
         <div id="t" className="transition-all duration-500" />
         <ThemeProvider>
+          <div className="bg-[linear-gradient(135deg,transparent_49%,var(--border)_5%,var(--border)_5%,transparent_51%)] bg-size-[10px_10px]">
+
           <DirectionProvider direction={"rtl"}>{children}</DirectionProvider>
+          </div>
         </ThemeProvider>
         <div id="e" className="transition-all duration-500" />
         <div className=" transition-all duration-500">

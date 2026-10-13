@@ -34,7 +34,7 @@ export default function Layout({
   },[])
   return (
     <>
-      <SidebarProvider dir="rtl" className="h-screen    mt-13  ">
+      <SidebarProvider dir="rtl" className="    mt-13  ">
         <Header></Header>
         <Sidebar
           dir="rtl"
@@ -81,7 +81,7 @@ export default function Layout({
           <SidebarFooter>{/* <SidebarOptInForm/> */}</SidebarFooter>
           <SidebarRail />
         </Sidebar>
-        <div className="  bg-muted/50 items-center justify-center none   w-full h-full ">
+        <div className="  items-center justify-center   w-full h-full ">
           {children}
           <Footer />
         </div>

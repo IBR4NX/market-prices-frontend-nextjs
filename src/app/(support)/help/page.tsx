@@ -109,6 +109,7 @@ export default function Help() {
     <main
       dir="rtl"
       className="container mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16"
+      
     >
       {/* Hero */}
       <section className="relative mb-12 overflow-hidden rounded-3xl border bg-muted/30 px-6 py-10 sm:px-10 sm:py-14">

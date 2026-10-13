@@ -6,7 +6,7 @@ const contacts = [
 
 export default function Support() {
   return (
-    <main className="max-w-3xl mx-auto px-4 py-12">
+    <main className="max-w-3xl mx-auto px-4 py-12 ">
       <h1 className="text-3xl md:text-4xl font-bold mb-6">المساعدة في البحث عن أسعار المنتجات</h1>
       <p className="mb-6 leading-relaxed">استخدم هذه الصفحة لمعرفة طريقة البحث عن سعر المنتج اليوم في اليمن، وكيفية تضييق النتائج حسب المدينة أو الفئة.</p>
       <section className="mb-6">

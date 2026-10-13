@@ -1,6 +1,7 @@
 import Link from "next/link";
 import PriceCard from "./PriceCard";
 import type { PriceRecord } from "@/components/catalog/types";
+import MainLink from "../shared/mainLink";
 
 interface PriceListProps {
   items: PriceRecord[];
@@ -24,9 +25,9 @@ export default function PriceList({ items, labels }: PriceListProps) {
             key={`${item.product_id}-${item.city_id}`}
             className="transition-transform duration-200 hover:-translate-y-0.5"
           >
-            <Link href={`/${item.product_name??""}`}>
+            <MainLink href={`/${item.product_name.replaceAll(' ',' ')??""}`}>
             <PriceCard item={item} labels={labels} />
-            </Link>
+            </MainLink>
 
           </div>
         ))}

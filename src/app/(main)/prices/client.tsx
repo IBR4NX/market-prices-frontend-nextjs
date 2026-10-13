@@ -116,7 +116,7 @@ export default function Prices() {
       
       <main
         dir="rtl"
-        className="min-h- bg-background px-4 py-6 text-foreground"
+        className="min-h-  px-4 py-6 text-foreground"
       >
         <div className="mx-auto w-full max-w-3xl">
           {/* Header */}

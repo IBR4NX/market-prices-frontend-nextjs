@@ -37,6 +37,15 @@ const stats = [
   { label: "الفلاتر", value: "مدينة وفئة" },
   { label: "الوصول", value: "من الجوال" },
 ];
+const cities = [
+  { name: "صنعاء", slug: "sanaa" },
+  { name: "تعز", slug: "taiz" },
+  { name: "عدن", slug: "aden" },
+];
+
+const categories = [
+  { name: "المواد الغذائية", slug: "food" },
+];
 
 export default function HomePage() {
   return (
@@ -100,7 +109,99 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+        <section className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+  <div className="max-w-3xl">
+    <span className="text-sm font-semibold text-primary">
+      أسعار المنتجات حسب المدينة
+    </span>
 
+    <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">
+      تعرّف على أسعار السلع في المدن اليمنية
+    </h2>
+
+    <p className="mt-4 text-sm leading-8 text-muted-foreground sm:text-base">
+      تختلف أسعار المنتجات والمواد الغذائية من مدينة إلى أخرى بحسب
+      السوق والمنتج والكمية. تساعدك منصة أسعار اليمن على استعراض
+      الأسعار المسجلة في المدن اليمنية ومقارنة الأسعار المتاحة،
+      مع الاطلاع على تفاصيل المنتج وتاريخ آخر تحديث للسعر عند توفره.
+    </p>
+  </div>
+
+  <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {cities.map((city) => (
+      <Card
+        key={city.slug}
+        className="py-0 transition-colors ring-primary/50 hover:bg-accent"
+        
+      >
+        <Link href={`/city/${city.slug}`} >
+        <CardContent className="grid grid-cols-6 items-center shadow  shadow-primary  outline outline-primary justify-between gap-4 p-5" >
+          <div className=" col-span-5" >
+            <h3 className="font-bold">
+              أسعار المنتجات في {city.name}
+            </h3>
+
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              استعرض الأسعار المتاحة في مدينة {city.name} حسب المنتج
+              والتصنيف.
+            </p>
+          </div>
+
+          <Button
+            nativeButton={false}
+            render={<Link href={`/city/${city.name}`} />}
+            variant="outline"
+            size="icon"
+            aria-label={`أسعار المنتجات في ${city.name}`}
+          >
+            <ArrowLeft className="size-4" />
+          </Button>
+        </CardContent>
+        </Link>
+      </Card>
+    ))}
+  </div>
+
+  <div className="mt-12 max-w-3xl">
+    <span className="text-sm font-semibold text-primary">
+      أسعار المنتجات حسب التصنيف
+    </span>
+
+    <h2 className="mt-2 text-2xl font-bold tracking-tight">
+      ابحث عن أسعار المنتجات التي تحتاجها
+    </h2>
+
+    <p className="mt-3 text-sm leading-8 text-muted-foreground sm:text-base">
+      تصفح المنتجات بحسب فئاتها لتسهيل الوصول إلى الأسعار المناسبة.
+      يمكنك الاطلاع على المواد الغذائية وغيرها من التصنيفات المتاحة،
+      ومراجعة الكميات والأسعار المسجلة بدلًا من الاعتماد على تقديرات
+      عامة لا تعكس بيانات السوق المتوفرة.
+    </p>
+  </div>
+
+  <div className="mt-5 flex flex-wrap gap-3">
+    {categories.map((category) => (
+      <Button
+        key={category.slug}
+        nativeButton={false}
+        render={<Link href={`/category/${category.slug}`} />}
+        variant="outline"
+      >
+        {category.name}
+        <ArrowLeft className="size-4" />
+      </Button>
+    ))}
+
+    <Button
+      nativeButton={false}
+      render={<Link href="/prices" />}
+      variant="secondary"
+    >
+      جميع الأسعار
+      <ArrowLeft className="size-4" />
+    </Button>
+  </div>
+</section>
         <section
           id="how-it-works"
           className="mx-auto w-full max-w-7xl scroll-mt-20 px-4 py-1 pb-16 sm:px-6 sm:py-16 lg:px-8 lg:py-20"

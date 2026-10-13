@@ -43,7 +43,7 @@ export default function Layout({
             {SITE_NAME}
           </MainLink>
         </div>
-        <div className="  bg-muted/50 items-center justify-center none   w-full h-full overflow-hidden scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-400/20 scrollbar-track-gray-400/10">
+        <div className="  items-center justify-center none   w-full h-full overflow-hidden scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-400/20 scrollbar-track-gray-400/10">
           {children}
         </div>
       </SidebarProvider>
