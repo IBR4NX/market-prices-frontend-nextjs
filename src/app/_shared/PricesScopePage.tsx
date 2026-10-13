@@ -269,6 +269,7 @@ export default function PricesScopePage({
     invalidLabel,
     reloadKey,
   ]);
+
   return (
     <>
       <main
