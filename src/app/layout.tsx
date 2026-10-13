@@ -48,6 +48,19 @@ export default function RootLayout({
       name="google-site-verification"
       content="g2mr_fpoECA_KR21y4aZhdiSKGulMJrb44Ga5oQTw0M"
     />
+<link rel="icon" href="/favicons/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicons/favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="icon" href="/favicons/favicon-16x16.png" type="image/png" sizes="16x16" />
+
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
+
+<link rel="manifest" href="/favicons/manifest.webmanifest" />
+<meta name="theme-color" content="#0F172A" />
+
+<meta property="og:image" content="https://markets-ye.vercel.app/favicons/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
     
       </head>
       <body className={cn("min-h-full flex flex-col   ")}>
