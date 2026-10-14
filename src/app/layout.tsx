@@ -1,6 +1,8 @@
-import type { Metadata,Viewport } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import { GoogleTagManager } from "@next/third-parties/google";
+
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import { Toaster } from "@/components/ui/toast";
@@ -20,9 +22,9 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
-    initialScale: 1,
-    width: 'device-width'
-}
+  initialScale: 1,
+  width: "device-width",
+};
 
 export default function RootLayout({
   children,
@@ -54,18 +56,14 @@ export default function RootLayout({
           name="google-site-verification"
           content="g2mr_fpoECA_KR21y4aZhdiSKGulMJrb44Ga5oQTw0M"
         />
-        <script
-          src="https://www.googletagmanager.com/gtag/js?id=G-FNW104VHST"
-        />
-        <script
-          id="google-analytics"
-          src={`${absoluteUrl("google-analytics.js")}`}
-        />
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-FNW104VHST" />
 
-        <script
-          id="google-tag-manager"
-          src={`${absoluteUrl("google-tag-manager.js")}`}
-        />
+        {/* <!-- Google Tag Manager --> */}
+        {/* old */}
+        <GoogleTagManager gtmId="GTM-59NDMV64" />
+        {/* new أسعار اليمن */}
+        <GoogleTagManager gtmId="GTM-5KK9MXXP" />
+        {/* <!-- End Google Tag Manager --> */}
       </head>
       <body className={cn("min-h-full flex flex-col   ")}>
         <div id="t" className="transition-all duration-500" />
@@ -79,14 +77,16 @@ export default function RootLayout({
           <Toaster />
         </div>
         <Analytics />
+        {/* <!-- Google Tag Manager (noscript) --> */}
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-59NDMV64"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5KK9MXXP"
             height="0"
             width="0"
-            className=" none"
-          ></iframe>
+            style={{ display: "none", visibility: "hidden" }}
+          />
         </noscript>
+        {/* <!-- End Google Tag Manager (noscript) --> */}
       </body>
     </html>
   );
