@@ -9,6 +9,7 @@ import { DirectionProvider } from "@/components/ui/direction";
 import { ThemeProvider } from "@/components/provider/theme-provider";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 import { Analytics } from "@vercel/analytics/next";
+import { absoluteUrl } from "@/lib/constants";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -18,7 +19,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 
 export default function RootLayout({
   children,
@@ -50,33 +50,18 @@ export default function RootLayout({
           name="google-site-verification"
           content="g2mr_fpoECA_KR21y4aZhdiSKGulMJrb44Ga5oQTw0M"
         />
-        <Script
+        <script
           src="https://www.googletagmanager.com/gtag/js?id=G-FNW104VHST"
-          strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){ dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'G-FNW104VHST');
-          `}
-        </Script>
+        <script
+          id="google-analytics"
+          src={`${absoluteUrl("google-analytics.js")}`}
+        />
 
-        <Script id="google-tag-manager" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){
-              w[l]=w[l]||[];
-              w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
-              var f=d.getElementsByTagName(s)[0],
-                  j=d.createElement(s),
-                  dl=l!='dataLayer' ? '&l='+l : '';
-              j.async=true;
-              j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-              f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-59NDMV64');
-          `}
-        </Script>
+        <script
+          id="google-tag-manager"
+          src={`${absoluteUrl("google-tag-manager.js")}`}
+        />
       </head>
       <body className={cn("min-h-full flex flex-col   ")}>
         <div id="t" className="transition-all duration-500" />
@@ -89,14 +74,15 @@ export default function RootLayout({
         <div className=" transition-all duration-500">
           <Toaster />
         </div>
-        <Analytics/>
-    <noscript><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-59NDMV64"
-        height="0"
-        width="0"
-        className=" none"
-      ></iframe>
-      </noscript>
+        <Analytics />
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-59NDMV64"
+            height="0"
+            width="0"
+            className=" none"
+          ></iframe>
+        </noscript>
       </body>
     </html>
   );
