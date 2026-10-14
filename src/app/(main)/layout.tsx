@@ -74,7 +74,7 @@ export default function Layout({
                 {navigation.map((item) => (
                   <SidebarMenuItem key={item.name}>
                     <SidebarMenuButton
-                      className=" text-2xl px-4 "
+                      className=" text-lg px-4 "
                       render={<MainLink href={item.href} />}
                       size={"lg"}
                     >
@@ -92,7 +92,7 @@ export default function Layout({
                     <SidebarMenuItem key={item.name}>
                       <SidebarMenuButton
                       size={'lg'}
-                        className=" text-xl px-4  "
+                        className=" text-lg px-4  "
                         render={<MainLink href={`/city/${item.href}`} />}
                       >
                         {item.name}

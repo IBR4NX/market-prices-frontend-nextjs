@@ -91,23 +91,22 @@ export default function ProductDetails({
           <div className="grid gap-4 sm:grid-cols-2">
             {product.current_prices.map((item) => (
               <Card key={item.id}>
-                <CardContent className="space-y-4 p-5">
+                <CardContent className="space-y-2 p-">
                   <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-2 font-semibold">
-                      <MapPin className="h-4 w-4 text-muted-foreground" />
+                    <div className="flex items-center gap-2 text-xl font-semibold">
+                      <MapPin className="h-4 te w-4 text-muted-foreground" />
                       {item.city?.name ?? "مدينة غير معروفة"}
                     </div>
-
-                    <Badge variant="outline">السعر الحالي</Badge>
-                  </div>
 
                   <p className="text-2xl font-bold text-primary">
                     {formatPrice(item.price)}
                   </p>
-
+                  </div>
                   <Separator />
-
-
+                    <div className="flex items-center justify-between gap-2 text-xl font-semibold">
+                    <Badge variant="outline" className="p-4">السعر الحالي</Badge>
+                    <Badge variant="secondary" className="p-4 text-green-500  "><Dot  />مباشر</Badge>
+                    </div>
                 </CardContent>
               </Card>
             ))}
@@ -201,6 +200,7 @@ import {getProductImageBySlug } from "@/lib/constants";
 import {
   
   CalendarDays,
+  Dot,
   MapPin,
   Package,
   Tag,

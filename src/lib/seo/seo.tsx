@@ -137,5 +137,5 @@ function createTitle(title: string): string {
     return SITE_NAME;
   }
 
-  return `${titleWithoutSiteName} - ${SITE_NAME}`;
+  return `${SITE_NAME}- ${titleWithoutSiteName}`;
 }

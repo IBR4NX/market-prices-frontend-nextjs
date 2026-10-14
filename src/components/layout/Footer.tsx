@@ -56,7 +56,7 @@ export default function Footer() {
                 >
                   تعديل سعر
                 </MainLink>
-                <Link
+                <Link rel="nofollow"
                   href={ABOUT_URL}
                   className="w-fit hover:text-foreground hover:underline"
                 >

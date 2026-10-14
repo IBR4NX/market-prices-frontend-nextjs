@@ -67,31 +67,29 @@ export interface Product {
   }[];
 }
 
-const getProduct = cache(
-  async (slug: string): Promise<Product | null> => {
-    try {
-      const response = await api.get("/products-search", {
-        params: { slug },
-      });
+const getProduct = cache(async (slug: string): Promise<Product | null> => {
+  try {
+    const response = await api.get("/products-search", {
+      params: { slug },
+    });
 
-      const data = response.data;
-      const result = data?.product ?? data?.data ?? data;
+    const data = response.data;
+    const result = data?.product ?? data?.data ?? data;
 
-      const product = Array.isArray(result)
-        ? result[0]
-        : Array.isArray(result?.rows)
-          ? result.rows[0]
-          : result;
+    const product = Array.isArray(result)
+      ? result[0]
+      : Array.isArray(result?.rows)
+        ? result.rows[0]
+        : result;
 
-      if (!product?.id) return null;
+    if (!product?.id) return null;
 
-      return product as Product;
-    } catch (error) {
-      console.error("Failed to fetch product:", error);
-      return null;
-    }
-  },
-);
+    return product as Product;
+  } catch (error) {
+    console.error("Failed to fetch product:", error);
+    return null;
+  }
+});
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -111,12 +109,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
   }
   const productName = product.name.trim();
-const productQuantity =
-  product.quantity != null && product.unit
-    ? `${Number(product.quantity)} ${product.unit === "كجم" ? "كيلو" : product.unit}`
-    : "";
-
-
+  const productQuantity =
+    product.quantity != null && product.unit
+      ? `${Number(product.quantity)} ${product.unit}`
+      : "";
 
   const prices = (product.current_prices ?? [])
     .filter((item) => item.city?.name && item.price != null)
@@ -129,23 +125,26 @@ const productQuantity =
     return `${cityName}: ${price} ريال`;
   });
 
-  const description = [productName,
-productQuantity,    priceDetails.length
-      ? `أسعار المحافظات : ${priceDetails.join("، ")}.`
+  const description = [
+    `احدث الأسعار`,
+    productName,
+    productQuantity,
+    product.description,
+    priceDetails.length
+      ? `إختلاف الأسعار: ${priceDetails.join("، ")}.`
       : "لا تتوفر حاليًا أسعار مسجلة لهذا المنتج.",
-      product.description
   ]
     .filter(Boolean)
     .join(" ");
 
   const title = productQuantity
     ? `سعر ${productName} ${productQuantity} اليوم `
-    : `سعر ${productName} اليوم في اليمن حسب المدينة`;
+    : `سعر ${productName} اليوم في`;
 
   return createSeo({
-    canonicalPath: `/${product.slug}`,
-    image:getProductImageBySlug(product.slug),
-    ignoreImgAbsoluteUrl:true,
+    canonicalPath: `/${product.name}`,
+    image: getProductImageBySlug(product.slug),
+    ignoreImgAbsoluteUrl: true,
     title,
     description,
     type: "website",

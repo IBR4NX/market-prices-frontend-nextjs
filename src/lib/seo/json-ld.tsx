@@ -1,7 +1,6 @@
 interface JsonLdProps {
   data: Record<string, unknown> | Record<string, unknown>[];
 }
-
 export function JsonLd({ data }: JsonLdProps) {
   const jsonLd = JSON.stringify(data).replace(/</g, "\\u003c");
     return (
@@ -17,14 +16,13 @@ export const JsonLdWebsite = {
     {
       "@type": "Organization",
       "@id": "https://markets-ye.vercel.app/#organization",
-      name: "أسعار اليمن",
+      name: "دليلك اليمن",
       alternateName: [
         "أسعار اليمن اليوم",
         "أسعار المنتجات في اليمن",
         "أسعار السلع في اليمن",
         "دليل أسعار اليمن",
         "أسعار السوق اليمني",
-        "Markets YE",
       ],
       url: "https://markets-ye.vercel.app/",
       description:
