@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { api } from "@/lib/api";
 import { createSeo } from "@/lib/seo";
 import ProductDetails from "./client";
+import { getProductImageBySlug } from "@/lib/constants";
 export const instant = false;
 export function decodeSlug(value: string): string {
   try {
@@ -143,7 +144,7 @@ productQuantity,    priceDetails.length
 
   return createSeo({
     canonicalPath: `/${product.slug}`,
-    image:`/products/${product.slug}.png`,
+    image:getProductImageBySlug(product.slug),
     title,
     description,
     type: "website",
