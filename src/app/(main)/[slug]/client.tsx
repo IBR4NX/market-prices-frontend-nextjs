@@ -17,12 +17,11 @@ export default function ProductDetails({
     {/* صورة المنتج */}
     <div className="flex h-32 w-32 shrink-0 items-center justify-center overflow-hidden rounded-xl border bg-muted sm:h-40 sm:w-40">
       {product.slug ? (
-        <Image
-          src={`/products/${product.slug}.png`}
+        <img
+          src={`${getProductImageBySlug(product.slug)}`}
           alt={product.name}
           className="h-full w-full object-contain"
-          width={250}
-          height={250}
+
         />
       ) : (
         <Package className="h-12 w-12 text-muted-foreground" />
@@ -197,6 +196,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
+import {getProductImageBySlug } from "@/lib/constants";
 
 import {
   

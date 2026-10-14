@@ -14,6 +14,16 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  /* image from storage vercel */
+  images: {
+  remotePatterns: [
+    {
+      protocol: "https",
+      hostname: "q3stwcmidyeiq6rt.public.blob.vercel-storage.com",
+      pathname: "/product-images/**",
+    },
+  ],
+},
 };
 
 export default nextConfig;
