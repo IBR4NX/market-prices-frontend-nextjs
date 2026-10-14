@@ -1,9 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata,Viewport } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
-import Script from "next/script";
 import { Toaster } from "@/components/ui/toast";
 import { DirectionProvider } from "@/components/ui/direction";
 import { ThemeProvider } from "@/components/provider/theme-provider";
@@ -19,6 +18,11 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+    initialScale: 1,
+    width: 'device-width'
+}
 
 export default function RootLayout({
   children,

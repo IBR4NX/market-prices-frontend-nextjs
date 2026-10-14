@@ -1,8 +1,10 @@
+import { PRICES_URL } from "@/lib/constants";
 import ClientPage from "./client";
 
 import { createSeo } from "@/lib/seo";
 export const metadata = createSeo({
-  canonicalPath: "/prices",
+  canonicalPath: PRICES_URL,
+  ignorePath:true,
   title:
     "أسعار المنتجات والسلع في اليمن اليوم | صنعاء وتعز وبقية المدن",
   description:

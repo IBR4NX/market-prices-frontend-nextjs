@@ -5,6 +5,7 @@ export { absoluteUrl };
 const iconPath = "/favicons";
 export interface SeoProps {
   canonicalPath?: string;
+  ignorePath?:boolean;
   description: string;
   image?: string;
   noindex?: boolean;
@@ -14,6 +15,7 @@ export interface SeoProps {
 
 export function createSeo({
   canonicalPath = "/",
+  ignorePath=false,
   description,
   image = "/favicons/og-image.png",
   noindex = false,
@@ -21,10 +23,10 @@ export function createSeo({
   type = "website",
 }: SeoProps): Metadata {
   const fullTitle = createTitle(title);
-  const canonical = absoluteUrl(canonicalPath);
+  const canonical = ignorePath?canonicalPath: absoluteUrl(canonicalPath);
 
   const imageUrl = absoluteUrl(image);
-
+  console.log(canonical)
   return {
     // SEO
     metadataBase: new URL(MAIN_URL),
