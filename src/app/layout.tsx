@@ -25,6 +25,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   width: "device-width",
 };
+export const revalidate = 3600 // تحديث الصفحة كل 3600 ثانية (ساعة)
 
 export default function RootLayout({
   children,
