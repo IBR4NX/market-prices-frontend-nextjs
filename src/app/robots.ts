@@ -21,6 +21,7 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
     sitemap: [
       `${baseUrl}/sitemap.xml`,
       `${baseUrl}/sitemap/custom/products.xml?sender=${host ?? "markets-ye.vercel.app"}`,
+      `${baseUrl}/sitemap/custom/test/feed?sender=${host ?? "markets-ye.vercel.app"}`,
     ],
   };
 }

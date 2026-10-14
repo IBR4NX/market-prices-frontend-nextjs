@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/toast";
 import { DirectionProvider } from "@/components/ui/direction";
 import { ThemeProvider } from "@/components/provider/theme-provider";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-
+import { Analytics } from "@vercel/analytics/next"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -61,6 +61,7 @@ export default function RootLayout({
         <div className=" transition-all duration-500">
           <Toaster />
         </div>
+        <Analytics/>
       </body>
     </html>
   );
