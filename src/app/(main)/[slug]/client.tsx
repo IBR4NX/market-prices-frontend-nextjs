@@ -1,5 +1,6 @@
 "use client";
 import type { Product } from "./page";
+
 interface ProductDetailsProps {
     product: Product;
 }
@@ -11,28 +12,50 @@ export default function ProductDetails({
     <main dir="rtl" className="mx-auto max-w-5xl space-y-8 p-4 sm:p-6">
       {/* معلومات المنتج */}
       <Card>
-        <CardHeader>
-          <div className="mb-3 flex flex-wrap items-center gap-2">
-            <Badge variant="secondary">
-              <Tag className="ms-1 h-3.5 w-3.5" />
-              {product.category?.name ?? "بدون تصنيف"}
-            </Badge>
+  <CardHeader>
+  <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+    {/* صورة المنتج */}
+    <div className="flex h-32 w-32 shrink-0 items-center justify-center overflow-hidden rounded-xl border bg-muted sm:h-40 sm:w-40">
+      {product.slug ? (
+        <Image
+          src={`/products/${product.slug}.png`}
+          alt={product.name}
+          className="h-full w-full object-contain"
+          width={250}
+          height={250}
+        />
+      ) : (
+        <Package className="h-12 w-12 text-muted-foreground" />
+      )}
+    </div>
 
-            <Badge variant={product.is_active ? "default" : "destructive"}>
-              {product.is_active ? "منتج نشط" : "منتج غير نشط"}
-            </Badge>
-          </div>
+    {/* معلومات المنتج */}
+    <div className="min-w-0 flex-1">
+      <div className="mb-3 flex flex-wrap items-center gap-2">
+        <Badge variant="secondary">
+          <Tag className="ms-1 h-3.5 w-3.5" />
+          {product.category?.name ?? "بدون تصنيف"}
+        </Badge>
 
-          <CardTitle className="text-2xl font-bold sm:text-3xl">
-            {product.name}
-          </CardTitle>
+        <Badge variant={product.is_active ? "default" : "destructive"}>
+          {product.is_active ? "منتج نشط" : "منتج غير نشط"}
+        </Badge>
+      </div>
 
-          {product.description && (
-            <p className="text-sm leading-7 text-muted-foreground">
-              {product.description}
-            </p>
-          )}
-        </CardHeader>
+      <CardTitle className="text-2xl font-bold sm:text-3xl">
+        {product.name}
+      </CardTitle>
+
+      {product.description && (
+        <p className="mt-2 text-sm leading-7 text-muted-foreground">
+          {product.description}
+        </p>
+      )}
+    </div>
+  </div>
+</CardHeader>
+
+
 
         <CardContent className="grid gap-4 sm:grid-cols-2">
           <div className="flex items-center gap-3 rounded-lg border p-4">
@@ -182,6 +205,7 @@ import {
   Package,
   Tag,
 } from "lucide-react";
+import Image from "next/image";
 
 
 

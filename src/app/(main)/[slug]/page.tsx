@@ -128,9 +128,9 @@ const productQuantity =
     return `${cityName}: ${price} ريال`;
   });
 
-  const description = [
+  const description = [productName,
 productQuantity,    priceDetails.length
-      ? `الأسعار : ${priceDetails.join("، ")}.`
+      ? `أسعار المحافظات : ${priceDetails.join("، ")}.`
       : "لا تتوفر حاليًا أسعار مسجلة لهذا المنتج.",
       product.description
   ]
@@ -143,6 +143,7 @@ productQuantity,    priceDetails.length
 
   return createSeo({
     canonicalPath: `/${product.slug}`,
+    image:`/products/${product.slug}.png`,
     title,
     description,
     type: "website",
