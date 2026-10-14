@@ -338,19 +338,6 @@ export default function PricesScopePage({
             }
           />
 
-          <Card className="mb-6 border-border/70 bg-muted/30 py-0">
-            <CardContent className="p-4 text-sm leading-7 text-muted-foreground">
-              <h2 className="mb-1 font-semibold text-foreground">
-                نتائج مخصصة حسب البيانات المتاحة
-              </h2>
-              <p>
-                يتم عرض الأسعار المطابقة للفلاتر الحالية فقط. إذا لم تظهر نتيجة،
-                فهذا يعني أن البيانات غير متوفرة حالياً لهذا البحث أو أن الفلاتر
-                بحاجة لتغيير.
-              </p>
-            </CardContent>
-          </Card>
-
           {loading && (
             <Card>
               <CardContent className="p-5 text-center text-base font-medium text-muted-foreground">

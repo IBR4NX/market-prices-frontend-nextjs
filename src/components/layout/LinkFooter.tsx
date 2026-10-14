@@ -1,13 +1,6 @@
 import  Link  from "next/link";
 import MainLink from "@/components/shared/mainLink";
-// const cities = [
-//   { name: "صنعاء", slug: "sanaa" },
-//   { name: "عدن", slug: "aden" },
-//   { name: "تعز", slug: "taiz" },
-//   { name: "إب", slug: "ibb" },
-//   { name: "الحديدة", slug: "hodeidah" },
-//   { name: "حضرموت", slug: "hadramout" },
-// ];
+
 
 // const categories = [
 //   { name: "الأرز", slug: "rice" },

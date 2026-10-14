@@ -19,9 +19,9 @@ export function Header({ children, className }: React.ComponentProps<"div">) {
 		} else if (hidden) {
 			setHidden(false);
 		}
-		if (!isTop && current < 20) {
+		if (!isTop && current < 100) {
 			setIsTop(true);
-		} else if (isTop && current > 20) {
+		} else if (isTop && current > 100) {
 			setIsTop(false);
 		}
 	});

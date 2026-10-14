@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect, ReactNode } from "react";
 import { Header } from "@/components/layout/Header";
 import {
@@ -20,18 +20,26 @@ import {
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
 import SideTrigger from "@/components/layout/toggles/side-trigger";
-import { Dot } from "lucide-react";
+import { ChevronDown, Dot } from "lucide-react";
 import MainLink from "@/components/shared/mainLink";
 import { notFound } from "next/navigation";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { SITE_NAME } from "@/lib/constants";
+import { Separator } from "@/components/ui/separator";
 export default function Layout({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
   const [loading, setLoading] = useState(true);
-  useEffect(()=>{
+  useEffect(() => {
     setLoading(false);
-  },[])
+  }, []);
   return (
     <>
       <SidebarProvider dir="rtl" className="    mt-13  ">
@@ -39,46 +47,64 @@ export default function Layout({
         <Sidebar
           dir="rtl"
           side="right"
-          className=" z-20 "
+          className=" z-20"
           collapsible="offcanvas"
         >
           <SidebarHeader>
-						    <SidebarGroup >
-
-
-			<SidebarMenu>
-				<SidebarMenuItem className="flex items-center justif">
-
-            <SideTrigger />
-            <span className="text-lg font-semibold tracking-tight">أسعار</span>
-				</SidebarMenuItem>
-			</SidebarMenu>
-							</SidebarGroup>
+            <SidebarGroup>
+              <SidebarMenu>
+                <SidebarMenuItem className="flex items-center justif">
+                  <SideTrigger />
+                  <span className=" pr-8 text-primary text-xl font-bold tracking-tight">
+                    {SITE_NAME}
+                  </span>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroup>
             {/* <NavUser user={store} /> */}
+            <Separator/>
           </SidebarHeader>
           {/* <Separator orientation="horizontal" /> */}
-          <SidebarContent dir="rtl" >
-
+          <SidebarContent dir="rtl" className=" text-2xl">
             <SidebarGroup dir="rtl" className="">
-              <SidebarGroupLabel>الكل</SidebarGroupLabel>
+              {/* <SidebarGroupLabel>الكل</SidebarGroupLabel> */}
               <SidebarGroupContent></SidebarGroupContent>
+
+              <SidebarMenu>
+                {navigation.map((item) => (
+                  <SidebarMenuItem key={item.name}>
+                    <SidebarMenuButton
+                      className=" text-2xl px-4 "
+                      render={<MainLink href={item.href} />}
+                      size={"lg"}
+                    >
+                      {item.name}
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroup>
+            <SidebarGroup dir="rtl" className="">
+              <SidebarGroupLabel>المدن</SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {cities.map((item) => (
+                    <SidebarMenuItem key={item.name}>
+                      <SidebarMenuButton
+                      size={'lg'}
+                        className=" text-xl px-4  "
+                        render={<MainLink href={`/city/${item.href}`} />}
+                      >
+                        {item.name}
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
             </SidebarGroup>
 
-            <SidebarMenu>
-              {navigation.map((item) => (
-                <SidebarMenuItem key={item.name}>
-                  <MainLink href={item.href}>
-                    <SidebarMenuButton>{item.name}</SidebarMenuButton>
-                  </MainLink>
-                  <SidebarMenuAction className="mr-2">
-                    <Dot /> <span className="sr-only">ت</span>
-                  </SidebarMenuAction>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-
           </SidebarContent>
-          <SidebarFooter>{/* <SidebarOptInForm/> */}</SidebarFooter>
+          <SidebarFooter>{/* <SidebarOptInForm/> */} ibrahim  </SidebarFooter>
           <SidebarRail />
         </Sidebar>
         <div className="  items-center justify-center   w-full h-full ">
@@ -93,8 +119,12 @@ export default function Layout({
 const navigation: { name: string; href: `/${string}` }[] = [
   { name: "الرئيسية", href: "/" },
   { name: "الأسعار", href: "/prices" },
-  { name: "اتصل بنا", href: "/contact" },
-  { name: "من نحن", href: "/about" },
-  { name: "إدارة المنصة", href: "/dashboard" },
-  { name: "المساعدة", href: "/help" },
+];
+const cities = [
+  { name: "صنعاء", href: "صنعاء" },
+  { name: "عدن", href: "عدن" },
+  { name: "تعز", href: "تعز" },
+  { name: "إب", href: "إب" },
+  { name: "الحديدة", href: "الحديدة" },
+  { name: "حضرموت", href: "حضرموت" },
 ];
