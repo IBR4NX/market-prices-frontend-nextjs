@@ -145,6 +145,7 @@ productQuantity,    priceDetails.length
   return createSeo({
     canonicalPath: `/${product.slug}`,
     image:getProductImageBySlug(product.slug),
+    ignoreImgAbsoluteUrl:true,
     title,
     description,
     type: "website",
