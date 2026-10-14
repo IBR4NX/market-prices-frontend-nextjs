@@ -1,6 +1,7 @@
 export interface PriceRecord {
   product_id: string;
   product_name: string;
+  product_description: string;
   category_id: string;
   category_name: string;
   city_id: string;

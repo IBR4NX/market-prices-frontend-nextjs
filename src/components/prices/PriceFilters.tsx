@@ -41,7 +41,7 @@ export function PriceFilters({
           label="المدينة"
           allLabel="كل المدن"
           options={cities ?? []}
-          value={"تعز"}
+          value={filters.city}
           onChange={(cityName) => onChange({ city: cityName })}
           getOptionValue={(city) => city.slug}
           />
@@ -54,10 +54,10 @@ export function PriceFilters({
           options={categories}
           value={filters.category}
           onChange={(categoryName) => onChange({ category: categoryName })}
-          getOptionValue={(category) => category.name}
+          getOptionValue={(category) => category.slug}
           />
           )}
-          {hasActiveFilters||false && (
+          {hasActiveFilters && (
             <Button
               type="button"
               variant="ghost"

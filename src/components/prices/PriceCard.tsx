@@ -48,7 +48,7 @@ export default function PriceCard({ item, labels }: PriceCardProps) {
             <div className="mt-4 flex flex-wrap items-center gap-2">
               <Badge
                 variant="secondary"
-                className="rounded-md text-md font-medium"
+                className="rounded-md p-3 text-md font-medium"
               >
                 {item.category_name}
               </Badge>
@@ -71,18 +71,18 @@ export default function PriceCard({ item, labels }: PriceCardProps) {
           </div>
         </div>
 
-        <Separator className="my-5" />
+        <Separator className="my-2" />
 
         {/* Details */}
         <div className="grid grid-cols-1 gap-4 min-[420px]:grid-cols-2">
           <div>
-            <p className="text-sm font-medium text-muted-foreground">
+            <p className="text-lg font-medium text-muted-foreground">
               {labels.quantity}
             </p>
 
-            <p className="mt-1 text-base font-bold text-foreground">
+            <p className="mt-1 text-2xl  font-bold text-primary">
               {formatNumber(item.quantity)}
-              <span className="ms-1 text-sm font-medium text-muted-foreground">
+              <span className="ms-1  text-sm font-medium text-muted-foreground">
                 {item.unit}
               </span>
             </p>
@@ -97,7 +97,9 @@ export default function PriceCard({ item, labels }: PriceCardProps) {
               {formatDate(item.updated_at)}
             </p>
           </div>
+
         </div>
+                      <h3 className=" line-clamp-2 ">{item.product_description}</h3>
 
       </CardContent>
     </Card>

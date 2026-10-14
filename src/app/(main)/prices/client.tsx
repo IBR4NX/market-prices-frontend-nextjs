@@ -156,18 +156,6 @@ export default function Prices() {
             onClear={() => setFilters(initialFilters)}
           />
 
-          <Card className="mb-6 border-border/70 bg-muted/30 py-0">
-            <CardContent className="p-4 text-sm leading-7 text-muted-foreground">
-              <h2 className="mb-1 font-semibold text-foreground">
-                كيف تستخدم صفحة الأسعار؟
-              </h2>
-              <p>
-                اكتب اسم المنتج لمعرفة سعره اليوم في اليمن، أو اختر مدينة مثل
-                صنعاء أو تعز أو عدن عند توفرها في القائمة. يمكنك أيضاً اختيار
-                فئة لمتابعة أسعار المواد الغذائية أو السلع ضمن نفس التصنيف.
-              </p>
-            </CardContent>
-          </Card>
 
           {/* Loading */}
           {loading && (

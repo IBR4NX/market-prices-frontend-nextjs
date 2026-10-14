@@ -31,8 +31,8 @@ export function proxy(request: NextRequest) {
       request.headers.get("x-real-ip") ??
       "Unknown",
   };
-  console.log("main: ",MAIN_DOMAIN);
-  console.info("[VISIT]", JSON.stringify(log));
+  // console.log("main: ",MAIN_DOMAIN);
+  // console.info("[VISIT]", JSON.stringify(log));
 
   // console.log("proxy →", request.method, pathname, hostname, SUPPORTED_DOMAINS, isSUPPORTED);
   if (isSUPPORTED) {
