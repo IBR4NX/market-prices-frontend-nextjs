@@ -1,6 +1,6 @@
 "use client";
 import { formatNumber, formatDate, formatDateTime, formatPrice } from "@/components/prices/format";
-import type { Product } from "./page";
+import type { Product } from "../../../components/products/type";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -186,5 +186,3 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
     </main>
   );
 }
-
-

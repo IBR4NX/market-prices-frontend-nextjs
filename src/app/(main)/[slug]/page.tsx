@@ -3,7 +3,8 @@ import { cache } from "react";
 import { notFound } from "next/navigation";
 import { api } from "@/lib/api";
 import { createSeo } from "@/lib/seo";
-import ProductDetails from "./client";
+import ProductDetails from "@/components/products/product-details";
+import {Product} from "@/components/products/product-details";
 import { getProductImageBySlug } from "@/lib/constants";
 export const instant = false;
 export function decodeSlug(value: string): string {
@@ -13,59 +14,7 @@ export function decodeSlug(value: string): string {
     return value;
   }
 }
-export interface Product {
-  id: string;
-  name: string;
-  slug: string;
-  description: string | null;
-  quantity: number | string;
-  unit: string;
-  is_active: boolean;
-  created_at: string;
-  updated_at: string;
 
-  category: {
-    id?: string;
-    name: string;
-    slug: string;
-    description?: string | null;
-    is_active?: boolean;
-  };
-
-  current_prices: {
-    id: string;
-    slug?: string;
-    product_id?: string;
-    city_id?: string;
-    price: number | string;
-    updated_at: string;
-    updated_by?: string | null;
-    city: {
-      id?: string;
-      name: string;
-      slug: string;
-    };
-  }[];
-
-  price_history: {
-    id: string;
-    product_id?: string;
-    city_id?: string;
-    price: number | string;
-    source_submission_id?: string | null;
-    approved_by?: string;
-    created_at: string;
-    city: {
-      id?: string;
-      name: string;
-      slug: string;
-    };
-    approved_by_user?: {
-      id?: string;
-      name: string;
-    } | null;
-  }[];
-}
 
 const getProduct = cache(async (slug: string): Promise<Product | null> => {
   try {
@@ -76,11 +25,7 @@ const getProduct = cache(async (slug: string): Promise<Product | null> => {
     const data = response.data;
     const result = data?.product ?? data?.data ?? data;
 
-    const product = Array.isArray(result)
-      ? result[0]
-      : Array.isArray(result?.rows)
-        ? result.rows[0]
-        : result;
+    const product = Array.isArray(result) ? result[0] : Array.isArray(result?.rows) ? result.rows[0] : result;
 
     if (!product?.id) return null;
 
@@ -109,10 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
   }
   const productName = product.name.trim();
-  const productQuantity =
-    product.quantity != null && product.unit
-      ? `${Number(product.quantity)} ${product.unit}`
-      : "";
+  const productQuantity = product.quantity != null && product.unit ? `${Number(product.quantity)} ${product.unit}` : "";
 
   const prices = (product.current_prices ?? [])
     .filter((item) => item.city?.name && item.price != null)
@@ -130,16 +72,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     productName,
     productQuantity,
     product.description,
-    priceDetails.length
-      ? `إختلاف الأسعار: ${priceDetails.join("، ")}.`
-      : "لا تتوفر حاليًا أسعار مسجلة لهذا المنتج.",
+    priceDetails.length ? `إختلاف الأسعار: ${priceDetails.join("، ")}.` : "لا تتوفر حاليًا أسعار مسجلة لهذا المنتج.",
   ]
     .filter(Boolean)
     .join(" ");
 
-  const title = productQuantity
-    ? `سعر ${productName} ${productQuantity} اليوم `
-    : `سعر ${productName} اليوم في`;
+  const title = productQuantity ? `سعر ${productName} ${productQuantity} اليوم ` : `سعر ${productName} اليوم في`;
 
   return createSeo({
     canonicalPath: `/${product.name}`,
