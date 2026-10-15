@@ -35,14 +35,14 @@ export default function PriceCard({ item, labels }: PriceCardProps) {
           </MainLink>
         <CardDescription className=" line-clamp-2 ">
           <Badge variant="secondary" className="rounded-md p-3 text-md font-medium">
-            <MainLink href={`/category/${item.category_name}`} className="hover:text-primary">
+            <MainLink href={`/category/${item.category_name}`}  >
               {item.category_name}
             </MainLink>{" "}
           </Badge>
-          <Badge variant={"ghost"} className="text-md text-muted-foreground">
-            <Link href={`${MAIN_URL}/city/${item.city_name}`} className="hover:text-primary">
+          <Badge variant={"ghost"} className="text-md p-3 text-muted-foreground">
+            <MainLink href={`/city/${item.city_name}`} >
               {item.city_name}
-            </Link>{" "}
+            </MainLink>{" "}
           </Badge>
         </CardDescription>
         <CardAction className="">
@@ -83,7 +83,7 @@ export default function PriceCard({ item, labels }: PriceCardProps) {
         nativeButton={false}
           variant="link"
           className="w-full"
-          render={<Link href={`${MAIN_URL}/product/${item.product_name}`} />}
+          render={<MainLink href={`/product/${item.product_name}`} />}
         >
           المزيد
           <ArrowLeft/>

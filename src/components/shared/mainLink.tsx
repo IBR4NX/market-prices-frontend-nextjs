@@ -5,7 +5,7 @@ import type { ComponentProps } from "react";
 
 type MainLinkProps = Omit<ComponentProps<typeof Link>, "href"> & {
   href: `/${string}`;
-  className:string;
+  className?:string;
 };
 
 export default function MainLink({ href,className, ...props }: MainLinkProps) {
