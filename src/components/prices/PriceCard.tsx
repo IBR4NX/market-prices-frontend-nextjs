@@ -20,33 +20,21 @@ interface PriceCardProps {
   };
 }
 import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
-import { MAIN_URL } from "@/lib/constants";
-import Link from "next/link";
 import MainLink from "../shared/mainLink";
-import {  ArrowLeft } from "lucide-react";
+import { ArrowLeft, CalendarDays, MapPin, Package, Tag, Weight } from "lucide-react";
+
 export default function PriceCard({ item, labels }: PriceCardProps) {
   return (
-    <Card className="overflow-hidden border-border bg-card shadow-sm">
+    <Card className="overflow-hidden border-border gap-4 bg-card shadow-sm">
       <CardHeader className="bgamber-100 p-">
-          <MainLink href={`/product/${item.product_name}`} className="">
-        <CardTitle className="text-2xl mb-4">
-            {item.product_name}
-        </CardTitle>
-          </MainLink>
-        <CardDescription className=" line-clamp-2 ">
-          <Badge variant="secondary" className="rounded-md p-3 text-md font-medium">
-            <MainLink href={`/category/${item.category_name}`}  >
-              {item.category_name}
-            </MainLink>{" "}
-          </Badge>
-          <Badge variant={"ghost"} className="text-md p-3 text-muted-foreground">
-            <MainLink href={`/city/${item.city_name}`} >
-              {item.city_name}
-            </MainLink>{" "}
-          </Badge>
-        </CardDescription>
-        <CardAction className="">
-          <Button className={"text-xl"} variant="link">
+        <MainLink href={`/product/${item.product_name}`} className="flex mb-4 items-center gap-2">
+          <Package className="size-5 shrink-0 text-primary" />
+          <CardTitle className=" text-2xl">{item.product_name}</CardTitle>
+        </MainLink>
+        <CardDescription className=" line-clamp-2 col-span-2 ">{item.product_description}</CardDescription>
+        <CardAction className="flex items-center gap-1">
+          <Tag className="size-5 text-primary" />
+          <Button className="text-xl" variant="link">
             {formatNumber(item.price)}
           </Button>
           ريال
@@ -59,7 +47,8 @@ export default function PriceCard({ item, labels }: PriceCardProps) {
           <Item dir="rtl" className=" col-span-1">
             <ItemMedia hidden variant="icon"></ItemMedia>
             <ItemContent>
-              <ItemDescription className=" text-right" dir="rtl">
+              <ItemDescription className="flex items-center gap-2 text-right" dir="rtl">
+                <Weight className="size-4 text-muted-foreground" />
                 {labels.quantity}
               </ItemDescription>
               <ItemTitle>
@@ -69,24 +58,34 @@ export default function PriceCard({ item, labels }: PriceCardProps) {
           </Item>
           <Item dir="rtl" className="col-span-2">
             <ItemContent>
-              <ItemDescription className=" text-right" dir="rtl">
+              <ItemDescription className="flex items-center gap-2 text-right" dir="rtl">
+                <CalendarDays className="size-4 text-muted-foreground" />
                 {labels.updated}
               </ItemDescription>
               <ItemTitle>{formatDate(item.updated_at)}</ItemTitle>
             </ItemContent>
           </Item>
         </div>
-        <h3 className=" line-clamp-2 ">{item.product_description}s</h3>
+        <h3 className=" line-clamp-1 "></h3>
       </CardContent>
-      <CardFooter>
+
+      <CardFooter className="">
+        <Badge variant="secondary" className="rounded-md p-3 text-md font-medium">
+          <Tag className="ml-1 size-4" />
+          <MainLink href={`/category/${item.category_name}`}>{item.category_name}</MainLink>
+        </Badge>
+        <Badge variant="ghost" className="text-md p-3 text-muted-foreground">
+          <MapPin className="ml-1 size-4" />
+          <MainLink href={`/city/${item.city_name}`}>{item.city_name}</MainLink>
+        </Badge>
         <Button
-        nativeButton={false}
+          nativeButton={false}
           variant="link"
-          className="w-full"
+          className="  mr-auto gap-2"
           render={<MainLink href={`/product/${item.product_name}`} />}
         >
           المزيد
-          <ArrowLeft/>
+          <ArrowLeft className="size-4" />
         </Button>
       </CardFooter>
     </Card>

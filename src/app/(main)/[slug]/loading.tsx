@@ -8,7 +8,7 @@ export default function Loading() {
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-function ProductDetailsSkeleton() {
+export function ProductDetailsSkeleton() {
   return (
     <div className="mx-auto max-w-5xl space-y-6 p-4 sm:p-6">
       <Card>
