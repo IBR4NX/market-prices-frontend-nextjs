@@ -65,6 +65,9 @@ export default function HomePage() {
               <h1 className="text-4xl font-black tracking-tight text-balance sm:text-5xl lg:text-6xl">
                 أسعار المنتجات في وتعز تعاني من ارتفاع حاد بسبب الحروب الحاصله
               </h1>
+              <h1 className="text-4xl font-readex font-black tracking-tight text-balance sm:text-5xl lg:text-6xl">
+                أسعار المنتجات في وتعز تعاني من ارتفاع حاد بسبب الحروب الحاصله
+              </h1>
               <p className="mt-5 max-w-2xl text-base leading-8 text-muted-foreground sm:mt-6 sm:text-lg sm:leading-9">
                 ابحث عن أسعار المنتجات في اليمن حسب المدينة والفئة، وقارن السعر
                 المتاح في صنعاء وتعز وعدن وبقية المدن عند توفر البيانات.

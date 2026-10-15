@@ -12,27 +12,19 @@ interface PriceListProps {
   };
 }
 
-
-
 export default function PriceList({ items, labels }: PriceListProps) {
   return (
     <section className="space-y-5">
-
-
-      <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2 2xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:gap-4 lg:grid-cols-2 2xl:grid-cols-3">
         {items.map((item) => (
-          <div
+          <MainLink
             key={`${item.product_id}-${item.city_id}`}
-            className="transition-transform duration-200 hover:-translate-y-0.5"
+            href={`/${item.product_name.replaceAll(" ", " ") ?? ""}`}
           >
-            <MainLink href={`/${item.product_name.replaceAll(' ',' ')??""}`}>
             <PriceCard item={item} labels={labels} />
-            </MainLink>
-
-          </div>
+          </MainLink>
         ))}
       </div>
     </section>
   );
 }
-
