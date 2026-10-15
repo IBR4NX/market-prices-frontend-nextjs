@@ -39,7 +39,7 @@ export default function LinkFooter() {
                 <MainLink
                   key={city.slug}
                   href={`/city/${city.slug}`}
-                  className="w-1/4 underline min-w-fit underline-offset-2  hover:text-blue-700"
+                  className=" w-fit hover:text-foreground hover:underline"
                 >
                   أسعار {city.name}
                 </MainLink>
@@ -48,7 +48,7 @@ export default function LinkFooter() {
 
             <MainLink
               href ="/cities"
-              className="mt-4 text-xl inline-block font-medium underline underline-offset-2   hover:text-blue-700"
+              className="mt-4 text-xl text-muted-foreground inline-block font-medium w-fit hover:text-foreground hover:underline"
             >
               جميع المحافظات
             </MainLink>
@@ -65,7 +65,7 @@ export default function LinkFooter() {
                 <MainLink
                   key={category.slug}
                   href={`/product/${category.slug}`}
-                  className="w-fit underline-offset-2 underline  hover:text-blue-700"
+                  className="w-fit hover:text-foreground hover:underline"
                 >
                   أسعار {category.name}
                 </MainLink>
@@ -74,7 +74,7 @@ export default function LinkFooter() {
 
             <MainLink
               href="/categories"
-              className="mt-4 text-xl inline-block font-medium  underline-offset-2  underline hover:text-blue-700"
+              className="mt-4 text-xl text-muted-foreground inline-block font-medium w-fit hover:text-foreground hover:underline"
             >
               جميع الفئات
             </MainLink>

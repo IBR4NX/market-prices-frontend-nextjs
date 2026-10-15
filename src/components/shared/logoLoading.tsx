@@ -14,7 +14,7 @@ export default function LogoLoading({
 	full = false,
 	spinner = false,
 	logo = true,
-	size = 70,
+	size = 128,
 	...props
 }: React.ComponentProps<'div'>& Props) {
 	if (!spinner && !logo) return;
@@ -30,7 +30,7 @@ export default function LogoLoading({
 			>
 				{logo && (
 					<Image
-						src='/favicons/logo/logo.png'
+						src='/favicons/favicon.svg'
 						alt='logo'
 						width={size}
 						height={size}

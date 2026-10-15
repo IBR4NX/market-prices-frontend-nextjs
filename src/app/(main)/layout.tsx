@@ -107,7 +107,7 @@ export default function Layout({
           <SidebarFooter>{/* <SidebarOptInForm/> */} ibrahim  </SidebarFooter>
           <SidebarRail />
         </Sidebar>
-        <div className="  items-center justify-center   w-full h-full ">
+        <div className="  items-center justify-center    w-full h-full ">
           {children}
           <Footer />
         </div>
