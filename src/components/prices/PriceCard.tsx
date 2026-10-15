@@ -28,11 +28,11 @@ export default function PriceCard({ item, labels }: PriceCardProps) {
   return (
     <Card className="overflow-hidden border-border bg-card shadow-sm">
       <CardHeader className="bgamber-100 p-">
-        <CardTitle className="text-xl">
           <MainLink href={`/product/${item.product_name}`} className="">
+        <CardTitle className="text-2xl mb-4">
             {item.product_name}
-          </MainLink>
         </CardTitle>
+          </MainLink>
         <CardDescription className=" line-clamp-2 ">
           <Badge variant="secondary" className="rounded-md p-3 text-md font-medium">
             <MainLink href={`/category/${item.category_name}`} className="hover:text-primary">

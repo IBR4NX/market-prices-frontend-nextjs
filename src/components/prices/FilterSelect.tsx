@@ -50,7 +50,7 @@ export function FilterSelect({
         onValueChange={(nextValue) => {
           onChange(nextValue === ALL_VALUE ? "" : (nextValue ?? ""));
         }}
-        defaultValue={value}
+        value={value}
       >
         <SelectTrigger id={id} className="h-10 w-full">
           <SelectValue placeholder={allLabel} />
