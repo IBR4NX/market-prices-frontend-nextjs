@@ -104,7 +104,7 @@ export default function Layout({
             </SidebarGroup>
 
           </SidebarContent>
-          <SidebarFooter>{/* <SidebarOptInForm/> */} ibrahim  </SidebarFooter>
+          <SidebarFooter>{/* <SidebarOptInForm/> */}   </SidebarFooter>
           <SidebarRail />
         </Sidebar>
         <div className="  items-center justify-center    w-full h-full ">

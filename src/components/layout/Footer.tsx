@@ -116,7 +116,7 @@ export default function Footer() {
                   <FaXTwitter />
                 </a>
                 <a
-                  href="https://www.whatsapp.com/+967738386364"
+                  href="https://www.whatsapp.com/+967783390826"
                   aria-label="WhatsApp"
                   className="rounded-md p-2 hover:bg-muted hover:text-foreground"
                 >
@@ -135,7 +135,8 @@ export default function Footer() {
         </div>
 
         <div className=" relative -bottom-4 flex flex-col gap-3 border- -5 text-center text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:text-start">
-          <p>{`© ${new Date().getFullYear()} السوق اليمني. جميع الحقوق محفوظة.`}</p>
+          <p>طور بواسطة ابراهيم المخلافي</p>
+          <p>{`© ${new Date().getFullYear()} ${SITE_NAME}. جميع الحقوق محفوظة.`}</p>
         </div>
       </div>
     </footer>
