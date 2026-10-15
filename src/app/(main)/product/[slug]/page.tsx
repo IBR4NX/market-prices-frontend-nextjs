@@ -1,5 +1,5 @@
 
-import ProductPage ,{generateMetadata,instant} from "../../[slug]/page";
+import ProductPage ,{generateMetadata} from "../../[slug]/page";
 
-export {instant,generateMetadata}
+export {generateMetadata}
 export default ProductPage
