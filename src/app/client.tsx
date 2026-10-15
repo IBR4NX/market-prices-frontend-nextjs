@@ -56,16 +56,10 @@ export default function HomePage() {
         <section className="relative isolate overflow-hidden">
           <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-80 bg-linear-to-b from-primary/10 via-primary/5 to-transparent sm:h-96" />
 
-          <div className="mx-auto w-full max-w-7xl px-4 pt-8 pb-12 sm:px-6 sm:pt-16 sm:pb-16 lg:px-8 lg:pt-44 lg:pb-24">
-            <div className="max-w-3xl   ">
+          <div className="mx-auto w-full max-w-7xl px-4 pt-8 pb-12 sm:px-6 max-sm:pt-28 sm:pt-16 sm:pb-16 lg:px-8 lg:pt-44 lg:pb-24">
+            <div className="max-w-3xl    ">
 
-              <img src={`${MAIN_URL}/favicons/logo.svg`}
-              className=" sm:w-3xs"
-              />
-              <h1 className="text-4xl font-black tracking-tight text-balance sm:text-5xl lg:text-6xl">
-                أسعار المنتجات في وتعز تعاني من ارتفاع حاد بسبب الحروب الحاصله
-              </h1>
-              <h1 className="text-4xl font-readex font-black tracking-tight text-balance sm:text-5xl lg:text-6xl">
+              <h1 className="text-4xl  font-black tracking-tight leading-tight text-balance sm:text-5xl lg:text-6xl">
                 أسعار المنتجات في وتعز تعاني من ارتفاع حاد بسبب الحروب الحاصله
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-8 text-muted-foreground sm:mt-6 sm:text-lg sm:leading-9">
