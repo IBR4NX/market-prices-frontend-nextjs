@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { formatDateTime } from "@/components/prices/format";
-import type { Product } from "@/components/products/type";
+import type { Product } from "@/components/products/types";
 
 interface ProductMetaCardProps {
   slug: Product["slug"];

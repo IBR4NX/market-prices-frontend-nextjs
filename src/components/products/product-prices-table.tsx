@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { formatPrice } from "@/components/prices/format";
 import { CityCell, EmptyState } from "./product-primitives";
-import type { Product } from "@/components/products/type";
+import type { Product } from "@/components/products/types";
 
 interface ProductPricesTableProps {
   prices: Product["current_prices"];

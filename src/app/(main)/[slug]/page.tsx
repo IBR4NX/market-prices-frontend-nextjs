@@ -4,9 +4,12 @@ import { notFound } from "next/navigation";
 import { api } from "@/lib/api";
 import { createSeo } from "@/lib/seo";
 import ProductDetails from "@/components/products/product-details";
-import {Product} from "@/components/products/product-details";
+import { Product } from "@/components/products/types";
 import { getProductImageBySlug } from "@/lib/constants";
-export const instant = false;
+import { formatNumber, formatPrice } from "@/components/prices/format";
+
+// تم حذف export const instant لأنها غير معتمدة في Next.js وتسبب مشاكل بناء
+
 export function decodeSlug(value: string): string {
   try {
     return decodeURIComponent(value);
@@ -14,7 +17,6 @@ export function decodeSlug(value: string): string {
     return value;
   }
 }
-
 
 const getProduct = cache(async (slug: string): Promise<Product | null> => {
   try {
@@ -25,7 +27,11 @@ const getProduct = cache(async (slug: string): Promise<Product | null> => {
     const data = response.data;
     const result = data?.product ?? data?.data ?? data;
 
-    const product = Array.isArray(result) ? result[0] : Array.isArray(result?.rows) ? result.rows[0] : result;
+    const product = Array.isArray(result)
+      ? result[0]
+      : Array.isArray(result?.rows)
+      ? result.rows[0]
+      : result;
 
     if (!product?.id) return null;
 
@@ -42,7 +48,8 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = await getProduct(decodeSlug(slug));
+  const decodedSlug = decodeSlug(slug);
+  const product = await getProduct(decodedSlug);
 
   if (!product) {
     return createSeo({
@@ -53,8 +60,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       noindex: true,
     });
   }
+
   const productName = product.name.trim();
-  const productQuantity = product.quantity != null && product.unit ? `${Number(product.quantity)} ${product.unit}` : "";
+  const productQuantity =
+    product.quantity != null && product.unit
+      ? `${formatNumber(product.quantity)} ${product.unit}`
+      : "";
 
   const prices = (product.current_prices ?? [])
     .filter((item) => item.city?.name && item.price != null)
@@ -62,25 +73,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const priceDetails = prices.map((item) => {
     const cityName = item.city!.name;
-    const price = Number(item.price).toLocaleString("en-US");
-
-    return `${cityName}: ${price} ريال`;
+    return `${cityName}: ${formatPrice(item.price)}`;
   });
 
   const description = [
-    `احدث الأسعار`,
+    `أحدث الأسعار`,
     productName,
     productQuantity,
     product.description,
-    priceDetails.length ? `إختلاف الأسعار: ${priceDetails.join("، ")}.` : "لا تتوفر حاليًا أسعار مسجلة لهذا المنتج.",
+    priceDetails.length
+      ? `اختلاف الأسعار: ${priceDetails.join("، ")}.`
+      : "لا تتوفر حاليًا أسعار مسجلة لهذا المنتج.",
   ]
     .filter(Boolean)
     .join(" ");
 
-  const title = productQuantity ? `سعر ${productName} ${productQuantity} اليوم ` : `سعر ${productName} اليوم في`;
+  // إصلاح خطأ العنوان المنتهي بكلمة "في" بدون تكملة، واستخدام slug في الـ canonicalPath
+  const title = productQuantity
+    ? `سعر ${productName} ${productQuantity} اليوم`
+    : `سعر ${productName} اليوم في اليمن`;
 
   return createSeo({
-    canonicalPath: `/${product.name}`,
+    canonicalPath: `/${product.slug || slug}`,
     image: getProductImageBySlug(product.slug),
     ignoreImgAbsoluteUrl: true,
     title,

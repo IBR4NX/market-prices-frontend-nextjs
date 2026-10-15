@@ -1,4 +1,4 @@
-import type { Product } from "@/components/products/type";
+import type { Product } from "@/components/products/types";
 import { ProductInfoCard } from "./product-info-card";
 import { ProductPricesTable } from "./product-prices-table";
 import { ProductHistoryTable } from "./product-history-table";
@@ -7,7 +7,7 @@ import { ProductMetaCard } from "./product-meta-card";
 interface ProductDetailsProps {
   product: Product;
 }
-export {Product};
+export { Product };
 export default function ProductDetails({ product }: ProductDetailsProps) {
   return (
     <main dir="rtl" className="mx-auto max-w-5xl space-y-6 p-4 sm:p-6">

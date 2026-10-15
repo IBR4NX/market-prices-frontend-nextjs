@@ -1,4 +1,5 @@
-import ProductPage, { generateMetadata, instant } from "../../../../components/products/type";
 
-export { instant, generateMetadata };
-export default ProductPage;
+import ProductPage ,{generateMetadata} from "../../[slug]/page";
+
+export {generateMetadata}
+export default ProductPage

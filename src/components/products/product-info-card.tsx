@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { formatDate, formatNumber } from "@/components/prices/format";
 import { getProductImageBySlug } from "@/lib/constants";
 import { InfoStatItem } from "./product-primitives";
-import type { Product } from "@/components/products/type"; // عدّل المسار حسب مكان تعريف النوع لديك
+import type { Product } from "@/components/products/types"; // عدّل المسار حسب مكان تعريف النوع لديك
 
 interface ProductInfoCardProps {
   product: Product;
