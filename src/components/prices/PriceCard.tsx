@@ -9,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { formatDate, formatNumber } from "./format";
 import { Button } from "@/components/ui/button";
 interface PriceCardProps {
@@ -20,19 +19,30 @@ interface PriceCardProps {
     updated: string;
   };
 }
-import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
-import { Icon } from "lucide-react";
+import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
+import { MAIN_URL } from "@/lib/constants";
+import Link from "next/link";
+import MainLink from "../shared/mainLink";
+import {  ArrowLeft } from "lucide-react";
 export default function PriceCard({ item, labels }: PriceCardProps) {
   return (
     <Card className="overflow-hidden border-border bg-card shadow-sm">
       <CardHeader className="bgamber-100 p-">
-        <CardTitle className="text-xl">{item.product_name}</CardTitle>
+          <MainLink href={`/product/${item.product_name}`} className="">
+        <CardTitle className="text-2xl mb-4">
+            {item.product_name}
+        </CardTitle>
+          </MainLink>
         <CardDescription className=" line-clamp-2 ">
           <Badge variant="secondary" className="rounded-md p-3 text-md font-medium">
-            {item.category_name}
+            <MainLink href={`/category/${item.category_name}`}  >
+              {item.category_name}
+            </MainLink>{" "}
           </Badge>
-          <Badge variant={"ghost"} className="text-md text-muted-foreground">
-            {item.city_name}
+          <Badge variant={"ghost"} className="text-md p-3 text-muted-foreground">
+            <MainLink href={`/city/${item.city_name}`} >
+              {item.city_name}
+            </MainLink>{" "}
           </Badge>
         </CardDescription>
         <CardAction className="">
@@ -43,7 +53,7 @@ export default function PriceCard({ item, labels }: PriceCardProps) {
         </CardAction>
       </CardHeader>
 
-      <CardContent className=" border-t  sm:p-5">
+      <CardContent className=" border-t  sm">
         {/* Details */}
         <div className="grid grid-cols-3">
           <Item dir="rtl" className=" col-span-1">
@@ -65,10 +75,19 @@ export default function PriceCard({ item, labels }: PriceCardProps) {
               <ItemTitle>{formatDate(item.updated_at)}</ItemTitle>
             </ItemContent>
           </Item>
-        </div> 
+        </div>
+        <h3 className=" line-clamp-2 ">{item.product_description}s</h3>
       </CardContent>
       <CardFooter>
-        <h3 className=" line-clamp-2 static ">{item.product_description}</h3>
+        <Button
+        nativeButton={false}
+          variant="link"
+          className="w-full"
+          render={<MainLink href={`/product/${item.product_name}`} />}
+        >
+          المزيد
+          <ArrowLeft/>
+        </Button>
       </CardFooter>
     </Card>
   );

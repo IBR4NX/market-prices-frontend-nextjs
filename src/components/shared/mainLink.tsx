@@ -1,15 +1,17 @@
 import { MAIN_URL } from "@/lib/constants";
+import { cn } from "cn";
 import Link from "next/link";
 import type { ComponentProps } from "react";
 
 type MainLinkProps = Omit<ComponentProps<typeof Link>, "href"> & {
   href: `/${string}`;
+  className?:string;
 };
 
-export default function MainLink({ href, ...props }: MainLinkProps) {
+export default function MainLink({ href,className, ...props }: MainLinkProps) {
   if (!MAIN_URL) {
     throw new Error("NEXT_PUBLIC_MAIN_URL is not configured");
   }
 
-  return <Link href={`${MAIN_URL}${href}`} {...props} />;
+  return <Link href={`${MAIN_URL}${href}`} className={cn("hover:underline transition-colors hover:text-primary ",className)} {...props} />;
 }

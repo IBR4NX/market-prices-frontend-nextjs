@@ -17,12 +17,8 @@ export default function PriceList({ items, labels }: PriceListProps) {
     <section className="space-y-5">
       <div className="grid grid-cols-1 gap-4 sm:gap-4 lg:grid-cols-2 2xl:grid-cols-3">
         {items.map((item) => (
-          <MainLink
-            key={`${item.product_id}-${item.city_id}`}
-            href={`/${item.product_name.replaceAll(" ", " ") ?? ""}`}
-          >
-            <PriceCard item={item} labels={labels} />
-          </MainLink>
+
+            <PriceCard key={`${item.product_id}${item.city_id}`} item={item} labels={labels} />
         ))}
       </div>
     </section>
