@@ -13,6 +13,12 @@ export interface SeoProps {
   title: string;
   type?: "website" | "article";
 }
+interface p{
+  metadata:Metadata
+}
+export function GetSEO({...props}: SeoProps): p {
+  return{metadata:createSeo({...props})}
+}
 
 export function createSeo({
   canonicalPath = "/",
@@ -23,6 +29,7 @@ export function createSeo({
   noindex = false,
   title,
   type = "website",
+  
 }: SeoProps): Metadata {
   const fullTitle = createTitle(title);
   const canonical = ignorePath?canonicalPath: absoluteUrl(canonicalPath);
@@ -32,11 +39,11 @@ export function createSeo({
   return {
     // SEO
     metadataBase: new URL(MAIN_URL),
-    title: fullTitle,
+    title,
     description,
-
     alternates: {
       canonical,
+      languages:{ar:MAIN_URL},
     },
 
     robots: {
@@ -44,54 +51,12 @@ export function createSeo({
       follow: !noindex,
     },
 
-    // Icons
-    icons: {
-      icon: [
-                {
-          url: `${iconPath}/favicon.svg`,
-          sizes: "any",
-        },
-        {
-          url: `${iconPath}/favicon.svg`,
-          type: "image/svg+xml",
-        },
-        {
-          url: `${iconPath}/favicon-16x16.png`,
-          sizes: "16x16",
-          type: "image/png",
-        },
-        {
-          url: `${iconPath}/favicon-32x32.png`,
-          sizes: "32x32",
-          type: "image/png",
-        },
-
-      ],
-      apple: [
-        {
-          url: `${iconPath}/apple-touch-icon.png`,
-          sizes: "180x180",
-          type: "image/png",
-        },
-      ],
-    },
-
-    // Web App Manifest
-    manifest: `${iconPath}/manifest.webmanifest`,
-
-    // Apple Web App
-    appleWebApp: {
-      title: SITE_NAME,
-      capable: true,
-      statusBarStyle: "default",
-    },
-
     // Open Graph
     openGraph: {
       type,
-      locale: "ar_YE",
+      locale: "ar",
       siteName: SITE_NAME,
-      title: fullTitle,
+      title,
       description,
       url: canonical,
       images: [
@@ -115,7 +80,7 @@ export function createSeo({
     other: {
       "theme-color": "#0F172A",
     },
-  };
+  }
 }
 
 function createTitle(title: string): string {
@@ -127,7 +92,7 @@ function createTitle(title: string): string {
 
   const escapedSiteName = SITE_NAME.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-  const normalizedTitle = cleanTitle.replace(/\s*[|–—-]\s*/g, " - ").trim();
+  const normalizedTitle = cleanTitle.replace(/\s*[|–—-]\s*/g, " | ").trim();
 
   const titleWithoutSiteName = normalizedTitle
     .replace(new RegExp(`\\s*-\\s*${escapedSiteName}$`, "i"), "")
@@ -137,5 +102,5 @@ function createTitle(title: string): string {
     return SITE_NAME;
   }
 
-  return `${SITE_NAME}- ${titleWithoutSiteName}`;
+  return `${titleWithoutSiteName} | ${SITE_NAME}`;
 }

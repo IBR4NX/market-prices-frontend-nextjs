@@ -108,6 +108,7 @@ export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
   const product = await getProduct(decodeSlug(slug));
   if (!product) return ProductDetailsSkeleton();
+  console.log(product)
 
   return <ProductDetails product={product} />;
 }
