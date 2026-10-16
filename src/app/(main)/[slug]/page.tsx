@@ -95,7 +95,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : `سعر ${productName} اليوم في اليمن`;
 
   return createSeo({
-    canonicalPath: `/${product.slug || slug}`,
+    canonicalPath: `/${product.name || slug}`,
     image: getProductImageBySlug(product.slug),
     ignoreImgAbsoluteUrl: true,
     title,
