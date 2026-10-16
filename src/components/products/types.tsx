@@ -22,7 +22,7 @@ export interface Product {
     slug: string;
     description?: string | null;
     is_active?: boolean;
-  };
+  }[];
 
   current_prices: {
     id: string;

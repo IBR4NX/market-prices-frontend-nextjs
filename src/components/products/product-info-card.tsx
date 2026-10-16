@@ -31,7 +31,7 @@ export function ProductInfoCard({ product }: ProductInfoCardProps) {
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="secondary" className="gap-1">
                 <Tag className="h-3.5 w-3.5" />
-                {product.category?.name ?? "بدون تصنيف"}
+                {product.category[0]?.name ?? "بدون تصنيف"}
               </Badge>
               <Badge variant={product.is_active ? "default" : "destructive"}>
                 {product.is_active ? "منتج نشط" : "منتج غير نشط"}
