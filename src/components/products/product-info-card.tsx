@@ -14,7 +14,7 @@ export function ProductInfoCard({ product }: ProductInfoCardProps) {
   return (
     <Card>
       <CardHeader>
-        <div className="flex flex-kcol gap-4 sm:flex-row sm:items-start">
+        <div className="flex flex-ol gap-4 sm:flex-row sm:items-start">
           <div className="flex m-auto h-32 w-32 shrink-0 items-center justify-center overflow-hidden rounded-xl border bg-muted  sm:h-40 sm:w-40">
             {product.slug ? (
               <img
@@ -27,7 +27,7 @@ export function ProductInfoCard({ product }: ProductInfoCardProps) {
             )}
           </div>
 
-          <div className="min-w-0 flex-1 space-y-2">
+          <div className="min-w- flex-1 space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="secondary" className="gap-1">
                 <Tag className="h-3.5 w-3.5" />
@@ -40,11 +40,11 @@ export function ProductInfoCard({ product }: ProductInfoCardProps) {
 
             <CardTitle className="text-2xl font-bold sm:text-3xl">{product.name}</CardTitle>
 
+            </div>
+        </div>
             {product.description && (
               <CardDescription className="text-sm leading-7">{product.description}</CardDescription>
             )}
-          </div>
-        </div>
       </CardHeader>
 
       <CardContent className="grid gap-4 sm:grid-cols-2">
