@@ -6,6 +6,7 @@ import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import SideTrigger from "./toggles/side-trigger";
 import { Link } from "lucide-react";
 import MainLink from "../shared/mainLink";
+import { SITE_NAME } from "@/lib/constants";
 export function Header({ children, className }: React.ComponentProps<"div">) {
 	const [isTop, setIsTop] = React.useState(true);
 	const { scrollY, scrollYProgress } = useScroll();
@@ -45,7 +46,7 @@ export function Header({ children, className }: React.ComponentProps<"div">) {
 			>
 				<SideTrigger />
 				<MainLink href="/" className="text-lg font-semibold tracking-tight">
-					IBOVS
+					{SITE_NAME}
 				</MainLink>
 				{children}
 				<div className="mr-auto flex gap-2 items-center ">
