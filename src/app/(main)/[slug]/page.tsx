@@ -7,6 +7,7 @@ import ProductDetails from "@/components/products/product-details";
 import { Product } from "@/components/products/types";
 import { getProductImageBySlug } from "@/lib/constants";
 import { formatNumber, formatPrice } from "@/components/prices/format";
+import { ProductDetailsSkeleton } from "./loading";
 
 // تم حذف export const instant لأنها غير معتمدة في Next.js وتسبب مشاكل بناء
 
@@ -106,7 +107,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
   const product = await getProduct(decodeSlug(slug));
-  if (!product) notFound();
+  if (!product) return ProductDetailsSkeleton();
 
   return <ProductDetails product={product} />;
 }
