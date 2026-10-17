@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: {
     default: SITE_NAME,
     absolute: SITE_NAME,
-    template: `%s  ${""}`,
+    template: `%s | ${SITE_NAME}`,
   },
   description: "تابع أسعار المنتجات والسلع في اليمن حسب المدينة، مع تحديثات الأسعار وسجل تغيراتها.",
   icons: {

@@ -15,7 +15,7 @@ export const JsonLdWebsite = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://markets-ye.vercel.app/#organization",
+      "@id": "https://ibovs.vercel.app/#organization",
       name: "دليلك اليمن",
       alternateName: [
         "أسعار اليمن اليوم",
@@ -24,21 +24,21 @@ export const JsonLdWebsite = {
         "دليل أسعار اليمن",
         "أسعار السوق اليمني",
       ],
-      url: "https://markets-ye.vercel.app/",
+      url: "https://ibovs.vercel.app/",
       description:
         "منصة لمتابعة أسعار المنتجات والسلع في اليمن ومقارنة الأسعار حسب المدينة والفئة.",
       logo: {
         "@type": "ImageObject",
-        "@id": "https://markets-ye.vercel.app/#logo",
-        url: "https://markets-ye.vercel.app/favicons/web-app-manifest-512x512.png",
+        "@id": "https://ibovs.vercel.app/#logo",
+        url: "https://ibovs.vercel.app/favicons/web-app-manifest-512x512.png",
         contentUrl:
-          "https://markets-ye.vercel.app/favicons/web-app-manifest-512x512.png",
+          "https://ibovs.vercel.app/favicons/web-app-manifest-512x512.png",
       },
     },
     {
       "@type": "WebSite",
-      "@id": "https://markets-ye.vercel.app/#website",
-      url: "https://markets-ye.vercel.app/",
+      "@id": "https://ibovs.vercel.app/#website",
+      url: "https://ibovs.vercel.app/",
       name: "أسعار اليمن",
       alternateName: [
         "أسعار اليمن اليوم",
@@ -51,45 +51,45 @@ export const JsonLdWebsite = {
         "تعرف على أسعار المنتجات والسلع في اليمن اليوم، وقارن الأسعار حسب المدينة والفئة، وابحث عن سعر أي منتج في صنعاء أو تعز أو عدن من مكان واحد.",
       inLanguage: "ar",
       publisher: {
-        "@id": "https://markets-ye.vercel.app/#organization",
+        "@id": "https://ibovs.vercel.app/#organization",
       },
       potentialAction: {
         "@type": "SearchAction",
         target: {
           "@type": "EntryPoint",
           urlTemplate:
-            "https://markets-ye.vercel.app/prices?search={search_term_string}",
+            "https://ibovs.vercel.app/prices?search={search_term_string}",
         },
         "query-input": "required name=search_term_string",
       },
     },
     {
       "@type": "WebPage",
-      "@id": "https://markets-ye.vercel.app/#webpage",
-      url: "https://markets-ye.vercel.app/",
+      "@id": "https://ibovs.vercel.app/#webpage",
+      url: "https://ibovs.vercel.app/",
       name: "أسعار اليمن اليوم للمنتجات والسلع",
       description:
         "تعرف على أسعار المنتجات والسلع في اليمن اليوم، وقارن الأسعار حسب المدينة والفئة، وابحث عن سعر أي منتج في صنعاء أو تعز أو عدن من مكان واحد.",
       isPartOf: {
-        "@id": "https://markets-ye.vercel.app/#website",
+        "@id": "https://ibovs.vercel.app/#website",
       },
       about: {
-        "@id": "https://markets-ye.vercel.app/#organization",
+        "@id": "https://ibovs.vercel.app/#organization",
       },
       breadcrumb: {
-        "@id": "https://markets-ye.vercel.app/#breadcrumb",
+        "@id": "https://ibovs.vercel.app/#breadcrumb",
       },
       inLanguage: "ar",
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://markets-ye.vercel.app/#breadcrumb",
+      "@id": "https://ibovs.vercel.app/#breadcrumb",
       itemListElement: [
         {
           "@type": "ListItem",
           position: 1,
           name: "الرئيسية",
-          item: "https://markets-ye.vercel.app/",
+          item: "https://ibovs.vercel.app/",
         },
       ],
     },
