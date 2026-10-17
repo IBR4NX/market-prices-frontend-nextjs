@@ -41,6 +41,7 @@ export function createSeo({
     metadataBase: new URL(MAIN_URL),
     title,
     description,
+    keywords: generateKeywords(title, description),
     alternates: {
       canonical,
       languages:{ar:MAIN_URL},
@@ -78,7 +79,19 @@ export function createSeo({
     },
     applicationName: SITE_NAME,
     other: {
+      title: title,
+      pageTitle: fullTitle+" | "+SITE_NAME,
+      where: generateWhere(title, description),
+      topics: title,
+      poblishedDate: new Date().toISOString(),
+      lastModified: new Date().toISOString(),
+      lastDate: new Date().toISOString(),
+      source: SITE_NAME,
+      "msapplication-TileColor": "#0F172A",
       "theme-color": "#0F172A",
+      
+      
+      
     },
   }
 }
@@ -104,3 +117,46 @@ function createTitle(title: string): string {
 
   return `${titleWithoutSiteName} | ${SITE_NAME}`;
 }
+
+
+function generateKeywords(title?: string, description?: string): string[] {
+  const text = `${title ?? ""} ${description ?? ""}`;
+
+  const stopWords = new Set([
+    "في", "من", "على", "إلى", "عن", "مع", "هذا", "هذه",
+    "ذلك", "التي", "الذي", "هو", "هي", "و", "أو", "ما",
+    "the", "a", "an", "in", "on", "at", "to", "for",
+    "of", "and", "or", "is", "are", "with",
+  ]);
+
+  return [
+    ...new Set(
+      text
+        .replace(/[^\p{L}\p{N}\s-]/gu, " ")
+        .split(/\s+/)
+        .map((word) => word.trim())
+        .filter(
+          (word) =>
+            word.length > 2 &&
+            !stopWords.has(word.toLowerCase()),
+        ),
+    ),
+  ];
+}
+
+function generateWhere(title?: string, description?: string): string {
+  const text = `${title ?? ""} ${description ?? ""}`;
+
+  const locations = [
+    "اليمن",
+    "صنعاء",
+    "تعز",
+    "عدن",
+    "الشرق الأوسط",
+  ];
+
+  return locations.filter((location) => text.includes(location)).join(", ")+", اليمن";
+}
+
+
+
