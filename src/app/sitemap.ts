@@ -1,14 +1,16 @@
 import type { MetadataRoute } from "next";
 import { headers } from "next/headers";
 import { MAIN_URL } from "@/lib/constants";
+import { api } from "@/lib/api";
+const lastModified = new Date();
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const headersList = await headers();
-
+  const cities = await api.get('/cities');
+  console.log(cities.data.data)
   const host = headersList.get("host");
   const protocol = headersList.get("x-forwarded-proto") ?? "https";
   const baseUrl = host ? `${protocol}://${host}` : MAIN_URL;
-  const lastModified = new Date("2026-10-12");
 
   return [
     {
@@ -19,18 +21,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/prices`,
-      lastModified,
-      changeFrequency: "daily",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/city`,
-      lastModified,
-      changeFrequency: "daily",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/product`,
       lastModified,
       changeFrequency: "daily",
       priority: 1.0,

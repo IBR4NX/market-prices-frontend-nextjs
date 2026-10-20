@@ -1,7 +1,6 @@
 export const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || "أسعار اليمن";
 export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://server-market-yemen.vercel.app/api";
 
-export const DEFAULT_SITE_URL = "https://markets-ye.vercel.app";
 export const MAIN_URL = `http://${process.env.NEXT_PUBLIC_MAIN_URL || "localhost:3000"}`;
 export const ABOUT_URL = `http://${process.env.NEXT_PUBLIC_ABOUT_URL || "about.localhost:3000"}`;
 export const PRICES_URL = `http://${process.env.NEXT_PUBLIC_PRICES_URL || "prices.localhost:3000"}`;
@@ -15,7 +14,7 @@ export function getProductImageBySlug(slug: string) {
   return `${BLOB_PRODUCT_URL}/${BLOB_PRODUCT_FOLDER}/${slug}.${BLOB_PRODUCT_TYPE}`;
 }
 
-export const SITE_URL = (MAIN_URL || DEFAULT_SITE_URL).replace(/\/+$/, "");
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL?? MAIN_URL).replace(/\/+$/, "");
 
 export function absoluteUrl(path = "/"): string {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;

@@ -2,62 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://ibovs.vercel.app/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <loc>https://prices.ibovs.com/</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ibovs.vercel.app/prices</loc>
-    <lastmod>2026-10-14</lastmod>
+    <loc>https://prices.ibovs.com/prices</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ibovs.vercel.app/city</loc>
-    <lastmod>2026-10-14</lastmod>
+    <loc>https://prices.ibovs.com/city</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ibovs.vercel.app/product</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://prices.ibovs.com/product</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ibovs.vercel.app/prices?search=</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://prices.ibovs.com/prices?search=</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ibovs.vercel.app/blog</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://prices.ibovs.com/blog</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ibovs.vercel.app/faq</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://prices.ibovs.com/faq</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ibovs.vercel.app/about</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://prices.ibovs.com/about</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://ibovs.vercel.app/help</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://prices.ibovs.com/help</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://ibovs.vercel.app/privacy-policy</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://prices.ibovs.com/privacy-policy</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
