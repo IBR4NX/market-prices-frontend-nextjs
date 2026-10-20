@@ -10,59 +10,80 @@ import { DirectionProvider } from "@/components/ui/direction";
 import { ThemeProvider } from "@/components/provider/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { SITE_NAME } from "@/lib/constants";
+import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 const readexPro = Readex_Pro({
   subsets: ["arabic", "latin"],
   variable: "--font-sans",
   display: "swap",
 });
-const iconPath = "/favicons";
+
+const SITE_DESCRIPTION =
+  "تابع أسعار المنتجات والسلع في اليمن حسب المدينة، مع تحديثات الأسعار وسجل تغيراتها.";
+
 export const metadata: Metadata = {
+  // 1. أساس الروابط لضمان تحويل المسارات النسبية (/favicons/...) إلى روابط كاملة يفهمها جوجل
+  metadataBase: new URL(SITE_URL),
+
+  // 2. إشارات اسم الموقع المباشرة لمحركات البحث
+  applicationName: SITE_NAME,
   title: {
-    default: SITE_NAME,
-    absolute: SITE_NAME,
+    default: `${SITE_NAME} | أسعار المنتجات والسلع في اليمن اليوم`,
     template: `%s | ${SITE_NAME}`,
   },
-  description: "تابع أسعار المنتجات والسلع في اليمن حسب المدينة، مع تحديثات الأسعار وسجل تغيراتها.",
+  description: SITE_DESCRIPTION,
+
+  // 3. الرابط الأساسي لمنع تكرار المحتوى
+  alternates: {
+    canonical: "/",
+  },
+
+  // 4. Open Graph (مهم جداً لجوجل لمعرفة siteName)
+  openGraph: {
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} | أسعار المنتجات والسلع في اليمن اليوم`,
+    description: SITE_DESCRIPTION,
+    url: "/",
+    locale: "ar_YE",
+    type: "website",
+  },
+
+  // 5. الأيقونات (تم إضافة مقاسات 192 و 512 لحل مشكلة الكرة الأرضية في جوجل)
   icons: {
     icon: [
+      { url: "/favicons/favicon.ico", sizes: "48x48" }, // إن وجد
+      { url: "/favicons/favicon.svg", type: "image/svg+xml", sizes: "any" },
+      { url: "/favicons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       {
-        url: `/favicons/favicon.svg`,
-        sizes: "any",
-      },
-      {
-        url: `/favicons/favicon.svg`,
-        type: "image/svg+xml",
-      },
-      {
-        url: `/favicons/favicon-16x16.png`,
-        sizes: "16x16",
+        url: "/favicons/web-app-manifest-192x192.png",
+        sizes: "192x192",
         type: "image/png",
       },
       {
-        url: `/favicons/favicon-32x32.png`,
-        sizes: "32x32",
+        url: "/favicons/web-app-manifest-512x512.png",
+        sizes: "512x512",
         type: "image/png",
       },
     ],
     apple: [
       {
-        url: `/favicons/apple-touch-icon.png`,
+        url: "/favicons/apple-touch-icon.png",
         sizes: "180x180",
         type: "image/png",
       },
     ],
   },
-  // Apple Web App
+
+  // 6. Apple Web App & Manifest
   appleWebApp: {
     title: SITE_NAME,
     capable: true,
     statusBarStyle: "default",
   },
-  // Web App Manifest
-  manifest: `/favicons/manifest.webmanifest`,
+  manifest: "/favicons/manifest.webmanifest",
 };
+
 import { JsonLd, JsonLdWebsite } from "@/lib/seo";
 
 export default function RootLayout({

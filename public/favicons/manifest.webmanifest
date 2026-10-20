@@ -1,20 +1,20 @@
 {
   "id": "/",
-  "name": "أسعار اليمن",
-  "short_name": "أسعار اليمن",
+  "name":  "دليل الأسعار اليمني",
+  "short_name": "دليل الأسعار",
   "description": "منصة متابعة أسعار المنتجات والسلع الأساسية في اليمن",
   "lang": "ar",
   "dir": "rtl",
   "start_url": "/",
   "scope": "/",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "display": "standalone",
-  "background_color": "#F8FAFC",
-  "theme_color": "#0F172A",
   "icons": [
     {
       "src": "/favicons/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "maskable"
     },
     {
       "src": "/favicons/icon-512.png",
