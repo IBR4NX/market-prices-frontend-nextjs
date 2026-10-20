@@ -43,8 +43,7 @@ export function ThemeToggle() {
 export const ModeToggle = () => {
   const [loading, setLoading] = React.useState(true);
   const { setTheme, themes, theme } = useTheme();
-  // const index = themes.indexOf(theme||"li")
-  // console.log(themes[index+1])
+  
   const handleToggle = () => {
     const currentTheme = themes.indexOf(theme || "light");
     const nextTheme = (currentTheme + 1) % themes.length;

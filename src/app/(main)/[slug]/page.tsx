@@ -8,12 +8,13 @@ import { Product } from "@/components/products/types";
 import { getProductImageBySlug } from "@/lib/constants";
 import { formatNumber, formatPrice } from "@/components/prices/format";
 import { ProductDetailsSkeleton } from "./loading";
+import { getQueryString } from "@/lib/query";
 
 // تم حذف export const instant لأنها غير معتمدة في Next.js وتسبب مشاكل بناء
 
 export function decodeSlug(value: string): string {
   try {
-    return decodeURIComponent(value);
+    return getQueryString( decodeURIComponent(value))??"";
   } catch {
     return value;
   }

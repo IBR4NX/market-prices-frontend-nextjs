@@ -58,7 +58,7 @@ export default function HomePage() {
             <div className="max-w-3xl    ">
 
               <h1 className="text-4xl  font-black tracking-tight leading-tight text-balance sm:text-5xl lg:text-6xl">
-                أسعار المنتجات في وتعز تعاني من ارتفاع حاد بسبب الحروب الحاصله
+                أسعار المنتجات في اليمن تعاني من ارتفاع حاد بسبب الحروب الحاصله
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-8 text-muted-foreground sm:mt-6 sm:text-lg sm:leading-9">
                 ابحث عن أسعار المنتجات في اليمن حسب المدينة والفئة، وقارن السعر

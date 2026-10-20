@@ -1,5 +1,5 @@
-"use client";
-import { useState, useEffect, ReactNode } from "react";
+"use client"
+import {  ReactNode } from "react";
 import { Header } from "@/components/layout/Header";
 import {
   Sidebar,
@@ -36,10 +36,10 @@ export default function Layout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setLoading(false);
-  }, []);
+  // const [loading, setLoading] = useState(true);
+  // useEffect(() => {
+  //   setLoading(false);
+  // }, []);
   return (
     <>
       <SidebarProvider dir="rtl" className="    mt-13  ">
