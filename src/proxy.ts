@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { headers } from "next/headers";
 
 const MAIN_DOMAIN = splitDomain(process.env.NEXT_PUBLIC_MAIN_URL);
 const ABOUT_DOMAIN = splitDomain(process.env.NEXT_PUBLIC_ABOUT_URL);
@@ -6,9 +7,11 @@ const PRICES_DOMAIN = splitDomain(process.env.NEXT_PUBLIC_PRICES_URL);
 const BLOG_DOMAIN = splitDomain(process.env.NEXT_PUBLIC_BLOG_URL);
 const SUPPORTED_DOMAINS = [ABOUT_DOMAIN, PRICES_DOMAIN, BLOG_DOMAIN];
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const hostname = splitDomain(request.headers.get("host") as string);
   const pathname = request.nextUrl.pathname;
+  console.log((await headers()).get("user-agent")?.split(" ").slice(-3).join(" "));
+
   if (
     !hostname ||
     pathname.startsWith("/_next") ||

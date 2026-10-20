@@ -12,7 +12,7 @@ export type SitemapUrl = {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const cities = await api.get("/cities");
-  console.log(cities.data.data);
+
   const urls: SitemapUrl[] = cities.data.data.map((city: CatalogEntity) => ({
     url: `/city/${city.name}`,
     lastmod: city.updated_at,
@@ -22,7 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 }
 
 function CreateXml(items: SitemapUrl[]) {
-  const sitemap = items.map((item) => {
+  return items.map((item) => {
     return {
       url: `${SITE_URL}${item.url}`,
       lastModified: item.lastmod ?? undefined,
@@ -30,5 +30,4 @@ function CreateXml(items: SitemapUrl[]) {
       priority: number.parse(item.priority),
     };
   });
-  return sitemap;
 }

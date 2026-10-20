@@ -6,12 +6,9 @@ const lastModified = new Date();
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const headersList = await headers();
-  const cities = await api.get('/cities');
-  console.log(cities.data.data)
   const host = headersList.get("host");
   const protocol = headersList.get("x-forwarded-proto") ?? "https";
   const baseUrl = host ? `${protocol}://${host}` : MAIN_URL;
-
   return [
     {
       url: `${baseUrl}/`,
