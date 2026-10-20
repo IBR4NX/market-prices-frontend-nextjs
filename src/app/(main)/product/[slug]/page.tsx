@@ -1,5 +1,11 @@
 
-import ProductPage ,{generateMetadata} from "../../[slug]/page";
+import { redirect } from "next/navigation";
+import ProductPage ,{generateMetadata, Props} from "../../[slug]/page";
 
 export {generateMetadata}
-export default ProductPage
+
+export default async function Page({ params }: Props){
+      const { slug } = await params;
+
+    redirect(`/${slug}`);
+}

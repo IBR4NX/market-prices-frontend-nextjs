@@ -20,7 +20,7 @@ export function decodeSlug(value: string): string {
   }
 }
 
-const getProduct = cache(async (slug: string): Promise<Product | null> => {
+export const getProduct = cache(async (slug: string): Promise<Product | null> => {
   try {
     const response = await api.get("/products-search", {
       params: { slug },
@@ -44,7 +44,7 @@ const getProduct = cache(async (slug: string): Promise<Product | null> => {
   }
 });
 
-type Props = {
+export type Props = {
   params: Promise<{ slug: string }>;
 };
 

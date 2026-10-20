@@ -10,7 +10,7 @@ export interface SeoProps {
   description: string;
   image?: string;
   noindex?: boolean;
-  title: string;
+  title?: string;
   type?: "website" | "article";
 }
 interface p{
@@ -28,7 +28,7 @@ export function createSeo({
   image = "/favicons/og-image.png",
   ignoreImgAbsoluteUrl=false,
   noindex = false,
-  title,
+  title="",
   type = "website",
   
 }: SeoProps): Metadata {
