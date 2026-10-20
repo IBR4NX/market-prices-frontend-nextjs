@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
-import { headers } from "next/headers";
-import { MAIN_URL, SITE_URL } from "@/lib/constants";
+import { SITE_URL } from "@/lib/constants";
 import { api } from "@/lib/api";
-import { CatalogEntity, City } from "@/components/catalog/adminTypes";
+import { CatalogEntity } from "@/components/catalog/adminTypes";
 import { number } from "motion/react";
 const lastModified = new Date();
 export type SitemapUrl = {
