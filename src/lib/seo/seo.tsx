@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { MAIN_URL, SITE_NAME, absoluteUrl } from "@/lib/constants";
 export { absoluteUrl };
 
-const iconPath = "/favicons";
 export interface SeoProps {
+  baseUrl?: string;
   canonicalPath?: string;
   ignorePath?:boolean;
   ignoreImgAbsoluteUrl?:boolean;
@@ -21,6 +21,7 @@ export function GetSEO({...props}: SeoProps): p {
 }
 
 export function createSeo({
+  baseUrl = MAIN_URL,
   canonicalPath = "/",
   ignorePath=false,
   description,
@@ -33,9 +34,9 @@ export function createSeo({
 }: SeoProps): Metadata {
   const fullTitle = createTitle(title);
   const canonical = ignorePath?canonicalPath: absoluteUrl(canonicalPath);
-
   const imageUrl =ignoreImgAbsoluteUrl?image: absoluteUrl(image);
-  console.log(canonical)
+  const date = new Date().toISOString();
+  // console.log(canonical)
   return {
     // SEO
     metadataBase: new URL(MAIN_URL),
@@ -83,15 +84,12 @@ export function createSeo({
       pageTitle: fullTitle+" | "+SITE_NAME,
       where: generateWhere(title, description),
       topics: title,
-      poblishedDate: new Date().toISOString(),
-      lastModified: new Date().toISOString(),
-      lastDate: new Date().toISOString(),
+      poblishedDate: date,
+      lastModified: date,
+      lastDate: date,
       source: SITE_NAME,
       "msapplication-TileColor": "#0F172A",
       "theme-color": "#0F172A",
-      
-      
-      
     },
   }
 }
