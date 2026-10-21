@@ -1,0 +1,21 @@
+{
+  "name": "دليل الأسعار اليمني ",
+  "short_name": "دليل الأسعار",
+  "icons": [
+    {
+      "src": "/favicons/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicons/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#007595",
+  "background_color": "#007595",
+  "display": "standalone"
+}

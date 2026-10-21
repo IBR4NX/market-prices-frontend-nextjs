@@ -18,8 +18,7 @@ const readexPro = Readex_Pro({
   display: "swap",
 });
 
-const SITE_DESCRIPTION =
-  "تابع أسعار المنتجات والسلع في اليمن حسب المدينة، مع تحديثات الأسعار وسجل تغيراتها.";
+const SITE_DESCRIPTION = "تابع أسعار المنتجات والسلع في اليمن حسب المدينة، مع تحديثات الأسعار وسجل تغيراتها.";
 
 export const metadata: Metadata = {
   // 1. أساس الروابط لضمان تحويل المسارات النسبية (/favicons/...) إلى روابط كاملة يفهمها جوجل
@@ -47,24 +46,11 @@ export const metadata: Metadata = {
     locale: "ar_YE",
     type: "website",
   },
-
-  // 5. الأيقونات (تم إضافة مقاسات 192 و 512 لحل مشكلة الكرة الأرضية في جوجل)
   icons: {
     icon: [
-      { url: "/favicons/favicon.ico", sizes: "48x48" }, // إن وجد
-      { url: "/favicons/favicon.svg", type: "image/svg+xml", sizes: "any" },
-      { url: "/favicons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      {
-        url: "/favicons/web-app-manifest-192x192.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
-      {
-        url: "/favicons/web-app-manifest-512x512.png",
-        sizes: "512x512",
-        type: "image/png",
-      },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicons/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicons/favicon-96x96.png", sizes: "96x96", type: "image/png" },
     ],
     apple: [
       {
@@ -74,14 +60,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  manifest: "/manifest.json",
 
-  // 6. Apple Web App & Manifest
   appleWebApp: {
     title: SITE_NAME,
     capable: true,
     statusBarStyle: "default",
   },
-  manifest: "/favicons/manifest.webmanifest",
 };
 
 import { JsonLd, JsonLdWebsite } from "@/lib/seo";
@@ -101,6 +86,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="msvalidate.01" content="448736B4E174A7AD617638A63866F2BE" />
+        <meta name="apple-mobile-web-app-title" content="دليل الأسعار اليمني " />
         {/* google-site-verification */}
         <meta name="google-site-verification" content="_54F1eq7-pB1O2ij3E7YReMtAiHyv-aO5wo0ZcCBCHc" />
         <meta name="google-site-verification" content="g2mr_fpoECA_KR21y4aZhdiSKGulMJrb44Ga5oQTw0M" />

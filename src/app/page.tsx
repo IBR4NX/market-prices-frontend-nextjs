@@ -16,9 +16,7 @@ export default async function Page() {
 
   return (
     <>
-      <Animationpage>
       <ClientPage />
-      </Animationpage>
     </>
   );
 }
