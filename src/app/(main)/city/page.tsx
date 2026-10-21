@@ -2,7 +2,7 @@ import { createSeo } from "@/lib/seo";
 
 export const metadata = createSeo({
   canonicalPath: "/city",
-  description: "استعرض المدن المتاحة في Markets Yemen.",
+  description: "استعرض المدن المتاحة في .",
   title: "المدن",
 });
 
