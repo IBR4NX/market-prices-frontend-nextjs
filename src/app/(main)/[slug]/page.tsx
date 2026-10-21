@@ -14,7 +14,7 @@ import { getQueryString } from "@/lib/query";
 
 export function decodeSlug(value: string): string {
   try {
-    return getQueryString( decodeURIComponent(value))??"";
+    return getQueryString(decodeURIComponent(value)) ?? "";
   } catch {
     return value;
   }
@@ -29,11 +29,7 @@ export const getProduct = cache(async (slug: string): Promise<Product | null> =>
     const data = response.data;
     const result = data?.product ?? data?.data ?? data;
 
-    const product = Array.isArray(result)
-      ? result[0]
-      : Array.isArray(result?.rows)
-      ? result.rows[0]
-      : result;
+    const product = Array.isArray(result) ? result[0] : Array.isArray(result?.rows) ? result.rows[0] : result;
 
     if (!product?.id) return null;
 
@@ -65,9 +61,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const productName = product.name.trim();
   const productQuantity =
-    product.quantity != null && product.unit
-      ? `${formatNumber(product.quantity)} ${product.unit}`
-      : "";
+    product.quantity != null && product.unit ? `${formatNumber(product.quantity)} ${product.unit}` : "";
 
   const prices = (product.current_prices ?? [])
     .filter((item) => item.city?.name && item.price != null)
@@ -83,20 +77,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     productName,
     productQuantity,
     product.description,
-    priceDetails.length
-      ? `اختلاف الأسعار: ${priceDetails.join("، ")}.`
-      : "لا تتوفر حاليًا أسعار مسجلة لهذا المنتج.",
+    priceDetails.length ? `اختلاف الأسعار: ${priceDetails.join("، ")}.` : "لا تتوفر حاليًا أسعار مسجلة لهذا المنتج.",
   ]
     .filter(Boolean)
     .join(" ");
 
   // إصلاح خطأ العنوان المنتهي بكلمة "في" بدون تكملة، واستخدام slug في الـ canonicalPath
-  const title = productQuantity
-    ? `سعر ${productName} ${productQuantity} اليوم`
-    : `سعر ${productName} اليوم في اليمن`;
+  const title = productQuantity ? `سعر ${productName} ${productQuantity} اليوم` : `سعر ${productName} اليوم في اليمن`;
 
   return createSeo({
-    canonicalPath: `/${product.name || slug}`,
+    canonicalPath: `/${product.slug || product.name}`,
     image: getProductImageBySlug(product.slug),
     ignoreImgAbsoluteUrl: true,
     title,
@@ -109,7 +99,7 @@ export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
   const product = await getProduct(decodeSlug(slug));
   if (!product) return ProductDetailsSkeleton();
-  console.log(product)
+  console.log(product);
 
   return <ProductDetails product={product} />;
 }

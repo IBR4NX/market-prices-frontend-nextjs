@@ -5,38 +5,37 @@ export { absoluteUrl };
 export interface SeoProps {
   baseUrl?: string;
   canonicalPath?: string;
-  ignorePath?:boolean;
-  ignoreImgAbsoluteUrl?:boolean;
+  ignorePath?: boolean;
+  ignoreImgAbsoluteUrl?: boolean;
   description: string;
   image?: string;
   noindex?: boolean;
   title?: string;
   type?: "website" | "article";
 }
-interface p{
-  metadata:Metadata
+interface p {
+  metadata: Metadata;
 }
-export function GetSEO({...props}: SeoProps): p {
-  return{metadata:createSeo({...props})}
+export function GetSEO({ ...props }: SeoProps): p {
+  return { metadata: createSeo({ ...props }) };
 }
 
 export function createSeo({
   baseUrl = MAIN_URL,
   canonicalPath = "/",
-  ignorePath=false,
+  ignorePath = false,
   description,
   image = "/favicons/og-image.png",
-  ignoreImgAbsoluteUrl=false,
+  ignoreImgAbsoluteUrl = false,
   noindex = false,
-  title="",
+  title = "",
   type = "website",
-  
 }: SeoProps): Metadata {
   const fullTitle = createTitle(title);
-  const canonical = ignorePath?canonicalPath: absoluteUrl(canonicalPath);
-  const imageUrl =ignoreImgAbsoluteUrl?image: absoluteUrl(image);
+  const canonical = ignorePath ? canonicalPath : absoluteUrl(canonicalPath);
+  const imageUrl = ignoreImgAbsoluteUrl ? image : absoluteUrl(image);
+  // console.log("SEO:", canonical);
   const date = new Date().toISOString();
-  // console.log(canonical)
   return {
     // SEO
     metadataBase: new URL(MAIN_URL),
@@ -44,8 +43,8 @@ export function createSeo({
     description,
     keywords: generateKeywords(title, description),
     alternates: {
-      canonical,
-      languages:{ar:MAIN_URL},
+      canonical: new URL(`${canonical}`),
+      languages: { ar: MAIN_URL },
     },
 
     robots: {
@@ -81,7 +80,7 @@ export function createSeo({
     applicationName: SITE_NAME,
     other: {
       title: title,
-      pageTitle: fullTitle+" | "+SITE_NAME,
+      pageTitle: fullTitle + " | " + SITE_NAME,
       where: generateWhere(title, description),
       topics: title,
       poblishedDate: date,
@@ -91,7 +90,7 @@ export function createSeo({
       "msapplication-TileColor": "#0F172A",
       "theme-color": "#0F172A",
     },
-  }
+  };
 }
 
 function createTitle(title: string): string {
@@ -105,9 +104,7 @@ function createTitle(title: string): string {
 
   const normalizedTitle = cleanTitle.replace(/\s*[|–—-]\s*/g, " | ").trim();
 
-  const titleWithoutSiteName = normalizedTitle
-    .replace(new RegExp(`\\s*-\\s*${escapedSiteName}$`, "i"), "")
-    .trim();
+  const titleWithoutSiteName = normalizedTitle.replace(new RegExp(`\\s*-\\s*${escapedSiteName}$`, "i"), "").trim();
 
   if (!titleWithoutSiteName) {
     return SITE_NAME;
@@ -116,15 +113,40 @@ function createTitle(title: string): string {
   return `${titleWithoutSiteName} | ${SITE_NAME}`;
 }
 
-
 function generateKeywords(title?: string, description?: string): string[] {
   const text = `${title ?? ""} ${description ?? ""}`;
 
   const stopWords = new Set([
-    "في", "من", "على", "إلى", "عن", "مع", "هذا", "هذه",
-    "ذلك", "التي", "الذي", "هو", "هي", "و", "أو", "ما",
-    "the", "a", "an", "in", "on", "at", "to", "for",
-    "of", "and", "or", "is", "are", "with",
+    "في",
+    "من",
+    "على",
+    "إلى",
+    "عن",
+    "مع",
+    "هذا",
+    "هذه",
+    "ذلك",
+    "التي",
+    "الذي",
+    "هو",
+    "هي",
+    "و",
+    "أو",
+    "ما",
+    "the",
+    "a",
+    "an",
+    "in",
+    "on",
+    "at",
+    "to",
+    "for",
+    "of",
+    "and",
+    "or",
+    "is",
+    "are",
+    "with",
   ]);
 
   return [
@@ -133,11 +155,7 @@ function generateKeywords(title?: string, description?: string): string[] {
         .replace(/[^\p{L}\p{N}\s-]/gu, " ")
         .split(/\s+/)
         .map((word) => word.trim())
-        .filter(
-          (word) =>
-            word.length > 2 &&
-            !stopWords.has(word.toLowerCase()),
-        ),
+        .filter((word) => word.length > 2 && !stopWords.has(word.toLowerCase())),
     ),
   ];
 }
@@ -145,16 +163,7 @@ function generateKeywords(title?: string, description?: string): string[] {
 function generateWhere(title?: string, description?: string): string {
   const text = `${title ?? ""} ${description ?? ""}`;
 
-  const locations = [
-    "اليمن",
-    "صنعاء",
-    "تعز",
-    "عدن",
-    "الشرق الأوسط",
-  ];
+  const locations = ["اليمن", "صنعاء", "تعز", "عدن", "الشرق الأوسط"];
 
-  return locations.filter((location) => text.includes(location)).join(", ")+", اليمن";
+  return locations.filter((location) => text.includes(location)).join(", ") + ", اليمن";
 }
-
-
-

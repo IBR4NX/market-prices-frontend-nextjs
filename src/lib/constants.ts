@@ -18,5 +18,7 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? MAIN_URL).replace(/
 
 export function absoluteUrl(path = "/"): string {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-  return `${SITE_URL}${normalizedPath.replaceAll(" ", "-")}`;
+  const value = `${SITE_URL}${decodeURIComponent(normalizedPath.replaceAll(" ", "-"))}`;
+  // console.log("ab", value);
+  return value;
 }
