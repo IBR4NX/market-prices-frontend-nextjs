@@ -8,7 +8,6 @@ export function JsonLd({ data }: JsonLdProps) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />;
 }
 
-
 const ALTERNATE_NAMES = ["دليل اليمن", "أسعار اليمن"];
 const SITE_DESCRIPTION =
   "تعرف على أسعار المنتجات والسلع في اليمن اليوم، وقارن الأسعار حسب المدينة والفئة، وابحث عن سعر أي منتج في صنعاء أو تعز أو عدن من مكان واحد.";
@@ -31,6 +30,9 @@ export const JsonLdWebsite = {
         caption: SITE_NAME,
         width: 512,
         height: 512,
+      },
+      image: {
+        "@id": `${SITE_URL}/#logo`,
       },
     },
     {
