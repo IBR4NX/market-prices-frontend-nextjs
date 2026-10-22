@@ -18,6 +18,7 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
     ],
     sitemap: [
       `${baseUrl}/sitemap.xml`,
+      `${baseUrl}/city/sitemap.xml`,
       `${baseUrl}/sitemap/custom/products.xml?sender=${host ?? "prices.ibovs.com"}&is=name`,
       `${baseUrl}/sitemap/custom/test/feed?sender=${host ?? "prices.ibovs.com"}`,
     ],
