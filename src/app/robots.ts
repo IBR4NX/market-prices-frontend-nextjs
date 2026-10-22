@@ -10,11 +10,11 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
 
   return {
     rules: [
+      { userAgent: "*", allow: "/" },
       { userAgent: "Googlebot", allow: "/" },
       { userAgent: "Bingbot", allow: "/" },
       { userAgent: "Twitterbot", allow: "/" },
       { userAgent: "facebookexternalhit", allow: "/" },
-      { userAgent: "*", allow: "/" },
     ],
     sitemap: [
       `${baseUrl}/sitemap.xml`,
