@@ -48,7 +48,6 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
       { url: "/favicons/favicon.svg", type: "image/svg+xml" },
       { url: "/favicons/favicon-96x96.png", sizes: "96x96", type: "image/png" },
     ],
@@ -84,7 +83,6 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", "font-sans", readexPro.variable)}
     >
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="msvalidate.01" content="448736B4E174A7AD617638A63866F2BE" />
         <meta name="apple-mobile-web-app-title" content="أسعار اليمن" />
         {/* google-site-verification */}

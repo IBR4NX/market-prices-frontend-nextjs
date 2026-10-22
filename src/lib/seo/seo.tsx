@@ -80,7 +80,7 @@ export function createSeo({
     applicationName: SITE_NAME,
     other: {
       title: title,
-      pageTitle: fullTitle + " | " + SITE_NAME,
+      pageTitle: fullTitle,
       where: generateWhere(title, description),
       topics: title,
       poblishedDate: date,
@@ -110,12 +110,12 @@ function createTitle(title: string): string {
     return SITE_NAME;
   }
 
-  return `${titleWithoutSiteName} | ${SITE_NAME}`;
+  return `${titleWithoutSiteName} | ${SITE_NAME}sz`;
 }
 
 function generateKeywords(title?: string, description?: string): string[] {
   const text = `${title ?? ""} ${description ?? ""}`;
-
+  //#region  words
   const stopWords = new Set([
     "في",
     "من",
@@ -148,6 +148,7 @@ function generateKeywords(title?: string, description?: string): string[] {
     "are",
     "with",
   ]);
+  //#endregion
 
   return [
     ...new Set(
