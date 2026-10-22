@@ -10,12 +10,13 @@ type Props = {
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
   const resolvedParams = await Promise.resolve(searchParams);
   const isAden = resolvedParams?.city === "aden";
-  const cityName = isAden ? "عدن" : "صنعاء";
+  const isSanaa = resolvedParams?.city === "sanaa";
+  const cityName = isAden ? "عدن" : isSanaa ? "صنعاء" : "(صنعاء - عدن)";
 
   return createSeo({
     canonicalPath: "/gold-prices",
     title: `أسعار الذهب في ${cityName} اليوم | تحديث مباشر`,
-    description: `تطبيق أسعار الذهب اليوم في محلات الصاغة في ${cityName} (بيع وشراء) بالعملة ${
+    description: ` أسعار الذهب اليوم في ${cityName} (بيع وشراء) بالعملة ${
       isAden ? "الجديدة" : "القديمة"
     }، تشمل عيار 24، 21، 18، الجنيه الذهب والسبائك مع حاسبة المصنعية.`,
     type: "website",
