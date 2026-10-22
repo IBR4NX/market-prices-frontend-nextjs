@@ -107,7 +107,7 @@ export default function HomePage() {
             scrollTrigger: {
               trigger: story,
               start: "top top",
-              end: () => `+=${window.innerHeight * (panels.length -51)}`,
+              end: () => `+=${window.innerHeight * (panels.length - 51)}`,
               pin: true,
               scrub: 1,
               anticipatePin: 1,

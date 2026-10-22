@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   // 4. Open Graph (مهم جداً لجوجل لمعرفة siteName)
   openGraph: {
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | أسعار المنتجات والسلع في اليمن اليوم`,
+    title: `${SITE_NAME} | أسعار الذهب والمواد الغذائية اليوم`,
     description: SITE_DESCRIPTION,
     url: "/",
     locale: "ar_YE",
@@ -86,7 +86,7 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="msvalidate.01" content="448736B4E174A7AD617638A63866F2BE" />
-        <meta name="apple-mobile-web-app-title" content="دليل الأسعار اليمني " />
+        <meta name="apple-mobile-web-app-title" content="أسعار اليمن" />
         {/* google-site-verification */}
         <meta name="google-site-verification" content="_54F1eq7-pB1O2ij3E7YReMtAiHyv-aO5wo0ZcCBCHc" />
         <meta name="google-site-verification" content="g2mr_fpoECA_KR21y4aZhdiSKGulMJrb44Ga5oQTw0M" />
