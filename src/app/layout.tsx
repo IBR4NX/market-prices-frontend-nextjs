@@ -65,6 +65,10 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: "default",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 import { JsonLd, JsonLdWebsite } from "@/lib/seo";
