@@ -25,7 +25,7 @@ function CreateXml(items: SitemapUrl[]) {
   return items.map((item) => {
     return {
       url: `${SITE_URL}${item.url}`,
-      lastModified: item.lastmod ?? undefined,
+      lastModified: item.lastmod ?? new Date(),
       changeFrequency: "daily" as const,
       priority: number.parse(item.priority),
     };
