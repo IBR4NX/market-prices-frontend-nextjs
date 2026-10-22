@@ -1,0 +1,18 @@
+User-Agent: Googlebot
+Allow: /
+
+User-Agent: Bingbot
+Allow: /
+
+User-Agent: Twitterbot
+Allow: /
+
+User-Agent: facebookexternalhit
+Allow: /
+
+User-Agent: *
+Allow: /
+
+Sitemap: https://prices.ibovs.com/sitemap.xml
+Sitemap: https://prices.ibovs.com/sitemap/custom/products.xml?sender=prices.ibovs.com&is=name
+Sitemap: https://prices.ibovs.com/sitemap/custom/test/feed?sender=prices.ibovs.com

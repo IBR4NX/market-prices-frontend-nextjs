@@ -66,6 +66,7 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
   },
   robots: {
+    googleBot: "/robots",
     index: true,
     follow: true,
   },
