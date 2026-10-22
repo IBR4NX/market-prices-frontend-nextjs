@@ -110,7 +110,7 @@ function createTitle(title: string): string {
     return SITE_NAME;
   }
 
-  return `${titleWithoutSiteName} | ${SITE_NAME}sz`;
+  return `${titleWithoutSiteName} | ${SITE_NAME}`;
 }
 
 function generateKeywords(title?: string, description?: string): string[] {

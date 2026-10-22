@@ -1,14 +1,12 @@
-import { MAIN_URL } from "@/lib/constants";
 import type { MetadataRoute } from "next";
 import { headers } from "next/headers";
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const headersList = await headers();
-  
+
   const host = headersList.get("host");
   const protocol = headersList.get("x-forwarded-proto") ?? "https";
-//   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://markets-ye.vercel.app";
-  const baseUrl = host ? `${protocol}://${host}` : MAIN_URL;
+  const baseUrl = host ? `${protocol}://${host}` : "prices.ibovs.com";
 
   return {
     rules: [
@@ -20,8 +18,8 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
     ],
     sitemap: [
       `${baseUrl}/sitemap.xml`,
-      `${baseUrl}/sitemap/custom/products.xml?sender=${host ?? "markets-ye.vercel.app"}`,
-      `${baseUrl}/sitemap/custom/test/feed?sender=${host ?? "markets-ye.vercel.app"}`,
+      `${baseUrl}/sitemap/custom/products.xml?sender=${host ?? "prices.ibovs.com"}&is=name`,
+      `${baseUrl}/sitemap/custom/test/feed?sender=${host ?? "prices.ibovs.com"}`,
     ],
   };
 }
