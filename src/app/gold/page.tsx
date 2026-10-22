@@ -12,9 +12,10 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const isAden = resolvedParams?.city === "aden";
   const isSanaa = resolvedParams?.city === "sanaa";
   const cityName = isAden ? "عدن" : isSanaa ? "صنعاء" : "(صنعاء - عدن)";
+  const p = `?city=${isAden ? "aden" : isSanaa ? "sanaa" : ""}`;
 
   return createSeo({
-    canonicalPath: "/gold-prices",
+    canonicalPath: `/gold${p.endsWith("=") ? "" : p}`,
     title: `أسعار الذهب في ${cityName} اليوم | تحديث مباشر`,
     description: ` أسعار الذهب اليوم في ${cityName} (بيع وشراء) بالعملة ${
       isAden ? "الجديدة" : "القديمة"
