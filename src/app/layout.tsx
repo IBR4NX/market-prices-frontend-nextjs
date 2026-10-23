@@ -85,12 +85,10 @@ export default function RootLayout({
         {/* google-site-verification */}
 
         {/* <!-- Google Tag Manager --> */}
-        {/* <script src="https://www.googletagmanager.com/gtag/js?id=G-FNW104VHST" /> */}
         {/* old */}
+        {/* <script src="https://www.googletagmanager.com/gtag/js?id=G-FNW104VHST" /> */}
         <GoogleTagManager gtmId="GTM-59NDMV64" />
         <meta name="google-site-verification" content="KXvhNB0SXAfU1dv4s3pUjAZh65wukMWNzrtW9Vxzs-4" />
-        {/* new أسعار اليمن */}
-        {/* <!-- End Google Tag Manager --> */}
         {/* <link type="sitemap" content="" href="https://ibovs.vercel.app/sitemap/custom/test/feed?sender=ibovs.vercel.app" /> */}
 
         <JsonLd data={JsonLdWebsite} />

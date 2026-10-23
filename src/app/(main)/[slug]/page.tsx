@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonicalPath: `/${slug}`,
       title: "المنتج غير موجود | أسعار اليمن",
       description: "لم يتم العثور على المنتج المطلوب في منصة أسعار اليمن.",
-      type: "website",
+      type: "article",
       noindex: true,
     });
   }
