@@ -1,5 +1,5 @@
 {
-  "name": "أسعار اليمن ",
+  "name": "دليل أسعار اليمن",
   "short_name": "أسعار",
   "icons": [
     {
@@ -18,7 +18,7 @@
   "theme_color": "#007595",
   "background_color": "#007595",
   "display": "standalone",
-    "colors": {
+  "colors": {
     "frame": "black",
     "tab_background_text": "white",
     "tab_text": "white",

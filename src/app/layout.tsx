@@ -23,7 +23,6 @@ const SITE_DESCRIPTION = "تابع أسعار المنتجات والسلع في
 export const metadata: Metadata = {
   // 1. أساس الروابط لضمان تحويل المسارات النسبية (/favicons/...) إلى روابط كاملة يفهمها جوجل
   metadataBase: new URL(SITE_URL),
-
   // 2. إشارات اسم الموقع المباشرة لمحركات البحث
   applicationName: SITE_NAME,
   title: {
@@ -39,27 +38,21 @@ export const metadata: Metadata = {
 
   // 4. Open Graph (مهم جداً لجوجل لمعرفة siteName)
   openGraph: {
+    type: "website",
     siteName: SITE_NAME,
+    images: [
+      {
+        url: `/favicons/apple-touch-icon.png`,
+        width: 1200,
+        height: 630,
+        alt: SITE_NAME,
+      },
+    ],
     title: `${SITE_NAME} | أسعار الذهب والمواد الغذائية اليوم`,
     description: SITE_DESCRIPTION,
     url: "/",
     locale: "ar_YE",
-    type: "website",
   },
-  icons: {
-    icon: [
-      { url: "/favicons/icon0.svg", type: "image/svg+xml" },
-      { url: "/favicons/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-    ],
-    apple: [
-      {
-        url: "/favicons/apple-touch-icon.png",
-        sizes: "180x180",
-        type: "image/png",
-      },
-    ],
-  },
-  manifest: "/manifest.json",
 
   appleWebApp: {
     capable: true,
@@ -88,7 +81,7 @@ export default function RootLayout({
     >
       <head>
         <meta name="msvalidate.01" content="448736B4E174A7AD617638A63866F2BE" />
-        <meta name="apple-mobile-web-app-title" content="أسعار اليمن" />
+        <meta name="apple-mobile-web-app-title" content={SITE_NAME} />
         {/* google-site-verification */}
         <meta name="google-site-verification" content="_54F1eq7-pB1O2ij3E7YReMtAiHyv-aO5wo0ZcCBCHc" />
         <meta name="google-site-verification" content="g2mr_fpoECA_KR21y4aZhdiSKGulMJrb44Ga5oQTw0M" />

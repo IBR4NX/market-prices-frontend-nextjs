@@ -83,7 +83,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .join(" ");
 
   // إصلاح خطأ العنوان المنتهي بكلمة "في" بدون تكملة، واستخدام slug في الـ canonicalPath
-  const title = productQuantity ? `سعر ${productName} ${productQuantity} اليوم` : `سعر ${productName} اليوم في اليمن`;
+  const title = productQuantity ? ` ${productName} ${productQuantity}` : `سعر ${productName} اليوم في اليمن`;
 
   return createSeo({
     canonicalPath: `/${product.slug || product.name}`,

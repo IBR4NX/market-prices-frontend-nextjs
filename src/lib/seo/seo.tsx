@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MAIN_URL, SITE_NAME, absoluteUrl } from "@/lib/constants";
+import { MAIN_URL, SITE_NAME, SITE_URL, absoluteUrl } from "@/lib/constants";
 export { absoluteUrl };
 
 export interface SeoProps {
@@ -25,7 +25,7 @@ export function createSeo({
   canonicalPath = "/",
   ignorePath = false,
   description,
-  image = "/favicons/og-image.png",
+  image = "/favicons/apple-touch-icon.png",
   ignoreImgAbsoluteUrl = false,
   noindex = false,
   title = "",
@@ -38,14 +38,15 @@ export function createSeo({
   const date = new Date().toISOString();
   return {
     // SEO
-    metadataBase: new URL(MAIN_URL),
+    metadataBase: new URL(SITE_URL),
     title,
+
     description,
     keywords: generateKeywords(title, description),
-    alternates: {
-      canonical: new URL(`${canonical}`),
-      languages: { ar: MAIN_URL },
-    },
+    // alternates: {
+    //   canonical: new URL(`${canonical}`),
+    //   languages: { ar: MAIN_URL },
+    // },
 
     robots: {
       index: !noindex,
@@ -54,10 +55,9 @@ export function createSeo({
 
     // Open Graph
     openGraph: {
-      type,
-      locale: "ar",
-      siteName: SITE_NAME,
+      locale: "ar_YE",
       title,
+      type,
       description,
       url: canonical,
       images: [
@@ -65,7 +65,7 @@ export function createSeo({
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: SITE_NAME,
+          alt: title,
         },
       ],
     },
@@ -79,14 +79,15 @@ export function createSeo({
     },
     applicationName: SITE_NAME,
     other: {
-      title: title,
+      author: SITE_NAME,
+      websiteName: SITE_NAME,
+      title: fullTitle,
       pageTitle: fullTitle,
       where: generateWhere(title, description),
       topics: title,
       poblishedDate: date,
       lastModified: date,
       lastDate: date,
-      source: SITE_NAME,
       "msapplication-TileColor": "#0F172A",
       "theme-color": "#0F172A",
     },
