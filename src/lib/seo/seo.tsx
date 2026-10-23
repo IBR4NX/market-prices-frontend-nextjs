@@ -43,10 +43,10 @@ export function createSeo({
 
     description,
     keywords: generateKeywords(title, description),
-    // alternates: {
-    //   canonical: new URL(`${canonical}`),
-    //   languages: { ar: MAIN_URL },
-    // },
+    alternates: {
+      canonical: new URL(`${canonical}`),
+      languages: { ar: MAIN_URL },
+    },
 
     robots: {
       index: !noindex,

@@ -86,7 +86,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = productQuantity ? ` ${productName} ${productQuantity}` : `سعر ${productName} اليوم في اليمن`;
 
   return createSeo({
-    canonicalPath: `/${product.slug || product.name}`,
+    canonicalPath: `/${product.name.replaceAll(" ", "-")}`,
     image: getProductImageBySlug(product.slug),
     ignoreImgAbsoluteUrl: true,
     title,
