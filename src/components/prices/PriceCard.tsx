@@ -39,7 +39,7 @@ export default function PriceCard({ item, labels }: PriceCardProps) {
     offers: {
       "@type": "Offer",
       priceCurrency: "YER",
-      image: getProductImageBySlug(item.product_id),
+      image: [getProductImageBySlug(item.product_id)],
       price: item.price,
       priceValidUntil: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
       availability: "https://schema.org/InStock",
