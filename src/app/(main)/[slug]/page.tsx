@@ -97,9 +97,57 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const product = await getProduct(decodeSlug(slug));
-  if (!product) return ProductDetailsSkeleton();
-  console.log(product);
+  const decodedSlug = decodeSlug(slug);
+  const product = await getProduct(decodedSlug);
 
-  return <ProductDetails product={product} />;
+  if (!product) return <ProductDetailsSkeleton />;
+
+  const productImageUrl = getProductImageBySlug(product.slug);
+
+  const validPrices = (product.current_prices ?? []).filter((item) => item.price != null && item.city?.name);
+
+  const numericPrices = validPrices.map((item) => Number(item.price)).filter((p) => !isNaN(p));
+
+  const lowPrice = numericPrices.length ? Math.min(...numericPrices) : undefined;
+  const highPrice = numericPrices.length ? Math.max(...numericPrices) : undefined;
+
+  const cityOffers = validPrices.map((item) => ({
+    "@type": "Offer",
+    price: Number(item.price),
+    priceCurrency: "YER",
+    availability: "https://schema.org/InStock",
+    areaServed: {
+      "@type": "City",
+      name: item.city!.name,
+    },
+    priceValidUntil: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+  }));
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    image: productImageUrl ? [productImageUrl] : undefined,
+    description: product.description || `أحدث أسعار ${product.name} في أسواق اليمن.`,
+    sku: product.id?.toString(),
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "YER",
+      lowPrice: lowPrice,
+      highPrice: highPrice,
+      offerCount: validPrices.length,
+      priceValidUntil: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+      availability: validPrices.length > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      // تضمين العروض الخاصة بكل مدينة كقائمة فرعية داخل AggregateOffer
+      offers: cityOffers.length > 0 ? cityOffers : undefined,
+    },
+  };
+
+  return (
+    <>
+      {/* حقن بيانات JSON-LD لتحسين محركات البحث */}
+      <script id="product" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ProductDetails product={product} />
+    </>
+  );
 }
