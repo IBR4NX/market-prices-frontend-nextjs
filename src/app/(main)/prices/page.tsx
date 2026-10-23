@@ -3,7 +3,6 @@ import ClientPage from "./client";
 
 import { createSeo } from "@/lib/seo";
 export const metadata = createSeo({
-  canonicalPath: PRICES_URL,
   ignorePath: true,
   title: "أسعار المنتجات والمواد الغذائية اليوم",
   description:
