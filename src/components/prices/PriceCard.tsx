@@ -22,12 +22,46 @@ interface PriceCardProps {
 import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
 import MainLink from "../shared/mainLink";
 import { ArrowLeft, CalendarDays, MapPin, Package, Tag, Weight } from "lucide-react";
+import { getProductImageBySlug } from "@/lib/constants";
 
 export default function PriceCard({ item, labels }: PriceCardProps) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: item.product_name,
+    description:
+      item.product_description ||
+      `أحدث سعر لـ ${item.product_name} (${item.quantity} ${item.unit}) في ${item.city_name}, اليمن.`,
+    sku: item.product_id ? item.product_id.toString() : undefined,
+    category: item.category_name,
+
+    // العرض (Offer) الخاص بالسعر في هذه المدينة
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "YER",
+      image: getProductImageBySlug(item.product_id),
+      price: item.price,
+      priceValidUntil: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+      availability: "https://schema.org/InStock",
+      // توضيح نطاق الكمية ووحدة القياس إن وجد
+      eligibleQuantity: {
+        "@type": "QuantitativeValue",
+        value: item.quantity,
+        unitText: item.unit,
+      },
+      // المنطقة أو المدينة التي يتوفر فيها السعر
+      areaServed: {
+        "@type": "City",
+        name: item.city_name,
+      },
+    },
+  };
+
   return (
     <Card className="overflow-hidden border-border gap-4 bg-card shadow-sm">
+      <script id="item" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <CardHeader className="bgamber-100 p-">
-        <MainLink href={`/product/${item.product_name}`} className="flex mb-4 items-center gap-2">
+        <MainLink href={`/${item.product_name.replaceAll(" ", "-")}`} className="flex mb-4 items-center gap-2">
           <Package className="size-5 shrink-0 text-primary" />
           <CardTitle className=" text-2xl">{item.product_name}</CardTitle>
         </MainLink>
@@ -72,7 +106,9 @@ export default function PriceCard({ item, labels }: PriceCardProps) {
       <CardFooter className="">
         <Badge variant="secondary" className="rounded-md p-3 text-md font-medium">
           <Tag className="ml-1 size-4" />
-          <MainLink href={`/category/${item.category_name}`}>{item.category_name}</MainLink>
+          <MainLink href={`/prices?category=${item.category_name}&city=${item.city_name}`}>
+            {item.category_name}
+          </MainLink>
         </Badge>
         <Badge variant="ghost" className="text-md p-3 text-muted-foreground">
           <MapPin className="ml-1 size-4" />
