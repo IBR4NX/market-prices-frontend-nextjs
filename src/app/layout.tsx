@@ -83,14 +83,13 @@ export default function RootLayout({
         <meta name="msvalidate.01" content="448736B4E174A7AD617638A63866F2BE" />
         <meta name="apple-mobile-web-app-title" content={SITE_NAME} />
         {/* google-site-verification */}
-        <meta name="google-site-verification" content="_54F1eq7-pB1O2ij3E7YReMtAiHyv-aO5wo0ZcCBCHc" />
-        <meta name="google-site-verification" content="g2mr_fpoECA_KR21y4aZhdiSKGulMJrb44Ga5oQTw0M" />
+
         {/* <!-- Google Tag Manager --> */}
-        <script src="https://www.googletagmanager.com/gtag/js?id=G-FNW104VHST" />
+        {/* <script src="https://www.googletagmanager.com/gtag/js?id=G-FNW104VHST" /> */}
         {/* old */}
         <GoogleTagManager gtmId="GTM-59NDMV64" />
+        <meta name="google-site-verification" content="KXvhNB0SXAfU1dv4s3pUjAZh65wukMWNzrtW9Vxzs-4" />
         {/* new أسعار اليمن */}
-        <GoogleTagManager gtmId="GTM-5KK9MXXP" />
         {/* <!-- End Google Tag Manager --> */}
         {/* <link type="sitemap" content="" href="https://ibovs.vercel.app/sitemap/custom/test/feed?sender=ibovs.vercel.app" /> */}
 
