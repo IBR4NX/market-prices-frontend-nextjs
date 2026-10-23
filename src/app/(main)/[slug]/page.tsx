@@ -129,7 +129,7 @@ export default async function ProductPage({ params }: Props) {
     name: product.name,
     image: productImageUrl ? [productImageUrl] : undefined,
     description: product.description || `أحدث أسعار ${product.name} في أسواق اليمن.`,
-    sku: product.id?.toString(),
+    sku: product.slug?.toString(),
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: "YER",
