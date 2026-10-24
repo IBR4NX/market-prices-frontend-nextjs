@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   // 2. إشارات اسم الموقع المباشرة لمحركات البحث
   applicationName: SITE_NAME,
   title: {
-    default: `${SITE_NAME} | أسعار المنتجات والسلع في اليمن اليوم`,
+    default: `${SITE_NAME}`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
