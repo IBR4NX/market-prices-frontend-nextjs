@@ -73,17 +73,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 
   const description = [
-    `أحدث الأسعار`,
+    `أحدث أسعار`,
     productName,
     productQuantity,
     product.description,
+    "من فئة ",
+    product.category[0].name ?? "",
     priceDetails.length ? `اختلاف الأسعار: ${priceDetails.join("، ")}.` : "لا تتوفر حاليًا أسعار مسجلة لهذا المنتج.",
   ]
     .filter(Boolean)
     .join(" ");
 
   // إصلاح خطأ العنوان المنتهي بكلمة "في" بدون تكملة، واستخدام slug في الـ canonicalPath
-  const title = productQuantity ? ` ${productName} ${productQuantity}` : `سعر ${productName} اليوم في اليمن`;
+  const title = productQuantity ? `سعر ${productName}  ${productQuantity}` : `سعر ${productName} اليوم في اليمن`;
 
   return createSeo({
     canonicalPath: `/${product.name.replaceAll(" ", "-")}`,
