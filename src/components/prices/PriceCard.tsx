@@ -22,7 +22,7 @@ interface PriceCardProps {
 import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item";
 import MainLink from "../shared/mainLink";
 import { ArrowLeft, CalendarDays, MapPin, Package, Tag, Weight } from "lucide-react";
-import { getProductImageBySlug } from "@/lib/constants";
+import { getProductImageBySlug, SITE_URL } from "@/lib/constants";
 
 export default function PriceCard({ item, labels }: PriceCardProps) {
   const jsonLd = {
@@ -36,7 +36,7 @@ export default function PriceCard({ item, labels }: PriceCardProps) {
     category: item.category_name,
 
     // العرض (Offer) الخاص بالسعر في هذه المدينة
-    image: [getProductImageBySlug(item.product_id)],
+    image: [`${SITE_URL}/apple-touch-icon.png`],
     offers: {
       "@type": "Offer",
       priceCurrency: "YER",
