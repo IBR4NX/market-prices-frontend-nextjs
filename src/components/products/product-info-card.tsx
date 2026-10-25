@@ -2,9 +2,10 @@ import { CalendarDays, Package, Tag } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatDate, formatNumber } from "@/components/prices/format";
-import { getProductImageBySlug } from "@/lib/constants";
+import { getImageProduct } from "@/lib/constants";
 import { InfoStatItem } from "./product-primitives";
 import type { Product } from "@/components/products/types"; // عدّل المسار حسب مكان تعريف النوع لديك
+import Link from "next/link";
 
 interface ProductInfoCardProps {
   product: Product;
@@ -17,11 +18,7 @@ export function ProductInfoCard({ product }: ProductInfoCardProps) {
         <div className="flex flex-ol gap-4 sm:flex-row sm:items-start">
           <div className="flex m-auto h-32 w-32 shrink-0 items-center justify-center overflow-hidden rounded-xl border bg-muted  sm:h-40 sm:w-40">
             {product.slug ? (
-              <img
-                src={getProductImageBySlug(product.slug)}
-                alt={product.name}
-                className="h-full w-full object-contain"
-              />
+              <img src={getImageProduct(product)} alt={product.name} className="h-full w-full object-contain" />
             ) : (
               <Package className="h-12 w-12 text-muted-foreground" />
             )}
@@ -38,13 +35,12 @@ export function ProductInfoCard({ product }: ProductInfoCardProps) {
               </Badge>
             </div>
 
-            <CardTitle className="text-2xl font-bold sm:text-3xl">{product.name}</CardTitle>
-
-            </div>
+            <CardTitle className="text-2xl font-bold sm:text-3xl">
+              <Link href={product.name.replaceAll(" ", "-")}>{product.name}</Link>
+            </CardTitle>
+          </div>
         </div>
-            {product.description && (
-              <CardDescription className="text-sm leading-7">{product.description}</CardDescription>
-            )}
+        {product.description && <CardDescription className="text-sm leading-7">{product.description}</CardDescription>}
       </CardHeader>
 
       <CardContent className="grid gap-4 sm:grid-cols-2">

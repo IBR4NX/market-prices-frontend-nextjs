@@ -1,3 +1,5 @@
+import { Product } from "@/components/products/types";
+
 export const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME || "أسعار اليمن";
 export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://server-market-yemen.vercel.app/api";
 
@@ -13,7 +15,9 @@ export const LOCALE = process.env.NEXT_PUBLIC_LOCALE ?? "ar";
 export function getProductImageBySlug(slug: string) {
   return `${BLOB_PRODUCT_URL}/${BLOB_PRODUCT_FOLDER}/${slug}.${BLOB_PRODUCT_TYPE}`;
 }
-
+export function getImageProduct(product: Product) {
+  return decodeURIComponent(getProductImageBySlug(product.slug ?? product.name.replaceAll(" ", "-")));
+}
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? MAIN_URL).replace(/\/+$/, "");
 
 export function absoluteUrl(path = "/"): string {

@@ -5,10 +5,11 @@ import { api } from "@/lib/api";
 import { createSeo } from "@/lib/seo";
 import ProductDetails from "@/components/products/product-details";
 import { Product } from "@/components/products/types";
-import { getProductImageBySlug } from "@/lib/constants";
+import { getImageProduct } from "@/lib/constants";
 import { formatNumber, formatPrice } from "@/components/prices/format";
 import { ProductDetailsSkeleton } from "./loading";
 import { getQueryString } from "@/lib/query";
+import { toDate } from "date-fns";
 
 // تم حذف export const instant لأنها غير معتمدة في Next.js وتسبب مشاكل بناء
 
@@ -68,8 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     .sort((a, b) => a.city!.name.localeCompare(b.city!.name, "ar"));
 
   const priceDetails = prices.map((item) => {
-    const cityName = item.city!.name;
-    return `${cityName}: ${formatPrice(item.price)}`;
+    return `${item.city!.name}: ${formatPrice(item.price)}`;
   });
 
   const description = [
@@ -79,17 +79,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     product.description,
     "من فئة ",
     product.category[0].name ?? "",
-    priceDetails.length ? `اختلاف الأسعار: ${priceDetails.join("، ")}.` : "لا تتوفر حاليًا أسعار مسجلة لهذا المنتج.",
+    // priceDetails.length ? `اختلاف الأسعار: ${priceDetails.join("، ")}.` : "لا تتوفر حاليًا أسعار مسجلة لهذا المنتج.",
   ]
     .filter(Boolean)
     .join(" ");
 
   // إصلاح خطأ العنوان المنتهي بكلمة "في" بدون تكملة، واستخدام slug في الـ canonicalPath
-  const title = productQuantity ? `سعر ${productName}  ${productQuantity}` : `سعر ${productName} اليوم في اليمن`;
-
+  const title =
+    (productQuantity ? `سعر ${productName}  ${productQuantity} في ` : `سعر ${productName} اليوم في اليمن`) +
+    prices.map((m, index) => (index == 0 ? m.city.name : `و ${m.city.name}`)) +
+    prices.map((m) => " يوم " + new Date().toLocaleString("AR", { dateStyle: "full" }));
   return createSeo({
     canonicalPath: `/${product.name.replaceAll(" ", "-")}`,
-    image: getProductImageBySlug(product.slug),
+    image: getImageProduct(product),
     ignoreImgAbsoluteUrl: true,
     title,
     description,
@@ -104,7 +106,7 @@ export default async function ProductPage({ params }: Props) {
 
   if (!product) return <ProductDetailsSkeleton />;
 
-  const productImageUrl = getProductImageBySlug(product.slug);
+  const productImageUrl = getImageProduct(product);
 
   const validPrices = (product.current_prices ?? []).filter((item) => item.price != null && item.city?.name);
 
