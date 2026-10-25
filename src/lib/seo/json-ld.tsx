@@ -15,7 +15,9 @@ const SITE_DESCRIPTION =
 export const JsonLdWebsite = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  url: `${SITE_URL}/`,
   name: SITE_NAME,
+  alternateName: ALTERNATE_NAMES,
   "@graph": [
     {
       "@type": "Organization",
