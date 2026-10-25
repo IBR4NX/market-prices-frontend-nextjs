@@ -14,11 +14,13 @@ const SITE_DESCRIPTION =
 
 export const JsonLdWebsite = {
   "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
   "@graph": [
     {
       "@type": "Organization",
-      "@id": `${SITE_URL}/#organization`,
       name: SITE_NAME,
+      "@id": `${SITE_URL}/#organization`,
       alternateName: ALTERNATE_NAMES,
       url: `${SITE_URL}/`,
       description: SITE_DESCRIPTION,
@@ -26,7 +28,7 @@ export const JsonLdWebsite = {
         "@type": "ImageObject",
         "@id": `${SITE_URL}/#logo`,
         url: `${SITE_URL}/favicons/web-app-manifest-512x512.png`,
-        contentUrl: `${SITE_URL}/favicons/web-app-manifest-512x512.png`,
+        contentUrl: `${SITE_URL}/favicons/web-app-manifest-192x192.png`,
         caption: SITE_NAME,
         width: 512,
         height: 512,
@@ -42,7 +44,7 @@ export const JsonLdWebsite = {
       name: SITE_NAME,
       alternateName: ALTERNATE_NAMES,
       description: SITE_DESCRIPTION,
-      inLanguage: "ar",
+      inLanguage: "ar-AR",
       publisher: {
         "@id": `${SITE_URL}/#organization`,
       },

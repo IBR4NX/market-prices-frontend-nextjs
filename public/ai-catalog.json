@@ -1,29 +1,29 @@
 {
   "name": "Markets YEMEN",
   "description": "منصة يمنية لمتابعة أسعار المنتجات والسلع الأساسية في اليمن، والبحث عنها حسب المدينة والتصنيف والمنتج.",
-  "url": "https://ibovs.vercel.app/",
+  "url": "https://prices.ibovs.com/",
   "language": "ar",
   "type": "price-information-platform",
   "country": "Yemen",
   "pages": [
     {
       "name": "الرئيسية",
-      "url": "https://ibovs.vercel.app/",
-      "description": "الصفحة الرئيسية لمنصة Markets YEMEN."
+      "url": "https://prices.ibovs.com/",
+      "description": "الصفحة الرئيسية لمنصة ."
     },
     {
       "name": "الأسعار",
-      "url": "https://prices.ibovs.vercel.app/",
+      "url": "https://prices.ibovs.com/prices",
       "description": "استعراض أسعار المنتجات والسلع في اليمن."
     },
     {
       "name": "من نحن",
-      "url": "https://about.ibovs.vercel.app/",
-      "description": "التعريف بمنصة Markets YEMEN وأهدافها."
+      "url": "https://prices.ibovs.com/about",
+      "description": "التعريف بمنصة  وأهدافها."
     },
     {
       "name": "تواصل معنا",
-      "url": "https://ibovs.vercel.app/contact",
+      "url": "https://prices.ibovs.com/contact",
       "description": "التواصل مع فريق المنصة."
     }
   ],
@@ -31,61 +31,61 @@
     {
       "name": "صنعاء",
       "name_en": "Sana'a",
-      "url": "https://prices.ibovs.vercel.app/city/صنعاء",
+      "url": "https://prices.ibovs.com/city/صنعاء",
       "description": "أسعار المنتجات والسلع في صنعاء."
     },
     {
       "name": "تعز",
       "name_en": "Taiz",
-      "url": "https://prices.ibovs.vercel.app/city/تعز",
+      "url": "https://prices.ibovs.com/city/تعز",
       "description": "أسعار المنتجات والسلع في تعز."
     },
     {
       "name": "عدن",
       "name_en": "Aden",
-      "url": "https://prices.ibovs.vercel.app/city/عدن",
+      "url": "https://prices.ibovs.com/city/عدن",
       "description": "أسعار المنتجات والسلع في عدن."
     }
   ],
   "product_categories": [
     {
       "name": "المواد الغذائية",
-      "url": "https://prices.ibovs.vercel.app/category/مواد%20غذائية",
+      "url": "https://prices.ibovs.com/category/مواد%20غذائية",
       "products": [
         {
           "name": "الأرز",
           "name_en": "Rice",
-          "url": "https://prices.ibovs.vercel.app/product/الأرز"
+          "url": "https://prices.ibovs.com/prices?search=أرز"
         },
         {
           "name": "الدقيق",
           "name_en": "Flour",
-          "url": "https://prices.ibovs.vercel.app/product/الدقيق"
+          "url": "https://prices.ibovs.com/prices?search=الدقيق"
         },
         {
           "name": "السكر",
           "name_en": "Sugar",
-          "url": "https://prices.ibovs.vercel.app/product/السكر"
+          "url": "https://prices.ibovs.com/prices?search=السكر"
         },
         {
           "name": "زيت الطهي",
           "name_en": "Cooking Oil",
-          "url": "https://prices.ibovs.vercel.app/product/زيت%20الطهي"
+          "url": "https://prices.ibovs.com/prices?search=زيت%20الطهي"
         },
         {
           "name": "القمح",
           "name_en": "Wheat",
-          "url": "https://prices.ibovs.vercel.app/product/القمح"
+          "url": "https://prices.ibovs.com/prices?search=القمح"
         },
         {
           "name": "البقوليات",
           "name_en": "Legumes",
-          "url": "https://prices.ibovs.vercel.app/product/البقوليات"
+          "url": "https://prices.ibovs.com/prices?search=البقوليات"
         },
         {
           "name": "الشاي",
           "name_en": "Tea",
-          "url": "https://prices.ibovs.vercel.app/product/الشاي"
+          "url": "https://prices.ibovs.com/prices?search=الشاي"
         }
       ]
     }
@@ -122,4 +122,3 @@
     "يجب أن تتطابق الروابط مع المسارات الفعلية في الموقع."
   ]
 }
-
