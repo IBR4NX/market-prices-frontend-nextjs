@@ -44,7 +44,7 @@ export function createSeo({
     description,
     keywords: generateKeywords(title, description),
     alternates: {
-      canonical: canonicalPath !== "/" ? new URL(`${canonical}`) : undefined,
+      canonical: new URL(`${canonical}`),
       languages: { "ar-YE": MAIN_URL },
     },
 
