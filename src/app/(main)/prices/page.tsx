@@ -1,4 +1,3 @@
-import { PRICES_URL } from "@/lib/constants";
 import ClientPage from "./client";
 
 import { createSeo } from "@/lib/seo";

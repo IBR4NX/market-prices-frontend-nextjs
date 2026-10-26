@@ -5,7 +5,7 @@ import { ColorToggle, ModeToggle } from "./toggles/themeToggle";
 
 import LinkFooter from "@/components/layout/LinkFooter";
 import MainLink from "@/components/shared/mainLink";
-import { ABOUT_URL, BLOG_URL, PRICES_URL, SITE_NAME, SITE_URL } from "@/lib/constants";
+import { SITE_NAME, SITE_URL } from "@/lib/constants";
 export default function Footer() {
   return (
     <footer className="border-t bg-muted/30">
@@ -31,16 +31,16 @@ export default function Footer() {
             <div className="  w-full">
               <h2 className="text- font-semibold"> روابط</h2>
               <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-muted-foreground">
-                <Link href={PRICES_URL} className="w-fit hover:text-foreground hover:underline">
+                <Link href={"/prices"} className="w-fit hover:text-foreground hover:underline">
                   ألاسعار
                 </Link>
-                <Link href={BLOG_URL} className="w-fit hover:text-foreground hover:underline">
+                <Link href={"/blog"} className="w-fit hover:text-foreground hover:underline">
                   المدونة
                 </Link>
-                <MainLink href="/add" className="w-fit hover:text-foreground hover:underline">
+                {/* <MainLink href="/add" className="w-fit hover:text-foreground hover:underline">
                   تعديل سعر
-                </MainLink>
-                <Link rel="nofollow" href={ABOUT_URL} className="w-fit hover:text-foreground hover:underline">
+                </MainLink> */}
+                <Link rel="" href={"/about"} className="w-fit hover:text-foreground hover:underline">
                   من نحن
                 </Link>
                 <MainLink href="/help" className="w-fit hover:text-foreground hover:underline">
